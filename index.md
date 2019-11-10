@@ -129,5 +129,4 @@
 ### Data Storage
 [# SD library (sd카드 사용)
 ](/Circuitry/Data Storage/SD card.md)
-
-[gimmick:Disqus](2ndproj)
+[gimmick:Disqus](mdwiki)
