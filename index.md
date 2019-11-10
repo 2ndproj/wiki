@@ -129,6 +129,3 @@
 ### Data Storage
 [# SD library (sd카드 사용)
 ](/Circuitary/Data Storage/SD card.md)
-[<!--
-](/navigation.md)
-[](/index.md)
