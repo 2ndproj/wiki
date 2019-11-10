@@ -1,5 +1,4 @@
-{{WIKI}}
-== 증상 ==
+# 증상
 https://cl.ly/2c1e0D3s0u3w/Image%202017-05-30%20at%2012.58.00%20AM.png
 
 컴파일시 WProgrma.h 파일 없음 메시지

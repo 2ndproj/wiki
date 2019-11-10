@@ -1,6 +1,5 @@
-![](https://i2.wp.com/electronicshobbyists.com/wp-content/uploads/2017/02/SD-card-module-arduino.png?w=432&ssl=1)
-
 # SD library (sd카드 사용)
+![](https://i2.wp.com/electronicshobbyists.com/wp-content/uploads/2017/02/SD-card-module-arduino.png?w=432&ssl=1)
 아두이노 이더넷 쉴드나 adafruit vs1053 mp3 decoder처럼 sd 카드를 사용하는 경우 아두이노에서 sd라이브러리로 파일을 읽거나 쓰도록 한다. 하드웨어에 따라 다르지만 spi로 통신하는 대부분의 쉴드나 브레이크아웃 보드들은 다 쓸 수 있다.
 아두이노에 기본 포함된 라이브러리이다.
 참고: https://www.arduino.cc/en/Reference/SD

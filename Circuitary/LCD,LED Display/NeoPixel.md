@@ -1,5 +1,4 @@
-{{WIKI}}
-== 개요 ==
+# 개요
 [[http://d.pr/i/scsCq.jpg]]
 == 회로 연결 ==
 http://d.pr/i/5BQjV.jpg

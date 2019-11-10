@@ -1,5 +1,4 @@
-{{WIKI}}
-== 개요 ==
+# 개요
 https://cdn.sparkfun.com/assets/learn_tutorials/3/8/3/HX711_and_Combinator_board_hook_up_guide-05.jpg
 https://cdn.sparkfun.com/r/600-600/assets/learn_tutorials/3/8/3/HX711_and_Combinator_board_hook_up_guide-02.jpg
 

@@ -1,5 +1,4 @@
-{{WIKI}}
-= ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동) =
+# ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동)
 
 프로토파이에서 보내온 자료:
 

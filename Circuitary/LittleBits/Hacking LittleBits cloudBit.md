@@ -1,3 +1,4 @@
+# cloudbit 해킹
 
 클라우드빗은 사실 아주작은 컴퓨터. 안에서 리눅스가 돌아가고있다. 클라우드빗의 내부에 접근해 더 섬세하게 제어하거나, 내가 쓴 코드를 실행시키는 등 라즈베리파이처럼 사용할 수도 있지 않을까? 클라우드빗 소개페이지에 아래와 같이 써있는게  출발점이 될 수 있겠다.
 >We've left pads on the bottom of the board so that you can connect to the cloudBit's serial console using 3.3V UART (8-N-1, 115,200 baud) and poke around.

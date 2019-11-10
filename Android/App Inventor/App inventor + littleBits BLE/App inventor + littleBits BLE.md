@@ -1,5 +1,5 @@
 
-= mit app inventor &lt;-&gt; littleBits BLE =
+# mit app inventor &lt;-&gt; littleBits BLE
 
 @(4_skills)[littleBits, app inventor] @[littleBits, app inventor]
 

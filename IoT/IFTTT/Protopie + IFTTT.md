@@ -1,4 +1,5 @@
-{{WIKI}}
+# Protopie + IFTTT
+
 실제 스마트폰 앱을 개발하지 않고서, UI 프로토타이핑 툴인 ProtoPie를 사용해 간단히 스마트폰 앱 UI 시제품을 제작하고,  IFTTT를 활용해 Gmail, Facebook , littleBits 등 각종 서비스에 연동해 실제 작동시킬 수 있다. (안드로이드폰만 가능)
 <youtube>https://youtu.be/JfKTo6tH4rY</youtube>
 

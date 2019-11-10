@@ -1,6 +1,4 @@
-{{wiki}}
-
-== 개요 ==
+# 개요
 앱인벤터([http://appinventor.mit.edu  MIT app inventor])에서 독립해나온 프로젝트 썬커블([http://thunkable.com  Thunkable]) 을 사용하면 매우 쉽고 빠르게 구글 맵 서비스를 안드로이드 앱 안에 넣을 수 있다.
 
 == Thunkable + Google Map ==
