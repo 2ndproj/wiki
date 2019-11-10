@@ -52,80 +52,82 @@
 ### IFTTT
 [# Protopie + IFTTT
 ](/IoT/IFTTT/Protopie + IFTTT.md)
-## Circuitary
+## Circuitry
 ### Arduino
 #### Bootloader
 [# ATTINY85 칩에 arduino 프로그래밍
-](/Circuitary/Arduino/Bootloader/arduino bootloader on ATTINY85.md)
+](/Circuitry/Arduino/Bootloader/arduino bootloader on ATTINY85.md)
 #### Error messages
 [# 증상
-](/Circuitary/Arduino/Error messages/Arduino: fatal error: WProgram.h: No such file or directory.md)
+](/Circuitry/Arduino/Error messages/Arduino: fatal error: WProgram.h: No such file or directory.md)
 #### Timer & Interrupt
 [# ServoTimer2 언제필요한가?
-](/Circuitary/Arduino/Timer & Interrupt/ServoTimer2.md)
+](/Circuitry/Arduino/Timer & Interrupt/ServoTimer2.md)
 [
-](/Circuitary/Arduino/Timer & Interrupt/Software Interrupt.md)
+](/Circuitry/Arduino/Timer & Interrupt/Software Interrupt.md)
 [# Software PWM
-](/Circuitary/Arduino/Timer & Interrupt/softPWM.md)
+](/Circuitry/Arduino/Timer & Interrupt/softPWM.md)
 #### Debouncing
 [
-](/Circuitary/Arduino/Debouncing/debouncing.md)
+](/Circuitry/Arduino/Debouncing/debouncing.md)
 ### LittleBits
 [
-](/Circuitary/LittleBits/littleBits multi-role bits from  Attiny85 digispark.md)
+](/Circuitry/LittleBits/littleBits multi-role bits from  Attiny85 digispark.md)
 [# mit app inventor &lt;-&gt; littleBits BLE
-](/Circuitary/LittleBits/App inventor + littleBits BLE.md)
+](/Circuitry/LittleBits/App inventor + littleBits BLE.md)
 [# cloudbit 해킹
-](/Circuitary/LittleBits/Hacking LittleBits cloudBit.md)
+](/Circuitry/LittleBits/Hacking LittleBits cloudBit.md)
 ### PCB design
 [# Autodesk Eagle 로 PCB 제작하기
-](/Circuitary/PCB design/Eagle PCB design.md)
+](/Circuitry/PCB design/Eagle PCB design.md)
 ### LCD,LED Display
 [# POV (잔상효과)용 pixel data (픽셀 데이타) 만들기
-](/Circuitary/LCD,LED Display/pixel data for POV system.md)
+](/Circuitry/LCD,LED Display/pixel data for POV system.md)
 [# dotstar
-](/Circuitary/LCD,LED Display/dotstar.md)
+](/Circuitry/LCD,LED Display/dotstar.md)
 [# 개요
-](/Circuitary/LCD,LED Display/NeoPixel.md)
+](/Circuitry/LCD,LED Display/NeoPixel.md)
 #### i2c 16x2 LCD (PCF8574chip)
 [# i2c lcd (PCF8574 chip)
-](/Circuitary/LCD,LED Display/i2c 16x2 LCD (PCF8574chip)/i2c 16X2 LCD (pcf8574 chip).md)
+](/Circuitry/LCD,LED Display/i2c 16x2 LCD (PCF8574chip)/i2c 16X2 LCD (pcf8574 chip).md)
 ### Transistor & MOSFET
 [# MOSFET 를 사용한 switching 회로
-](/Circuitary/Transistor & MOSFET/MOSFET switch circuit.md)
+](/Circuitry/Transistor & MOSFET/MOSFET switch circuit.md)
 [## 개요
-](/Circuitary/Transistor & MOSFET/NPN transisor switch.md)
+](/Circuitry/Transistor & MOSFET/NPN transisor switch.md)
 ### Wireless communication
 [# Int형 데이터를 byte로 바꾸기
-](/Circuitary/Wireless communication/integer to byte.md)
+](/Circuitry/Wireless communication/integer to byte.md)
 #### Bluetooth
 [# 개요
-](/Circuitary/Wireless communication/Bluetooth/snap4arduino + arduino bluetooth.md)
+](/Circuitry/Wireless communication/Bluetooth/snap4arduino + arduino bluetooth.md)
 [# 개요
-](/Circuitary/Wireless communication/Bluetooth/App inventor + arduino bluetooth.md)
+](/Circuitry/Wireless communication/Bluetooth/App inventor + arduino bluetooth.md)
 ##### Bluetooth 4.0 (BLE)
 [# 개요
-](/Circuitary/Wireless communication/Bluetooth/Bluetooth 4.0 (BLE)/Sort of BLE modules in market.md)
+](/Circuitry/Wireless communication/Bluetooth/Bluetooth 4.0 (BLE)/Sort of BLE modules in market.md)
 #### RFID (NFC)
 [#PN532 NFC shield
-](/Circuitary/Wireless communication/RFID (NFC)/PN532 NFC shield.md)
+](/Circuitry/Wireless communication/RFID (NFC)/PN532 NFC shield.md)
 #### WIFI
 ##### ESP8266-Wifi
 ###### WiFiEsp-adafruit_io
 [# ESP8266
-](/Circuitary/Wireless communication/WIFI/ESP8266-Wifi/ESP8266-Wifi.md)
+](/Circuitry/Wireless communication/WIFI/ESP8266-Wifi/ESP8266-Wifi.md)
 #### Beacon system
 [# 개요
-](/Circuitary/Wireless communication/Beacon system/mimicking beacon system.md)
+](/Circuitry/Wireless communication/Beacon system/mimicking beacon system.md)
 ### Sensors
 [# 개요
-](/Circuitary/Sensors/Load cell HX711.md)
+](/Circuitry/Sensors/Load cell HX711.md)
 ### power
 [# 5V 레귤레이터
-](/Circuitary/power/LM7805 - 5V regulator.md)
+](/Circuitry/power/LM7805 - 5V regulator.md)
 ### Sound&Music
 [# VS1053 mp3 decoder chip
-](/Circuitary/Sound&Music/VS1053 mp3 decoder.md)
+](/Circuitry/Sound&Music/VS1053 mp3 decoder.md)
 ### Data Storage
 [# SD library (sd카드 사용)
-](/Circuitary/Data Storage/SD card.md)
+](/Circuitry/Data Storage/SD card.md)
+
+[gimmick:Disqus](2ndproj)
