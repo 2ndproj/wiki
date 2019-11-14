@@ -4,7 +4,7 @@
 
 ## appInventor code
 
-![](https://youtu.be/_cmSVWYVKtw)
+[](https://youtu.be/_cmSVWYVKtw)
 [thunkable + Google Map
 샘플코드](/Android/App Inventor/App inventor + Google Maps/GoogleMap_test.aia)
 
