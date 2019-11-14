@@ -5,13 +5,13 @@
 ## Android
 ### App Inventor
 #### App inventor + Google Maps
-[# 개요
+[# App inventor + Google Maps
 ](/Android/App Inventor/App inventor + Google Maps/App inventor + google maps.md)
 #### App inventor + Bluetooth(Arduino)
-[# 개요
-](/Android/App Inventor/App inventor + Bluetooth(Arduino)/App inventor + Bluetooth(arduino).md)
+[# MIT App inventor + Arduino Bluetooth
+](/Android/App Inventor/App inventor + Bluetooth(Arduino)/App inventor + arduino Bluetooth.md)
 #### App inventor + littleBits BLE
-[
+[# mit App Inventor + littleBits BLE
 ](/Android/App Inventor/App inventor + littleBits BLE/App inventor + littleBits BLE.md)
 ### Llama Automate
 #### ProtoPie - Llama Automate
