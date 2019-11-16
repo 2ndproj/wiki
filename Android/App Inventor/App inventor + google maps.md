@@ -5,8 +5,7 @@
 ## appInventor code
 
 [](https://youtu.be/_cmSVWYVKtw)
-[thunkable + Google Map
-샘플코드](/Android/App Inventor/App inventor + Google Maps/GoogleMap_test.aia)
+[thunkable + Google Map 샘플코드](/Android/App Inventor/GoogleMap_test.aia)
 
 ### 1\. 위도, 경도를 입력하면 앱 내의 구글 지도위에 보여주기
 

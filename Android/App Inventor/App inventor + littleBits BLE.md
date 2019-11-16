@@ -7,7 +7,7 @@
 <https://github.com/khanning/littlebits-ble-extension/blob/gh-pages/littleBitsBLE_extension.js>
 
 ## 예제
-[LittleBits\_w30\_BLE.aia.zip](/LittleBits_w30_BLE.aia.zip)
+[LittleBits\_w30\_BLE.aia.zip](/Android/App Inventor/LittleBits_w30_BLE.aia.zip)
 
 예제를 다운받아 app inventor에서 import 한 후, 각 프로젝트에 맞게 수정해 사용한다.
 ![](https://cl.ly/pZeY/appInventor-littleBIts_BLE.gif)
@@ -48,7 +48,7 @@ BLE bit에 연결된 버튼을 누르면 뭔지 잘 모르겠지만 HEX값 3번�
 ![](https://cl.ly/pXPB/Image%202018-02-15%20at%206.03.49%20AM.png)
 
 note: BLE extention의 버그: apk로 설치해 실행시 WriteByte 블록 에러 "Runtime error failed resolution Lcom/google/common/collect/List" 발생. ble extention이 버전 업 (v.2.1)되면서 해결됨.
-[writebyte block 버그 해결된 BLE extension download](/BLE-v2.1-rc4.aix.zip)
+[writebyte block 버그 해결된 BLE extension download](Android/App Inventor/BLE-v2.1-rc4.aix.zip)
 <div>
 
 <del>

@@ -4,15 +4,13 @@
  문서의 잘못된 내용을 발견하거나 공유하고픈 자신만의 노하우가 있다면 [markdown 형식](https://gist.github.com/ihoneymon/652be052a0727ad59601)으로 문서 작성해 [등록요청](https://github.com/2ndproj/wiki/issues/new) 바랍니다.
 ## Android
 ### App Inventor
-#### App inventor + Google Maps
-[# App inventor + Google Maps
-](/Android/App Inventor/App inventor + Google Maps/App inventor + google maps.md)
-#### App inventor + Bluetooth
-[# MIT App inventor + Arduino Bluetooth
-](/Android/App Inventor/App inventor + Bluetooth/App inventor + arduino Bluetooth.md)
-#### App inventor + littleBits BLE
 [# mit App Inventor + littleBits BLE
-](/Android/App Inventor/App inventor + littleBits BLE/App inventor + littleBits BLE.md)
+](/Android/App Inventor/App inventor + littleBits BLE.md)
+[# App inventor + Google Maps
+](/Android/App Inventor/App inventor + google maps.md)
+[# MIT App inventor + Arduino Bluetooth
+](/Android/App Inventor/App inventor + arduino Bluetooth.md)
+#### App inventor + littleBits BLE
 ### Llama Automate
 #### ProtoPie - Llama Automate
 [# ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동)
@@ -129,4 +127,3 @@
 ### Data Storage
 [# SD library (sd카드 사용)
 ](/Circuitry/Data Storage/SD card.md)
-[gimmick:Disqus](2ndproj)

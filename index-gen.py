@@ -16,7 +16,7 @@ f.write("모든이의 세컨드 프로젝트를 지원하기 위한 노하우 �
 folder_level = 1
 #global var 'home_directory'를 사용한다. 스크립트가 실햏된 최초 작업디렉토리를 기록해 두었다가 각 파일의 상대경로를 작성하는데 사용한다.
 home_directory = os.getcwd()
-skipfilelist = ['index.md', 'navigation.md']
+skipfilelist = ['index.md', 'navigation.md','private']
 print(home_directory)
 
 # def listup:
@@ -64,6 +64,6 @@ def listup():
 
 listup()
 # dsquare 플러그인 추가
-f.write('[gimmick:Disqus](2ndproj)')
+# f.write('[gimmick:Disqus](2ndproj)')
 # 파일 닫기
 f.close()
