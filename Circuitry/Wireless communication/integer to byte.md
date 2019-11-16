@@ -5,7 +5,9 @@
 ## 활용예
 
 ```C
-
+/*
+sample.ino
+*/
 
 byte s[4] = {0,0,0,0};
 uint32_t l = 0xefa2338b; // 아무 숫자나 테스트해보자
@@ -37,5 +39,3 @@ void loop(){
 
 ## 참고:
 각 데이터 형식의 크기: https://msdn.microsoft.com/ko-kr/library/s3f49ktz.aspx
-
-[[category: Arduino Tip]]

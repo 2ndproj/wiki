@@ -6,6 +6,7 @@
 이미 설치되어있는 것으로...
 
 ## cask 설치
+cask는 consol용 어플리케이션만 관리할 수 있는 homebrew의 기능을 확장해 GUI 어플리케이션도 관리하도록 하는 확장 프로그램이다. 말하자면 macOS app store의 opensource 버전이라고 할 수 있다.
 ```bash
 $ brew install cask
 ```

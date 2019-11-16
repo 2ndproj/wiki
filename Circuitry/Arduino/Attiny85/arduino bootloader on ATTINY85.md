@@ -70,9 +70,7 @@ analog input 이라고 씌여진 핀이 아날로그 입력핀.
 우리는 기본 제공되는 예제에 ``` #define LED_BUILTIN 4```이라는 코드를 삽입해 디지털 4번핀을 깜빡이도록 해보자.
 위 표를 보면 디지털핀4번은 attiny85 칩의 3번 다리이므로 led 를 3번째 다리에 연결한다. (LED(-) 쪽은 당연히 GND에 연결된 4번째 다리...)
 ![enter image description here](https://cl.ly/3m03332R1m3m/download/2017-11-03%2007_01_47.gif)
-![Alt text](./2017-11-03 07_01_47.gif)
+잘된다^^
 
 ##참고
 http://highlowtech.org/?p=1695
-
-[[category:Arduino]]

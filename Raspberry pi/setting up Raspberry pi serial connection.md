@@ -1,4 +1,4 @@
-# 라즈베리파이 시리얼 통신  설정 (setting up Raspberry pi serial connection via GPIO)
+# 라즈베리파이에서 시리얼 디바이스 사용
 
 참고: https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/
 ## 시리얼 포트 확인

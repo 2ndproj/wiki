@@ -61,11 +61,12 @@ void loop() {
 }
 ```
 
+note:
 기본적인 사용법은 기본 servo 라이브러리와 동일하다.
 그런데 write() 함수에 들어가는 값은 각도가 아니라 1000~3000 사이의 값.
 값을 조정해가며 테스트를 통해 상한과 하한을 찾아내자.
 
+note: 아두이노 메가 등은 타이머가 총 6개 내장되어있고, 충돌을 피하기 위해 Timer3을 사용할 수도 있다. [TimerThree 라이브러리 다운로드](http://playground.arduino.cc/Code/Timer1)
+
 * 참고
 https://platformio.org/lib/show/1305/ServoTimer2/examples
-
-[[category:Interrupt]]

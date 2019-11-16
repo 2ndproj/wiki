@@ -2,12 +2,10 @@
 ![||600](https://cl.ly/s6tV/Image%202018-06-07%20at%203.09.44%20PM.png)
 
  아두이노의 ICSP핀(SPI)을 사용해 다른핀을 충분히 활용할 수 있어 좋다나... Adafruit의 PN532 라이브러리를 활용한다.
+ [구입한곳 디바이스마트](http://www.devicemart.co.kr/1383144)
+ [제조사 위키](https://www.elecrow.com/wiki/index.php?title=NFC_Shield)
 
- ***카드 구입할 때 MIFARE ISO14443A cards/tags 호환을 확인한다!!***
-
-[구입한곳 디바이스마트](http://www.devicemart.co.kr/1383144)
-
-[제조사 위키](https://www.elecrow.com/wiki/index.php?title=NFC_Shield)
+ note: 카드 구입할 때 MIFARE ISO14443A cards/tags 호환을 확인한다!!
 
 ##RFID, NFC 그리고 MiFare
 참고: http://baator9.tistory.com/7
@@ -36,7 +34,7 @@ Mifare Classic 카드(태그)는 저장용량에 따라 1K, 2K, 4K가 있고, �
 
 
 ##라이브러리 설치
-[라이브러리 다운로드](https://www.elecrow.com/wiki/index.php?title=File:PN532_SPI.zip)에서 다운로드 받은 후 아두이노 IDE 메뉴 > 스케치 > 라이브러리 포함하기 > .zip 라이브러리 포함에서 다운받은 zip파일 선택하면 라이브러리 설치 됨.
+[라이브러리 다운로드](https://www.elecrow.com/wiki/index.php?title=File:PN532_SPI.zip) 에서 다운로드 받은 후 아두이노 IDE 메뉴 > 스케치 > 라이브러리 포함하기 > .zip 라이브러리 포함에서 다운받은 zip파일 선택하면 라이브러리 설치 됨.
 
 라이브러리 설치 후 메뉴> 파일 > 예제 > PN532-SPI > readMifareMemory 예제 불러들여 태그 잘 읽히는 지 테스트.
 ![||600](https://cl.ly/s6vD/Image%202018-06-07%20at%203.29.43%20PM.png)
@@ -44,6 +42,7 @@ Mifare Classic 카드(태그)는 저장용량에 따라 1K, 2K, 4K가 있고, �
 
 ##태그서 DATA 읽기
 ###MiFare Classic 읽기
+
 ```C++
 #include <PN532.h>
 #include <SPI.h>
@@ -193,7 +192,8 @@ void loop(){
 `uint32_t writeMemoryBlock(uint8_t cardnumber, uint8_t blockaddress, uint8_t* block)` 메소드 사용해 인식된 카드중 cardnumber 번째 카드의 blockaddress 블록에 block배열의 내용을 기록함 (16바이트)
 
 ### Mifare Ultralight 쓰기
-```C++
+
+```Cpp
 #include <PN532.h>
 #include <SPI.h>
 
@@ -243,13 +243,10 @@ void loop(){
 	}
 	delay(500);
 }
-
 ```
-##주의점
-* 하드웨어 인터럽트 사용시 충돌 일으키는 것으로 보임. 소프트웨어 인터럽트를 사용하는 것으로 해결 [[Software_Interrupt_(소프트웨어_인터럽트)]]
+
+## 주의점
+* 하드웨어 인터럽트 사용시 충돌 일으키는 것으로 보임. 소프트웨어 인터럽트를 사용하는 것으로 해결
+[Software_Interrupt_(소프트웨어_인터럽트) 참고자료](Circuitry/Arduino/Timer & Interrupt/Software Interrupt.md)
 * 아두이노 d12, d13번핀에 입력장치 연결되면 간섭일으키는 것으로 보임. 회로도상에는 12,13번 핀과 아무런 연결없는데 왜 이런 현상일어나는지 모르겠음....
 좀 더 테스트 필요
-
-[[category:NFC]]
-[[category:MiFare]]
-[[category:RFID]]

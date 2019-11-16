@@ -11,24 +11,35 @@ atom 메뉴 > preferences... > packages > core packages > auto complete plus >
  automatically confirm single suggestion 옵션을 끈다.
  짱 편해진다.
 
-<s>## 줄바꿈 설정
-윈도에서는 그렇지 않은 것 같은데, mac에서는 라인 끝에서 한글 입력시 글자 입력이 끝났는데도 글자 입력이 끝나지 않은 것으로 인식해 다른 곳에 커서를 가져가 글을 쓰려하는데 원래의 라인 끝으로 돌아와있는 현상이 있다. 말로하니 복잡한데 암튼 엄청 번거롭고 신경쓰인다. 아래와 같이 라인끝 처리를  CR+LF로 강제하면 해결된다.(**리눅스에서 코드 실행시 에러 발생하는 등 부작용 있으니 선택적으로 활용!**)
-![](https://cl.ly/fd464a/Image%202019-08-02%20at%207.29.51%20PM.png)</s>
-
+ ## 폭이 좁은 탭에서 글줄 자동으로 바꾸기 (soft wrap)
+ ![](https://cl.ly/44dd89/Image%202019-08-01%20at%203.33.59%20PM.png)
 
 ## 마크다운 미리보기 설정
-원조 마크다운에서는 single-line break 는 줄바꿈 하지 않는 것이 디폴트. 그러나 이건 되게 불편하므로  github-favored 대로 줄바꿈 하는 것으로 설정하자.
-![](https://cl.ly/78f0b9/Image%202019-07-30%20at%206.22.30%20PM.png)
+markdown-preview 플러그인이 atom에 기본 포함되어있으나 좀 더 기능이 풍부한 **markdown-preview-enhanced** 를 사용하자.
+* .md파일이 열릴 때 자동으로 미리보기 창 열림
+* 편집창과 미리보기창 위치  sync됨. 매우 편리함!!
+* 이미지 업로드기능 (아래에 상술)
 
+### 줄바꿈 방식 변경
+오리지널 마크다운에서는 문장끝에서 엔터를 두 번 눌러야지만 줄바꿈이된다.
+이는 지금까지의 습관과는 다르기 때문에 githubfravored style에서는 엔터 한 번만 눌러도 줄바꿈이 되도록 한다.
+
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/4gu7v6bR/Image+2019-11-15+at+11.40.33+AM.png?v=5bb7e92219d1b507c1d208b327b12a79)
 before:![](https://cl.ly/9f5461/Image%202019-07-30%20at%206.23.34%20PM.png)
 after:
 ![](https://cl.ly/b471c7/Image%202019-07-30%20at%206.23.59%20PM.png)
 
 참고로 행 끝에서 스페이스x2는 줄 바꿈을 의미한다.
-아톰이 아닌 다른 마크다운 뷰어에서도 예쁘게 보이려면 스페이스 두번을 사용하는 쪽이 좋다.
+깃허브스타일이 아닌 표준 렌더링을 사용하는 다른 마크다운 뷰어에서도 예쁘게 보이려면 스페이스 두번을 사용하는 쪽이 좋다.
 
-# 폭이 좁은 탭에서 글줄 자동으로 바꾸기 (soft wrap)
-![](https://cl.ly/44dd89/Image%202019-08-01%20at%203.33.59%20PM.png)
+### 문서에 이미지 넣기.
+markdown-preview-enhanced의 가장 마음에드는 기능 중 하나는
+이미지 업로드 기능이다. 이미지 파일을 드래그해 넣기만 하면  'imgur'와 같은 이미지 공유서비스에 자동으로 이미지를 업로드하고 링크를 생성한다.(가입필요없음)
+
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/xQuvmBPX/Screen+Recording+2019-11-15+at+11.28+AM.gif?v=76f338867c89b3c2ba4aa83b7e9efcb6)
+
+package > markdown-preview-enhanced > image uploader와 drop image to editor 항목을 아래와 같이 체크한다.
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/bLup24pl/Image+2019-11-15+at+11.46.35+AM.png?v=0049ddf9d646a1c3463b8e521e83ee50)
 
 ### script 패키지 설치
 * Atom > Preferences...> package > install

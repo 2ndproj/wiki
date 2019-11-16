@@ -19,8 +19,8 @@ archi linux 를 사용하므로 unix 기본 명령어라든가 부팅순서 등 
 * Dimensions — 15 x 10 x 5mm
 * Operating system — Arch Linux
 
-[클라우드빗 소개페이지](https://shop.littlebits.cc/products/cloudbit)
-![클라우드빗 아키텍쳐](http://files.linuxgizmos.com/littlebits_cloudbit_arch.jpg)
+클라우드빗 소개페이지:(https://shop.littlebits.cc/products/cloudbit)
+![littlebits_cloudbit_arch](https://i.imgur.com/YY2NR08.jpg)
 ![클라우드빗 회로](https://cl.ly/ndqb/Image%202017-11-12%20at%205.57.39%20AM.png)
 
 ## serial (TTL)로 맥북에 연결
@@ -35,12 +35,11 @@ archi linux 를 사용하므로 unix 기본 명령어라든가 부팅순서 등 
 4 -> 디버그라는데 정확한 용도는 TBD...
 
 테스터로 찍어서 GND핀 위치를 확인한다.
-![시리얼핀]
-(https://lh3.googleusercontent.com/Q0SOykZjmBlEA1dHsZQpe4NgNQ4VGepW9QSdh9ki5fapr0zCdmfZnSxVXJaUtK4LXaZYFaCs7oO-2iri_d5RGgRC3QkUP0Dh0vfSUkTGR2CgNRdiXLu673SyRZ_zFY5-lztbwRNJNj__dnD81RaZE_Ik7sOS0myGQ88ehO_GDiUFI0zZKh_7FphtmzZdoBk5M2J7iYaraAD6UPJS1Vut4UIv5ZjKsfwE7hFSicNBfpTmsXH6Y7Jn_NXgIjncjmUPAfW8a9WbZi6DtQd0P19Nx_NY_TkKeKWg53bQoeVAvgILTaY9eO2_X1aTv0389uje-qBnYOGd1v5dkcvpoRSWduJkNMddst-hTjCuEueFmSdxCroG36RXPg1pDbxzvMqfbeXDbZeCwivDTorNctXLJ759BRHOjxEYuVE0c4yzKgK9tnhCTGOTXs00T8gl-aX8sh0pu8GhrwXON5SFzoNlQe5i9upQ0cHMHSbJXU3o7x7vF_f0gItnUNLAkwNsyE7OIGw3I1zq4o7B4sZPrryhe-IZpzNZb3P1DVSrgpqQEDAB17ivzLxLkZMrdFUzwknpK9dAHymZ1_A0G6EbYMYOvEiv5fKrSgCwesEZhoQF5K0=w835-h626-no)
+![20171112_062127](https://i.imgur.com/RuAoeRT.jpg)
 아래면에서 보았을 때 왼쪽부터 Debug, GND, Tx, Rx (4,3,2,1번) 핀이다.
 
 ttl-USB 컨버터를 사용해 노트북에 연결한다.
-![cloudBit-mac book 연결](https://lh3.googleusercontent.com/zfGTdrtgMlg92zX_AcJ19In33y8oRMT0tePVq0WICoH33DvMnmapWY0zV7Cz-snIQ72n0PNOwenccVRLeqANCn8bTkRUz0JgqyYj77TIl7_wwT-ermfRlHJu38OF_g_K2AD23R6ofdpLu_NI8TCysQebuvdIP4zrGcq7iD6chyYMTRUbsc0Lv21igOZ0SPlTNWPZZsrZ8oDiU06e1-rc993SCxt1WjfsB6R3ZPYAmSbsy0EwcWahLi37VcLO1oKcvrttBMb8EB_F7DgzCkdXPoUg0rsU3NWl-rZ9u-HkAosacbS_ojGSl3dkiTVXoQvMR5QjW840quFHW5iRFMpFazH5y7W_TVVX5IwVBuAsLKAGA6L1h7j6k2P-SLzGaSns0xFP30LlUaAKEtbX6CojIEtalck1ybPZXAfkbltn_XmpfqQgfLoXv65qNoY1X5a822kEG7OmEkMTPQWEThdY5Pl6AnuMbYQ7oOBiIeGA7XV40FvztZhZAih5VXArqGcWzvZg0UTbWPagTqG-YN6PWqYgKALoYWiwK-xqWFjVpJM8H7r5Pa37qggCmD1I2p6VaX9g4UX2Eg37hWic3izQxrYbr7_d2UyYDhj277CM5I8=w835-h626-no)
+![20171112_062400](https://i.imgur.com/wTXhLDq.jpg)
 
 맥북에서 터미널 프로그램(coolterm)을 열고 시리얼 포트를 통해 115200 속도로 설정 후, connect 를 눌러 접속한다.
 ![터미널 프로그램으로 접속](https://cl.ly/ndRv/Image%202017-11-12%20at%206.50.59%20AM.png)
@@ -69,6 +68,3 @@ LED Color Daemon,  ADC/DAC Daemon, OnButton Daemon이 작동되고있는걸 확�
 1	# off 왜 0이 아닌지는...?
 12	# 뭔지 모르겠다
 ```
-
-[[category:littleBits]]
-[[category:linux]]

@@ -3,6 +3,7 @@
 > On most Arduino boards (those with the ATmega168 or ATmega328P), this function works on pins 3, 5, 6, 9, 10, and 11. On the Arduino Mega, it works on pins 2 - 13 and 44 - 46. Older Arduino boards with an ATmega8 only support analogWrite() on pins 9, 10, and 11.
 참고: https://www.arduino.cc/reference/en/language/functions/analog-io/analogwrite/
 
+**sofrware PWM을 사용하면 PWM이라고 쓰여있지 않은 다른 모든 digital핀 (d0~d13, a0~a5)도 아날로그 출력 (보다 정확하게는 pwm출력)을 할 수 있게된다.**
 
 ## Palatis/ arduino-softpwm
 아두이노의 라이브러리 매니저에 올라와있는 Brett Hagman의 코드가 효율이 안좋다고해서 Palatis의 라이브러리 사용.
@@ -64,9 +65,11 @@ Palatis::SoftPWM.set(3,50);
 
 ## 주의점
 내부타이머를 사용하는 servo 라이브러리와 충돌한다. 서보를 사용해야 한다면
-아두이노 내부의 timer2를 사용하는 servoTimer2 라이브러리를 사용토록 하자.<br>
-참고: https://github.com/nabontra/ServoTimer2 <br>
-참고: https://github.com/makers-wiki/root/blob/master/Arduino/Timer%20%26%20Interrupt/ServoTimer2.md
+아두이노 내부의 timer2를 사용하는 servoTimer2 라이브러리를 사용토록 하자.
+
+[servotimer2 사용하기](Circuitry/Arduino/Timer & Interrupt/ServoTimer2.md)
+참고: https://github.com/nabontra/ServoTimer2
+
 
 ## 예제코드
 

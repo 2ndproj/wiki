@@ -39,11 +39,11 @@
 * `void File.rewindDirectory()` : openNextFile등을 사용시 가장 첫번째 파일로 되돌아가기
 
 
-# SDFat 라이브러리
+## SDFat 라이브러리
 sd library가 파일명을 8자까지만 지원. + 한글이 안되는듯. 그래서 보다 발전된 sdfat 라이브러리로 교체. 사용방법은 유사하다고함.
 라이브러리 폴더안에 documentation이 아주 잘 되어있으므로 참고.
 
-## SD 라이브러리로 만들어진 소스 코드 SDFat 으로 교체하기
+## SD 라이브러리를 사용해 기존에 만들어진 소스 코드 SDFat 으로 교체하기
 sd > sdfat으로 교체하기 참고: http://forum.arduino.cc/index.php?topic=287298.0
 기본제공되는 sdfat 라이브러리를 수정하는것은 꺼려지는일이므로 아두이노의 편집창에 sdfat.h와 sdfat.cpp등 라이브러리 파일을 불러와 수정해 프로젝트와 함께 저장하고, include문에서 '<>' 대신에 ""를 사용해 부르면 안심.`#include"SdFat.h"`이렇게..
 

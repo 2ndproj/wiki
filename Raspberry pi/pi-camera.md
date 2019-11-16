@@ -1,4 +1,4 @@
-# picamera (Raspberry pi 카메라) 설치
+# picamera (Raspberry pi 카메라)
 참고: [라즈베리파이 공식 페이지의 카메라 연결. 파이썬 사용](https://projects.raspberrypi.org/en/projects/getting-started-with-picamera)
 
 ## 하드웨어 준비

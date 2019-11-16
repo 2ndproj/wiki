@@ -1,4 +1,4 @@
-# ESP8266
+# ESP8266 wifi사용하기
 초저가 wifi모듈이라 생각하면 된다. 사실은 단순히 wifi모듈 이상, 직접 프로그램밍 할 수 있는 MCU이다.
 아두이노에 연결해 wifi기능을 사용할 수 도 있지만, 칩 자체에 아두이노 부트로더를 올리고 아두이노로 개발할 수도 있고, 혹은 micropython이나 기타 여거가지 개발환경을 사용할 수도 있다.
 ESP32도 새롭게 소개되었는데, wifi + BLE 내장되어있다.
@@ -17,7 +17,7 @@ ESP-12
 AT command :https://cdn.sparkfun.com/datasheets/Wireless/WiFi/ESP8266ModuleV1.pdf
 한글자료: http://www.hardcopyworld.com/gnuboard5/bbs/board.php?bo_table=lecture_esp&wr_id=1
 
-**ESP계열 사용시 잘 까먹는 꼭주의할 점은 모든 입출력은 3.3v라는 점!!**
+warning! ESP계열 사용시 잘 까먹는 꼭주의할 점은 모든 입출력은 3.3v라는 점!!
 
 ## 연결테스트
 일단 잘 작동하는지 컴퓨터에 UART연결해 테스트 해보자.
@@ -44,7 +44,8 @@ USB-UART 컨버터를 사용해 노트북에 연결한다.
 
 coolterm 등 시리얼 터미널 프로그램을 사용해 연결한다.(물론 아두이노 시리얼 모니터도 좋다) 이때
 초기 설정된 baudrate는 115200.
-아래의 컴맨드를 넣어서 연결확인해보자. ** 명령어를 보낼 때에는 대소문자를 구분한다는 점, 그리고 리턴문자(both NL + CR)까지 보내야 한다는 점.**
+아래의 컴맨드를 넣어서 연결확인해보자.
+note: 명령어를 보낼 때에는 대소문자를 구분한다는 점, 그리고 리턴문자(both NL + CR)까지 보내야 한다는 점!
 ![||600](https://cl.ly/4da8b2803c5f/Image%202018-11-17%20at%209.21.57%20AM.png)
 
 아래 명령어를 차례로 입력해 작업실의 wifi에 연결하고 확인해보자.
@@ -91,10 +92,10 @@ Build:1.3.0.2 Sep 11 2015 11:48:04~~
 필요한 경우가 생겼다면 아래 페이지를 참고한다.
 펌웨어업데이트 참고: https://www.allaboutcircuits.com/projects/flashing-the-ESP-01-firmware-to-SDK-v2.0.0-is-easier-now/
 
-**업데이트시에는 GPIO0번 핀을 GND에 연결한상태여야 한다는 점.!**
+note: 업데이트시에는 GPIO0번 핀을 GND에 연결한상태여야 한다는 점.!
 
 펌웨어 바이너리 파일은 이곳에서:https://www.espressif.com/en/support/download/at
-<br>v1.6이 잘 작동하는 것 확인하였다.
+v1.6이 잘 작동하는 것 확인하였다.
 
 바이너리파일을 모듈에 복사해주는 flash tool은 이곳에서: https://www.espressif.com/en/support/download/other-tools
 
@@ -102,7 +103,7 @@ Build:1.3.0.2 Sep 11 2015 11:48:04~~
 
 ## Arduino와 연결
 세가지 정도 주의하면 되겠다.
-* Baudrate 우에서 설정한대로 맞춰주기 (기본은 115200),
+* Baudrate 위에서 설정한대로 맞춰주기 (기본은 115200),
 * 리인 끝에 'both NL & CR' ("\n\r") 반드시 붙여 메시지 보내기
 * esp로의 입력은 3.3v로 맞춰주기 - 레벨 시프터를 사용하거나 10K, 4.7K 저항을 사용해 voltage divider를 만들어 사용한다. (그냥 rx에 5v 신호 꽂아도 잘 된다는 자료도 있는데 고장날까 아까워서 테스트해보지는 못했다.)
 
@@ -207,7 +208,7 @@ post 명령의 경우도 비슷한데, `content-length:데이터 길이(바이�
 char* request = "POST /fcm/send HTTP/1.1\r\nHost: fcm.googleapis.com\r\ncontent-type: application/json\r\ncontent-length: 200\r\nauthorization: key=AIzaSyAFRHNLIRXjVkEHHhzkEYk3_cycj2yVkv0\r\nConnection: close\r\n\r\n{\r\n\t\"to\": \"/topics/general\",\r\n\t\"notification\":{\r\n\t\t\"title\": \"Motion detected!\",\r\n\t\t\"body\": \"An activity was registered by sensor.\",\r\n\t\t\"sound\": \"default\"\r\n\t},\r\n\t\"data\": {\r\n\t\t\"sensorValue\": \"01\"\r\n\t}\r\n}";
 
 ```  
-## WiFiEsp library
+## WiFiEsp library - AT커맨드 따위 필요없는 쉬운 방법
 
 **AT command니 뭐니 복잡한 것 다 잊고 심플하게, ESP8266 을 Arduino wifi shield처럼 사용할 수 있도록 해주는 WiFiEsp라이브러리를 사용하자.**
 참고: https://github.com/bportaluri/WiFiEsp
@@ -234,10 +235,9 @@ char* request = "POST /fcm/send HTTP/1.1\r\nHost: fcm.googleapis.com\r\ncontent-
 WiFiEsp 라이브러리와 함께 응답으로 오는 json을 손쉽게 처리하기 위해 ArduinoJson 라이브러리를 사용하였다.
 arduinojson 참고: https://arduinojson.org/
 
-adafruit io 참고: https://github.com/makers-wiki/root/blob/master/Adafruit%20IO/Adafruit%20IO%20(io.adafruit.com)%20IoT%20%EC%84%9C%EB%B2%84%EB%A1%9C%20%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0.md
+[adafruit io 참고](IoT/Adafruit IO/Adafruit IO IoT server.md)
 
-
-```c
+```cpp
 /* WiFiEsp-adafruit_io.ino
  *
  * ESP8266 + http request (rest) 사용해 Adafruit IO에 데이터 주고받기

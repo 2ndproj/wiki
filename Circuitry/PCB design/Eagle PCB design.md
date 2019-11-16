@@ -1,5 +1,4 @@
 # Autodesk Eagle 로 PCB 제작하기
-참고: https://www.instructables.com/lesson/PCB-Concepts-and-Materials/
 
 ## PCB를 구성하는 층(layer)
 일단 pcb를 구성하는 기본 4개 층을 알아둘 필요가 있다.
@@ -16,7 +15,7 @@
 * 노트북이나 스마트폰같은 복잡한 장치는 앞뒤면 뿐 아니라 여러장의 copper layer 를 사용해 16층까지 샌드위치로 만들기도 한다.
 * 그러나 일반적인 회로는 앞뒤면으로 충분하고, eagle 무료버전은 앞뒤면2개 층만 사용할 수 있다.
 * **eagle에도 위의 4개층+ 몇가지 더 세세하게 편집할 수 있도록 layer가 있다. 이들 레이어는 adobe 포토샵처럼 사용자가 마음대로 만들고 지우는 것이 아니라 미리 각 레이어의 역할이 정해져 있으므로 주요한 레이어의 역할은 꼭 알고있어야 한다.**  
-참고: https://www.lucidar.me/en/eagle/understanding-layers/
+꼭 보자 참고: https://www.lucidar.me/en/eagle/understanding-layers/
 
 |layer no.|name|역할|
 |-|-|-|
@@ -26,15 +25,17 @@
 |18|Vias| Vias|
 |20|Dimension| 외곽선과 hole|
 |21|tPlace| 윗면 실크인쇄|
-|22|bPlace| 아랬면 실크인쇄|
+|22|bPlace| 아랫면 실크인쇄|
 |25|tNames| 윗면 name 실크인쇄|
-|26|bNames| 아랬면 name 실크인쇄|
+|26|bNames| 아랫면 name 실크인쇄|
 |27|tValues| 윗면 Value 실크인쇄|
-|28|bValues| 아랬면 value 실크인쇄|
+|28|bValues| 아랫면 value 실크인쇄|
 |29|tStop| 윗면 soldermask|
-|30|bStop| 아랬면 soldermask|
+|30|bStop| 아랫면 soldermask|
 |31|tCream| 윗면 SMD FLUX|
-|32|bCream| 아랬면 SMD Flux|
+|32|bCream| 아랫면 SMD Flux|
+|35|tGlue| 윗면 SMD glue|
+|36|bGlue| 아랫면 SMD glue|
 |44|Drills| 드릴 가공 위치|
 |51|tDocu| 부가정보-인쇄되지 않음|
 
@@ -74,7 +75,7 @@
   3. 동일한 footprint를 가진 다른 부품으로 대체한다.
   4. 직접 라이브러리를 만든다. (아래 별도 항목)
 
-** 부품을 이동하고 회전할 때 아무데나 누르면 잘 안된다. 각 부품의 기준점에 + 표시가 되어있는데, 이부분을 선택해야만 한다. 때로는 기준점이 터무니없이 멀리 있어 못찾는 경우도 있는데, 오토데스크에서 다음 버전엔 꼭 좀 고쳐주라 **
+hint: 부품을 이동하고 회전할 때 아무데나 누르면 잘 안된다. 각 부품의 기준점에 + 표시가 되어있는데, 이부분을 선택해야만 한다. 때로는 기준점이 터무니없이 멀리 있어 못찾는 경우도 있는데, 오토데스크에서 다음 버전엔 꼭 좀 고쳐주라
 
 * 'Name' 툴과 'Value'툴로 부품 이름과 값 적어준다. 예를들어 저항이라면 'R2', '10Kohm' 하는 식으로...
 ![||600](https://cdn.instructables.com/ORIG/FC5/WQLE/J08EM6JG/FC5WQLEJ08EM6JG.gif)
@@ -127,13 +128,13 @@
 ![||600](https://cl.ly/2e48bf06ced6/Image%202019-02-18%20at%202.59.05%20PM.png)
 
 
-# 다른 사람이 만든 pcb를 breakout 보드 형태로 가져다 쓰기 (기존 sch, brd 파일에서 footprint 가져오기)
+## 다른 사람이 만든 pcb를 breakout 보드 형태로 가져다 쓰기 (기존 sch, brd 파일에서 footprint 가져오기)
 참고: https://forums.autodesk.com/t5/eagle-forum/converting-sch-amp-brd-into-a-single-library-component/td-p/7007483
 * 위 링크에서 제시하는 방법대로 design block사용해 보았으나, 디자인블록은 부품의 연결은 유지되지만 부품의 외관선과 배치는 유지되지 않는다.
 * 또한 위 링크에서 제시하는 다른 방법은 라이브러리를 직접 만드는 것으로, 번거롭기도 하고 정확하게 만들수 있을지 불안하다.
 * 그래서 아래에서와 같이 Fritzing 용으로 제작된 부품으로부터 eagle 에서 pcb만드는 방법을 사용한다.
 
-# Fritzing 부품으로부터 Eagle에서 pcb footprint 만들기
+## Fritzing 부품으로부터 Eagle에서 pcb footprint 만들기
 * ULP 중, import-gerber 프로그램을 사용한다.
 * 일단 Fritzing 부품을 구하고 fritzing에서 연다. 여기서는 Adafruit VS1053 mp3 breakout 보드를 예제로 사용한다.
 ![||600](https://cl.ly/4455ef0350b0/Image%202019-02-15%20at%205.23.05%20PM.png)
@@ -144,8 +145,8 @@
 * 9개 내외의 파일이 있는데, 각각의 역할을 알아야 한다.
 참고:http://fritzing.org/forum/thread/253/
 
-|파일확장자 |역할|대응하는 eagle layer| 설명|
-|-|-|
+|파일확장자 |대응하는 eagle layer| 설명|
+|-|-|-|
 |.gm1|outline||
 |.gtl|Top Copper||
 |.gbl|Bottom Copper||
@@ -183,7 +184,7 @@
   역시나 library로 만들어야 할듯...
 
 
-# 직접 부품 만들어 library로 사용하기
+## 직접 부품 만들어 library로 사용하기
 참고:
 https://www.autodesk.com/products/eagle/blog/library-basics-part-1-creating-first-package-autodesk-eagle/
 https://www.autodesk.com/products/eagle/blog/library-basics-part-2-creating-first-symbol-autodesk-eagle/
@@ -191,7 +192,7 @@ https://www.autodesk.com/products/eagle/blog/library-basics-part-3-creating-firs
 
 * file > new > library로 새 라이브러리 만든다
 
-## symbol 만들기
+### symbol 만들기
 * Add symbol 선택해 심볼먼저 만든다
 * 이름을 적당히 지어준다.
 ![||600](https://cl.ly/0fe2d26ec559/Image%202019-02-15%20at%207.34.08%20PM.png)
@@ -212,7 +213,7 @@ https://www.autodesk.com/products/eagle/blog/library-basics-part-3-creating-firs
 심볼 완성!
 * 저장한다.
 
-## footprint 만들기
+### footprint 만들기
 * add footprint...  누르고 파일 이름지어준다.
 * 먼저 'grid' 버튼 눌러서 격자 눈금 크기 정해준다. 단위는 'mm', 'inch', 'mil' 사용할 수 있다. 1 mil = 0.001 inch로, 빵판의 피치(한 칸 간격)이 100mil이다. eagle 격자의 기본값이 50 mil인데, 빵판 간격의 절반이라고 보면 된다.
 ![](https://cl.ly/40dc5cd09e05/Image%202019-02-15%20at%208.11.23%20PM.png)
@@ -230,7 +231,7 @@ https://www.autodesk.com/products/eagle/blog/library-basics-part-3-creating-firs
 ![||600](https://cl.ly/c97562309bbd/Image%202019-02-15%20at%208.59.27%20PM.png)
 footprint 완성! 저장한다.
 
-## symbol과 footprint 연결해 device 만들기
+### symbol과 footprint 연결해 device 만들기
 * add divece... 눌러 디바이스 만들고 이름지어준다.
 * add part 버튼으로 아까 만든 symbol을 추가해준다.
 * 오른쪽 아래 new 버튼으로 아까 만든 footprint를 추가해준다.
@@ -244,7 +245,7 @@ footprint 완성! 저장한다.
 
 * 원한다면 왼쪽아래 3/4분면에는 description 을 쓸 수도 있다. 여길 잘 써 주어야 library에서 검색할 때 잘 찾을 수 있다.
 
-# fusion360 - eagle 연동
+## fusion360 - eagle 연동
 참고: https://www.autodesk.com/products/eagle/blog/fusion-360-integration-eagle/
 영상 튜토리얼: https://www.youtube.com/playlist?list=PL1rOC5j_Fyi6B0wRJw2GAVEjE_dNR7rlK  
 * ~~일단 fusion360에서 pcb 기능을 활성화 해 주어야 한다.
@@ -260,7 +261,7 @@ pcb기능은 preview 단계를 지나 기본 활성화 되어있다.
 
 * 이제 fusion360에서도, eagle에서도 부품 위치나 pcb크기등 편집할 수 있다. 편입을 마치면 eagle에서 'pull,push'로 동기화 해주어야 한다.
 
-# 부품data- footprint, 3D model - 얻는 법
+## 부품 data- footprint, 3D model - 얻는 법
 * mouser.com에서 대부분의 부품을 다운로드할 수 있다.
  ![](https://cl.ly/709e395c0c34/Image%202019-05-03%20at%203.44.58%20PM.png)
  * samacsys 라는 회사의 형식으로 되어있는 듯한데, samacsys library loader라는 프로그램으로 autodesk eagle에서 쓸 수 있도록 바꿀 수 있다. ... 그런데 library loader가 윈도우 전용 ㅠㅠ
@@ -273,3 +274,6 @@ eagle.scr파일은 /Documents/EAGLE/아래에 있다.
 * 라이브러리는 managed library로 바꿔주어야 3d 패키지 적용할 수 있다.
 
 ![](https://cl.ly/3d0230a2f4c7/Image%202019-05-03%20at%204.40.43%20PM.png)
+
+## 참고
+참고: https://www.instructables.com/lesson/PCB-Concepts-and-Materials/

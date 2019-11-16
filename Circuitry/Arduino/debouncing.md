@@ -3,11 +3,10 @@
 'contact bouncing', 또는 'Chatter'라고 함은 버튼 입력을 받을 때 노이즈 때문에 버튼을 한번 눌러도 2-3번 눌린 것으로 인식되는 현상을 이름. 이를 방지하기 위해 흔히 버튼이 감지되면 1초간 휴식하는 방법을 취하고 있는데, 연속적으로 버튼을 누르는 것이 안되어 매우 답답함. (급히 볼륨을 줄인다던지...)
 버튼의 노이즈를 제거해 한번 누르면 두세번 감지되는일을 방지해 주는 알고리즘을 디바운싱 debouncing이라고 한다.
 
-컨택 바운싱 참고: http://en.wikipedia.org/wiki/Debounce#Contact_bounce <br>
+컨택 바운싱 참고: http://en.wikipedia.org/wiki/Debounce#Contact_bounce
 아두이노 디바운싱 참고:https://www.arduino.cc/en/tutorial/debounce
 
-해결방법은 단순한데, 앞서 쓴 것 처럼 최초 버튼 입력이 감지되면 그 후 일정시간동안의 입력은 무시하는 것이다. 단지 이때의 일정시간은 milli sec 단위로 짧게 해서 사람이 인식하지 못하게 하는 것.
-bounce2 등의 라이버러리를 사용하면 쉽게 적용할 수 있다.
+해결방법은 단순한데, 앞서 쓴 것 처럼 최초 버튼 입력이 감지되면 그 후 일정시간동안의 입력은 무시하는 것이다. 단지 이때의 일정시간은 milli sec 단위로 짧게 해서 사람이 인식하지 못하게 하는 것. bounce2 등의 라이버러리를 사용하면 쉽게 적용할 수 있다.
 
 ## Bounce2 라이브러리
 https://github.com/thomasfredericks/Bounce2

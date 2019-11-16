@@ -19,11 +19,11 @@ arduino uno, nano, promini 모두 A4, A5가 i2c 통신을 위해 할당되어있
 아두이노 ide에서 메뉴 > 스케치 > 라이브러리 포함하기> 라이브러리 관리 > LiquidCristal I2C 검색 & 설치
 https://github.com/marcoschwartz/LiquidCrystal_I2C
 
-** 한글출력 가능한 버전도 있다. https://github.com/junwha0511/LiquidCrystal_I2C_Hangul **
+note: 한글출력 가능한 버전도 있다. https://github.com/junwha0511/LiquidCrystal_I2C_Hangul
 
 ### 기본 사용법
-기본 제공되는 helo world 예제를 보면 사용법이 간단하다. (2행16열 버전으로 바꾸었다.)
-```c++
+기본 제공되는 hello world 예제를 보면 사용법이 간단하다. (2행16열 버전으로 바꾸었다.)
+```cpp
 // LiquidCristal I2C/ HelloWorld.ino
 
 #include <Wire.h>
