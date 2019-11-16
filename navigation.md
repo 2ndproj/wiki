@@ -20,7 +20,7 @@
   -->
 
 [Discuss](forum.md)
-[markdown](manual.md)
+[Markdown](manual.md)
 
 <!-- A more complex navigation example: ----------------------------------------
 
