@@ -59,7 +59,7 @@ def listup():
             pass
 
     # listup함수가 끝날 때는 folder_level을 다시 하나 줄여놓는다.
-    f.write("<br>\n")
+    f.write("\n")
     os.chdir("..")
     folder_level -=1
 

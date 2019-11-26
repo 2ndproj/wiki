@@ -212,7 +212,7 @@ Adafruit_NeoMatrix *neomatrix = NULL;
 ### step 3. snap4arduino 블록 정의파일 불러오기
 
 "파일메뉴 \> Import..." 메뉴로 블록정의파일 불러온다. 블록정의파일은 아래에서 다운받거나 B.Romagosa의 github페이지에서 받을 수 있다.
-[snap4arduino + neopixel용 블럭 다운로드](Circuitry/LCD,LED Display/NeoPixel/snap4arduino block-NeoPixel 2.xml)
+[snap4arduino + neopixel용 블럭 다운로드](LCD,LED Display/NeoPixel/snap4arduino block-NeoPixel 2.xml)
 
 불러오기 이후 Arduino 명령어 모음에서 아래 두개의 블럭이 추가된 것을 확인한다.  
 ![](https://cl.ly/46193R3x1i0h/Image%202017-05-19%20at%2010.36.56%20AM.png)
@@ -239,7 +239,7 @@ Adafruit_NeoMatrix *neomatrix = NULL;
 
 ## 참고
 
-adafruit 네오픽셀 예제: [파일:Adafruit\_NeoPixel-master.zip](Circuitry/LCD,LED Display/NeoPixel/Adafruit_NeoPixel-master.zip)
+adafruit 네오픽셀 예제: [파일:Adafruit\_NeoPixel-master.zip](LCD,LED Display/NeoPixel/Adafruit_NeoPixel-master.zip)
 
 adafruit 네오픽셀 교육자료: https://learn.adafruit.com/adafruit-neopixel-uberguide/overview
 
