@@ -28,11 +28,12 @@ def listup():
     global skipfilelist
     # glob 모듈 사용해 현 워킹 디렉토리의 모든 파일 목록을 리스트로 만든다.
     files = glob.glob("*")
+    print(files)
     # 첫번째 항목부터 순차적으로...
     for file in files:
         # 항목이 index.md 자체 등 제외되어야 할 파일이라면...
         if file in skipfilelist:
-            break
+            pass
 
         # 항목이 폴더라면...
         elif os.path.isdir(file) is True:

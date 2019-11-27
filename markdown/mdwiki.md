@@ -149,11 +149,11 @@ note:
 
 * 경고문구: `키워드: 어쩌구...`
 
-  Type       | Trigger
-  -----------|---------
-  Warning    |warning, achtung, attention, warnung, atenci처n, guarda, advertimiento, attenzione
-  Note       |note, beachte, nota
-  Hint       |hint, tip, tipp, hinweis, suggerimento
+  |Type       | Trigger|
+  |-|-|
+  |Warning    |warning, achtung, attention, warnung, atenci처n, guarda,| |advertimiento, attenzione|
+  |Note       |note, beachte, nota|
+  |Hint       |hint, tip, tipp, hinweis, suggerimento|
 
 Preview:
 

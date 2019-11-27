@@ -42,9 +42,9 @@
 
 ## ProtoPie
 [# Protopie + IFTTT
-](/ProtoPie/Protopie + IFTTT.md)
+](/Protopie/Protopie + IFTTT.md)
 [# ProtoPie prototype 실행 아이콘 만들기
-](/ProtoPie/ProtoPie deeplink.md)
+](/Protopie/ProtoPie deeplink.md)
 
 ## MacOS
 [# Icon\r 파일 삭제하기
@@ -154,6 +154,14 @@
 ### Data Storage
 [# SD library (sd카드 사용)
 ](/Circuitry/Data Storage/SD card.md)
+
+
+[# 2nd project forum
+](/forum.md)
+## 3D Modeling
+### fusion360
+[# fusion360에서 assembly 조립
+](/3D Modeling/fusion360/fusion360 assembly.md)
 
 
 
