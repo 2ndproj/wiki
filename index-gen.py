@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+
 # 2nd proj. wiki 의 index page 자동 생성 스크립트
 # 폴더 내의 .md파일들을 읽어 index.md문서에 링크로 집어넣는다.
 # 디렉토리가 있다면 구조를 살려서 넣는다.

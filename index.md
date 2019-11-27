@@ -56,7 +56,7 @@
 [# Atom
 ](/markdown/Atom setup.md)
 [# github 와 mdwiki 사용해 wiki 서비스 만들기
-](/markdown/mdwiki 사용해 wiki 서비스 만들기.md)
+](/markdown/mdwiki.md)
 
 ## IoT
 ### Adafruit IO
