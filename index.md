@@ -37,8 +37,6 @@
 ](/Raspberry pi/setting up Raspberry pi serial connection.md)
 [# Raspberry pi zero w 셋업
 ](/Raspberry pi/raspberry pi zero headress setup.md)
-[# Raspberry pi - python 개발 환경 셋업
-](/Raspberry pi/RPi python setup.md)
 [# Raspberry pi 프로그램 자동시작하기
 ](/Raspberry pi/RPi autostart.md)
 [# Linux 완전 기본 명령어
@@ -67,6 +65,24 @@
 ](/markdown/Atom setup.md)
 [# github 와 mdwiki 사용해 wiki 서비스 만들기
 ](/markdown/mdwiki.md)
+[# QLMarkdown - mac용 markdown 미리보기
+](/markdown/qlmarkdown.md)
+### QLMarkdown.qlgenerator
+#### Contents
+##### _CodeSignature
+
+##### MacOS
+
+##### Resources
+###### en.lproj
+
+###### English.lproj
+
+
+
+
+[# Visual Studio Code
+](/markdown/Visual Studio Code.md)
 
 ## Circuitry
 ### Arduino
@@ -162,6 +178,10 @@
 ### PCB design
 [# Autodesk Eagle 로 PCB 제작하기
 ](/Circuitry/PCB design/Eagle PCB design.md)
+[# Eagle pcb에 logo image 넣기
+](/Circuitry/PCB design/ealge pcb에 로고 이미지 넣기.md)
+[# seeed fusion pcb(a) 서비스로 pcb 제작주문하기
+](/Circuitry/PCB design/seeedfusion pcba.md)
 
 ### GPS
 [# GPS
@@ -183,6 +203,8 @@
 ](/Python/python datetime quick reference.md)
 [# PIL (python Imaging library) Quick reference
 ](/Python/PIL quick reference.md)
+[# python 설치 및 셋업
+](/Python/python setup.md)
 
 ## GoogleCloudPlatform
 [# Google vision api 설치

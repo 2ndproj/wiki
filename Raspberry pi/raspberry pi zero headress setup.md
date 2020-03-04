@@ -23,7 +23,6 @@ https://www.raspberrypi.org/downloads/raspbian/
 참고: https://medium.com/@aallan/setting-up-a-headless-raspberry-pi-zero-3ded0b83f274
 참고: https://www.losant.com/blog/getting-started-with-the-raspberry-pi-zero-w-without-a-monitor
 
-## 네트워크 연결 위한 설정파일 수정
 wifi를 사용하거나, 혹은 wifi동글이 없거나 공유기가 없다면 USB케이블을 사용할해 노트북에 연결할 수 있다.
 
 ### SSH 켜기 설정
@@ -43,7 +42,8 @@ notepad(메모장)을 연다.
 
 ### wifi 켜기 설정
 마찬가지로 `/boot`에 `wpa_supplicant.conf`파일을 아래 내용으로 만든다. 일반적인 텍스트 에디터 사용한다.
-```
+
+```bash
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 
@@ -91,11 +91,15 @@ sd 카드를 삽입하고, 노트북과 usb로 연결한다. 이때,  PWR가 아
 
 #### 이 때! windows는 RNDIS 드라이버를 설치해야 usb를 네트워크 포트로 쓸 수 있다.
 참고: https://www.factoryforward.com/pi-zero-w-headless-setup-windows10-rndis-driver-issue-resolved/
+
 * 윈도우10 용 RNDIS 드라이버를 다운로드후 압축을 푼다. [여기에서](http://web1.moddevices.com/shared/mod-duo-rndis.zip)
 * 라즈베리파이를 usb에 꽂는다.
 * 장치관리자를 열어 com&port 항목에 있는 라즈베리파이를 우클릭한다.
 ![](https://cl.ly/b6080b/Image%2525202019-06-13%252520at%2525204.53.36%252520PM.png)
-* 드라이버 업데이트 > 컴퓨터에서 드라이버 소프트웨어 검색 > 아까 압축 풀어둔 RNDIS 드라이버 폴더 선택![](https://cl.ly/da4a5e/Image%2525202019-06-13%252520at%2525204.58.27%252520PM.png)
+
+* 드라이버 업데이트 > 컴퓨터에서 드라이버 소프트웨어 검색 > 아까 압축 풀어둔 RNDIS 드라이버 폴더 선택
+![](https://cl.ly/da4a5e/Image%2525202019-06-13%252520at%2525204.58.27%252520PM.png)
+
 * 이제 장치관리자에서 '네트워크 어댑터' 아래에 'USB Ethernet/ RNDIS Gadget'이 보인다.
 ![](https://cl.ly/23c055/Image%202019-06-13%20at%204.59.38%20PM.png)
 
