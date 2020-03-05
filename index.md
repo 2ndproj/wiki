@@ -67,20 +67,6 @@
 ](/markdown/mdwiki.md)
 [# QLMarkdown - mac용 markdown 미리보기
 ](/markdown/qlmarkdown.md)
-### QLMarkdown.qlgenerator
-#### Contents
-##### _CodeSignature
-
-##### MacOS
-
-##### Resources
-###### en.lproj
-
-###### English.lproj
-
-
-
-
 [# Visual Studio Code
 ](/markdown/Visual Studio Code.md)
 
