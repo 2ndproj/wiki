@@ -28,21 +28,21 @@ im = Image.open("hopper.ppm")
 
 * 혹은 Image.new(mode, size, color=0) 를 통해 수동으로 이미지 오브젝트를 만들 수도 있다.
 
-  |parameter|설명|
-  |-|-|
-  |mode| 1 (1-bit pixels, black and white, stored with one pixel per byte),
-   ||L (8-bit pixels, black and white),
-   ||P (8-bit pixels, mapped to any other mode using a color palette)
-  ||RGB (3x8-bit pixels, true color)
-  ||RGBA (4x8-bit pixels, true color with transparency mask)
-  ||CMYK (4x8-bit pixels, color separation)
-  ||YCbCr (3x8-bit pixels, color video format)
-  ||Note that this refers to the JPEG, and not the ITU-R BT.2020, standard
-  ||HSV (3x8-bit pixels, Hue, Saturation, Value color space)
-  ||I (32-bit signed integer pixels)
-  ||F (32-bit floating point pixels)|
-  |size| 2-tuple (width, height)|
-  |color|  배경색. RGB 모드인 경우 3-tuple|
+|parameter|설명|
+|-|-|
+|mode| 1 (1-bit pixels, black and white, stored with one pixel per byte),
+  ||L (8-bit pixels, black and white),
+  ||P (8-bit pixels, mapped to any other mode using a color palette)
+||RGB (3x8-bit pixels, true color)
+||RGBA (4x8-bit pixels, true color with transparency mask)
+||CMYK (4x8-bit pixels, color separation)
+||YCbCr (3x8-bit pixels, color video format)
+||Note that this refers to the JPEG, and not the ITU-R BT.2020, standard
+||HSV (3x8-bit pixels, Hue, Saturation, Value color space)
+||I (32-bit signed integer pixels)
+||F (32-bit floating point pixels)|
+|size| 2-tuple (width, height)|
+|color|  배경색. RGB 모드인 경우 3-tuple|
 
 * array 로부터 이미지를 만들 수도 있는데, Numpy 사용하는 경우 유용하다.
 
