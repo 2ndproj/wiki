@@ -167,6 +167,25 @@ raspi-config 프로그램실행 -> 2.Network Options
 그다음부턴 새로운 이름으로 접속할 수 있다.
 ![](https://cl.ly/4ffc4a/Image%202019-09-04%20at%2011.20.54%20AM.png)
 
+### USB를 통한 넷트워크 연결이 불안정한 경우
+raspberrypi의 RNDIS (==dwc2) 가 연결을 만들 때마다 랜덤한 mac address를 만들어 사용하는데, 이것이 부팅 때마다 다른 장치로 인식을 한다던가 여러가지 불안정성의 한 이유가 된다. 
+해결방법은 g_ether 모듈이 로딩될 때 미리 정해 둔 특정한 mac 주소를 사용하도록 설정하는 것.
+참고: https://raspberrypi.stackexchange.com/questions/103750/how-can-i-make-a-pi-zero-appear-as-the-same-rndis-ethernet-gadget-device-to-the
+
+1.  random MAC address generator (https://www.hellion.org.uk/cgi-bin/randmac.pl?scope=local&type=unicast) 를 사용해 임의의 mac 주소를 만들어둔다.
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/o0uvo4JA/Image%202020-06-02%20at%2010.32.03%20AM.png?v=04694f1d108a659acd7d913008f69b80)
+
+2. /etc/modprobe.d/rndis.conf 파일을 만들고, 아래와 같이 작성한다.
+```bash
+$ sudo nano /etc/modprobe.d/rndis.conf
+...
+options g_ether dev_addr=고정하고픈 mac주소
+```
+* dev_addr : raspberrypi의 mac주소 "12:34:56:78:90"과 같은 형태
+
+3. 재부팅. 
+
+
 ## GUI환경 사용(VNC로 화면 공유)
 ### 라이브러리 목록 업데이트 & 업그레이드
 

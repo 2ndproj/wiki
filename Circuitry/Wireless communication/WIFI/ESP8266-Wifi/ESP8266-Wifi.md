@@ -6,10 +6,10 @@ ESP32도 새롭게 소개되었는데, wifi + BLE 내장되어있다.
 esp8266은 칩의 이름이고 이를 사용한 개발 보드가 많이 나와있는데, ESP-01 (작고 심플), ESP-12가 많이 사용된다.
 
 ESP-01
-![](http://www.hardcopyworld.com/ngine/aduino/wp-content/uploads/sites/3/2016/01/SP-WRL13678-150x150.jpg)
+![](https://hackster.imgix.net/uploads/attachments/719699/317060016_1_2_mlCU8setj6.jpg?auto=compress&w=900&h=675&fit=min&fm=jpg)
 
 ESP-12
-![](http://www.hardcopyworld.com/ngine/aduino/wp-content/uploads/sites/3/2016/01/20160112_142749-150x150.jpg)
+![](https://lh3.googleusercontent.com/proxy/QSiLKJMrUVXl9A1cNTzMFrDo4hx5bUIDS_QMbkN53VsnSaW6KGhFXP2mryirR94BnclExG-3YAkArbecGHwBDMl1f7ydy0UUsyCY6A)
 
 제조사 페이지: https://www.espressif.com/products/hardware/esp8266ex/overview/
 데이터시트: https://nurdspace.nl/ESP8266<br>
@@ -22,7 +22,7 @@ warning! ESP계열 사용시 잘 까먹는 꼭주의할 점은 모든 입출력�
 ## 연결테스트
 일단 잘 작동하는지 컴퓨터에 UART연결해 테스트 해보자.
 USB-UART 컨버터를 사용해 노트북에 연결한다.
-![||600](http://remotexy.com/img/help/help-esp8266-firmware-update-usbuart.png)
+![||600](https://p195.p4.n0.cdn.getcloudapp.com/items/z8u8xBJb/help-esp8266-firmware-update-usbuart.png?v=e0cd61efe7ec6b83d401de21faada89e)
 ![||600](https://cl.ly/2a3c25456ff5/Image%202018-11-07%20at%2010.18.16%20PM.png)
 
 위 이미지에서 처럼
@@ -105,7 +105,7 @@ v1.6이 잘 작동하는 것 확인하였다.
 세가지 정도 주의하면 되겠다.
 * Baudrate 위에서 설정한대로 맞춰주기 (기본은 115200),
 * 리인 끝에 'both NL & CR' ("\n\r") 반드시 붙여 메시지 보내기
-* esp로의 입력은 3.3v로 맞춰주기 - 레벨 시프터를 사용하거나 10K, 4.7K 저항을 사용해 voltage divider를 만들어 사용한다. (그냥 rx에 5v 신호 꽂아도 잘 된다는 자료도 있는데 고장날까 아까워서 테스트해보지는 못했다.)
+* esp로의 입력은 3.3v로 맞춰주기 - 레벨 시프터를 사용하거나 10K, 4.7K 저항을 사용해 voltage divider를 만들어 사용한다. (그냥 rx에 5v 신호 꽂아도 잘 된다는 자료도 있는데 고장날까 싶어 테스트해보지는 못했다.)
 
 ## AT 명령어
 https://www.espressif.com/sites/default/files/documentation/4A-ESP8266_AT_Instruction_Set__EN.pdf
