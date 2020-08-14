@@ -10,7 +10,7 @@ adobe 일러스트레이터에서 인코딩한 svg 파일보다 inkscape 에서 
 이 때 이미지는 outline-stroke로 윤곽선이 확정되고, 또한 pathfinder - union으로 중첩이 없도록 처리되어있도록 한다.
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/yAub2Qzd/Image%202020-08-12%20at%2012.01.52%20PM.png?v=f3e9386a35d5f1082a8ed077cc52085f)
 
-* 크기도 맞쳐주자. (파일 > 문서설정에서 단위를  mm로 맞춰준다.)
+* 크기도 맞춰주자. (파일 > 문서설정에서 단위를  mm로 맞춰준다.)
 eagle에서 top silk/ bottom silk 레이어들면 활성화한 후 export > dfx로 내보내면 일러스트레이터에서 보드의 실제 사이즈와 배치를 보며 작업하기에 수월하다.
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/mXuyB2z9/Image%202020-08-12%20at%2011.59.22%20AM.png?v=87c694d8233bd2e85fcba6aee71e5abd)
 
@@ -26,6 +26,16 @@ after:
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/X6uNOvwN/Image%202020-08-12%20at%206.29.08%20PM.png?v=bf766d5068054047f969cce7a7036721)
 
 </del>
+
+### 3. 폐곡선 끊기
+eagle에서는 도넛과 같은 중복된 폐곡선을 처리하지 못한다. 중복된 폐곡선은 하나씩 찾아서 끊어 준다.
+* draw bezier 명령으로 폐곡선을 가로지르는 도형을 그린다.
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/2Nuyy9Kd/Image%202020-08-14%20at%202.15.19%20PM.png?v=f2540a6fb0c51ccf81a3a9be5da768fd)
+* 방금 그린 자르는 오브젝트와 잘릴 오브젝트를 모두 선택한 후 path > division 명령으로 조각낸다. (일러스트의 패스파인더 기능)
+* node 편집 모드에서 모든 오브젝트를 선택하고 path > break apart 명령을 실행한다. (이 단계 건너뛰어도 되는듯...)
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/4gu99W5e/Image%202020-08-14%20at%202.21.10%20PM.png?v=6bce078e8733d97da52373aaafd09b78)
+
+* '0', 'ㅇ', 'd' , 'P' , 등 글자를 포함한 모든 폐곡선에 대해 이렇게 해준다.
 
 ### 3. export SVG
 파일 > save as로  `plain SVG`로 내보낸다.(드롭다운메뉴에서 선택)
@@ -43,6 +53,8 @@ https://gfwilliams.github.io/svgtoeagle/
 소스코드: https://github.com/gfwilliams/svgtoeagle
 
 trace width는 0.01로 설정한다.
+
+미리보기 이미지가 너무 각지게 나와 형태가 뭉개진다면  subsampling값을 키워본다.
 
 로고가 올라갈 레이어를 정하고, (보통 tPlace가 적당..)
 output format은 library가 이후 활용이 편리하다.
