@@ -25,3 +25,5 @@
 <img src ="https://cl.ly/pam8/automate-protopie.jpg" width=800>
 
 [라마 오토메이트 샘플](/Android/Llama Automate/ProtoPie - Llama Automate/ProtoPie 연동테스트.flo)
+
+note: 'messageId'의 'd'자는 소문자!!!!

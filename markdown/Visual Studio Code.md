@@ -12,3 +12,8 @@ microsoft에서 만드는 text editor.
 
 물론 css 코드를 추가해 나만의 스타일을 만들 수도 있다.
 
+## checkbox  지원
+github 표준에 포함된 checkbox <input type="checkbox" name="chk_info" value="HTML"> , <input type="checkbox" name="chk_info" value="CSS" checked="checked"> 를 vs code에서는 기본지원하지 않는다.
+custom css를 추가하는 방법도 있을 것 같지만, 익스텐션을 사용하면 쉽게 쓸 수 있다.
+ Markdown Checkboxes : https://marketplace.visualstudio.com/items?itemName=bierner.markdown-checkbox 
+ ![](https://raw.githubusercontent.com/mjbvz/vscode-markdown-checkboxes/master/docs/example.png)
