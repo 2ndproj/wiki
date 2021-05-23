@@ -114,3 +114,24 @@ $ jupyter kernelspec uninstall myEnv
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/12u1N59N/Image+2020-02-28+at+3.34.22+PM.png?v=c9850452046cabc98755b16624ad1dec)
 
 magic command를 사용한 jupyter notebook의 더 많은 기능은 이곳:https://ipython.readthedocs.io/en/stable/interactive/magics.html 
+
+### 쥬피터 노트북에서 쉘 명령어 사용하기
+`!` 를 붙이면 쉘 명령어를 사용할 수 있다.
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/2NuwnO1W/dfd922c7-b0f0-455a-925e-ac5934ef85de.jpg?v=8888966a8dfd27efeac255806712bdd5)
+
+... 그러니까 위의 환경변수 설정도 아래처럼 할 수 있는 것이다.
+```
+!export GOOGLE_APPLICATION_CREDENTIALS="/home/pi/my_credential.json"
+```
+
+### 쥬피터 노트북에서 acyncio 모듈 사용
+asyncio module은 non-blocking IO를 구현하기 위한 모듈이다. 
+주피터는 자체적으로 이벤트루프를 이미 사용하고 있기 때문에 asyncio를 사용하려하면 이벤트루프를 중첩할수 없다나 하는 메시지와 함께 exception 발생한다.
+![](https://user-images.githubusercontent.com/10778668/50623487-6ae16700-0ee4-11e9-8242-9f4647699ef5.png)
+
+`nest_asyncio`모듈을 사용해 해결한다.
+```bash
+$ pip3 install nest_asyncio
+```
+그리고
+![](https://i.imgur.com/3gilTL4.png)

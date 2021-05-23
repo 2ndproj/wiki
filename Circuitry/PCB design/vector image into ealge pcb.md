@@ -7,12 +7,17 @@ adobe 일러스트레이터에서 인코딩한 svg 파일보다 inkscape 에서 
 
 ### 1. inkscape (or illustrator)에서 이미지를 그린다.
 * 혹은 일러스트에서 그린 .ai 파일을 불러온다. (!! 일러스트레이터에서 .svg로 내보내지 않는다!!)
-이 때 이미지는 outline-stroke로 윤곽선이 확정되고, 또한 pathfinder - union으로 중첩이 없도록 처리되어있도록 한다.
+* 폰트는 path > object to path로 윤곽선이 확정되도록 한다. (일러스트레이터에서는 outline-stroke로...) 
+* 또한 pathfinder - union으로 중첩이 없도록 처리되어있도록 한다.
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/yAub2Qzd/Image%202020-08-12%20at%2012.01.52%20PM.png?v=f3e9386a35d5f1082a8ed077cc52085f)
 
 * 크기도 맞춰주자. (파일 > 문서설정에서 단위를  mm로 맞춰준다.)
 eagle에서 top silk/ bottom silk 레이어들면 활성화한 후 export > dfx로 내보내면 일러스트레이터에서 보드의 실제 사이즈와 배치를 보며 작업하기에 수월하다.
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/mXuyB2z9/Image%202020-08-12%20at%2011.59.22%20AM.png?v=87c694d8233bd2e85fcba6aee71e5abd)
+
+* 도큐먼트 사이즈를 이미지에 딱 맞게 맞추어준다.
+(file > document properties > custom size > Resize page to drawing or selection 버튼 클릭)
+![](https://cdn.sparkfun.com/assets/learn_tutorials/6/0/6/importing_images_04.png)
 
 <del>
 ### 2. 곡선 -> 직선화
