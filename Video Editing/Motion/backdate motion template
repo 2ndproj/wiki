@@ -1,0 +1,33 @@
+# motion과 final cut pro가 버전이 다른 경우
+최신버전의 motion에서 제작한 motion template - 자막, generator, transition, 등은 이전버전의 final cut pro에서 사용하지 못한다.
+하지만 xml로 씌여진 모션 파일을 조금만 손보면 이전 버전의 final cut pro에서도 불러다 사용 가능해진다.
+물론 이 때 옛버전만 지원하는 신기능 - 예를 들어 3D text 등등- 은 사용할 수 없으므로 삭제시켜주어야 한다.
+
+1. 모션 템플릿을 제작후 저장한다.
+   
+2. 저장된 모션 템플릿 파일('.motn' , '.moti', ...)을 텍스트에디토로 열어본다.
+   디폴트 위치는 'home/동영상/Motion Templates/Effect (or Gererator or Titles or...)/'
+
+3. 아래와 같이 시작하는 xml 문서이다.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ozxmlscene>
+<ozml version="5.5">
+
+<displayversion>5.1</displayversion>
+```
+4. 보유중인 final cut pro의 버전을 알아본다.
+5. 아래의 표에서 보유중인 finalcutpro의 OZML버전과 Display버전을 확인해 파일을 수정한다.
+예를들어, 우리사무실에는 final cut pro 10.3.4가 설치된 iMac이 있는데, 여기에서 모션 템플릿을 사용하려면 
+```xml
+...
+<ozml version="5.8">
+
+<displayversion>5.3.2</displayversion>
+...
+```
+와 같이 수정해주어야 한다.
+
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/eDuypyPZ/868e2909-b352-454f-8cf2-587d8ab6fd61.jpg?v=4f0d203d177cf2dbba784adb5da4a434)
+
+
