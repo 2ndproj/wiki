@@ -3,6 +3,8 @@ seeed fusion은 중국의 seeed studio에서 운영하는 원스톱-소규모생
 eagle로 완성한  pcb 디자인은 seeed fusion서비스에 보내면 pcb제작해 보내주거나(pcb service) 납땜까지 해서 보내준다(pcba service)
 https://www.seeedstudio.com/
 
+[seeedstudio fusion PCBA official manual](wiki/Circuitry/PCB design/PCB DFM V1.1.pdf)
+
 ## ERC, DRC 체크
 eagle pcb디자인이 완성되었다면 erc, drc 버튼을 눌러 에러가 없는지 확인하고 처리한다.
 ![](https://cl.ly/2fd4f0/Image%202020-01-18%20at%208.35.52%20%EC%98%A4%EC%A0%84.png)
