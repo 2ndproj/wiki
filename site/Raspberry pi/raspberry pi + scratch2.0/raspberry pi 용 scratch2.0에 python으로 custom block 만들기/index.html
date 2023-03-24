@@ -1,0 +1,2314 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/">
+      
+      
+        <link rel="next" href="../../../Video%20Editing/Motion/illustrator2motion/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>Raspberry pi 용 scratch2.0에 python으로 custom block 만들기 - wiki2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scratchx-extension" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="wiki2" class="md-header__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wiki2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Raspberry pi 용 scratch2.0에 python으로 custom block 만들기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="wiki2" class="md-nav__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    wiki2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          ProtoPie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ProtoPie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ProtoPie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/PIL%20quick%20reference/" class="md-nav__link">
+        PIL (python Imaging library) Quick reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/matplotlib/" class="md-nav__link">
+        matplotlib 사용해 jupyter notebook에서 이미지 표시하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20virtual%20environment/" class="md-nav__link">
+        파이썬 가상환경 (virtual environment)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../%23%20coding%20Raspberry%20pi%20with%20remote%20VS%20code/" class="md-nav__link">
+        원격으로 VS code 에서 raspberry pi 코딩하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../raspberry%20pi%20zero%20headress%20setup/" class="md-nav__link">
+        Raspberry pi zero w 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6_14">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Raspberry pi 용 scratch2.0에 python으로 custom block 만들기
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Raspberry pi 용 scratch2.0에 python으로 custom block 만들기
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-pi-scratch-20-extension" class="md-nav__link">
+    raspberry pi용 scratch 2.0에서 extension 실행하기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scratchx-extension-boilerplate" class="md-nav__link">
+    scratchx extension의 기본 뼈대 (boilerplate)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    새로운 명령어 블록 추가하기
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-pi-scratch-20-extension" class="md-nav__link">
+    raspberry pi용 scratch 2.0에서 extension 실행하기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scratchx-extension-boilerplate" class="md-nav__link">
+    scratchx extension의 기본 뼈대 (boilerplate)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    새로운 명령어 블록 추가하기
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<p>raspberry pi 용 scratch2.0에 python으로 custom block 만들기</p>
+<h1 id="scratchx-extension">scratchX 용 extension 파일</h1>
+<p>참고: https://github.com/LLK/scratchx/wiki#contents
+raspberry pi에 기본 탑재된 scratch2.0은 기본적으로 scratchX와 동일하다.
+scratchX의 확장기능을 가져다 사용하거나 scratchx의 확장기능 개발 자료를 참고해 직접 만들수 있다.
+extension은 java script로 만들며, java script로 구현 가능한 것이라면 무엇이든 - 즉 뭐든지 다 할 수 있다.</p>
+<h2 id="raspberry-pi-scratch-20-extension">raspberry pi용 scratch 2.0에서 extension 실행하기</h2>
+<ol>
+<li>
+<p>scratch2.0을 실행한다.
+<img alt="||600" src="https://cl.ly/75a47925120b/Image%202018-09-18%20at%204.20.29%20PM.png" /></p>
+</li>
+<li>
+<p>[file] 메뉴를 <shift> + click한다. 숨겨져있던 'experimental extension'을 선택한다.
+<img alt="||600" src="https://cl.ly/9281eae26164/Image%202018-09-18%20at%204.24.01%20PM.png" /></p>
+</li>
+<li>
+<p>extension 파일의 위치를 정확하게 써준다. (잘못써도 경고메시지가 나오지 않는다. 그냥 조용히 안될 뿐...)
+<img alt="||600" src="https://cl.ly/987e09df4f56/Image%202018-09-18%20at%204.26.37%20PM.png" /></p>
+</li>
+<li>
+<p>'추가블럭' 그룹아래에 확장 블록들이 생겨나있다.
+<img alt="||600" src="https://cl.ly/7e2512393a78/Image%202018-09-18%20at%204.28.50%20PM.png" /></p>
+</li>
+</ol>
+<h2 id="scratchx-extension-boilerplate">scratchx extension의 기본 뼈대 (boilerplate)</h2>
+<p>scratchx extension은 java script로 만들어져있다.</p>
+<pre><code class="language-js">(function(ext) {
+    // Cleanup function when the extension is unloaded
+    ext._shutdown = function() {};
+
+    // Status reporting code. 자동으로 주기적으로 호출되어 연결상태를 나타내는 초록색 불을 켜는데 관여한다.
+    // Use this to report missing hardware, plugin or unsupported browser
+    ext._getStatus = function() {
+        return {status: 2, msg: 'Ready'}; // status 1=&gt; 연결 표시등 노랑색 status 2=&gt; 녹색
+                                          // msg 는 표시등에 마우스 가져다댔을 때 표시되는 메시
+    };
+
+    // Block and block menu descriptions  // 추가되는 명령어블록들이 여기서 정의됨.
+    var descriptor = {
+        blocks: [
+        ]
+    };
+
+    // Register the extension
+    ScratchExtensions.register('Sample extension', descriptor, ext);  //'Sample extension'연결상태 표시등 앞에 씌여질 확장기능의 이름이 들어감.
+})({});
+</code></pre>
+<ul>
+<li>status 에 따른 연결표시등 색깔</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Value</th>
+<th>Color</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>red</td>
+<td>error</td>
+</tr>
+<tr>
+<td>1</td>
+<td>yellow</td>
+<td>not ready</td>
+</tr>
+<tr>
+<td>2</td>
+<td>green</td>
+<td>ready</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="||600" src="https://cl.ly/8e807e99812f/Image%202018-09-18%20at%205.48.28%20PM.png" /></p>
+<h2 id="_1">새로운 명령어 블록 추가하기</h2>
+<ol>
+<li>
+<p>js 소스 아래쪽의 <code>var descriptor ={ blocks: [  ]};</code> 에다가
+ [<code>Block type</code>, <code>block name</code>, <code>function name</code>, <code>param1 default value</code>, <code>param2 default value</code>...], [...] 하는 식으로 형식을 맞추어 블럭을 정의한다.</p>
+</li>
+<li>
+<p>블럭에서 호출하는 콜백함수을 정의해주면 된다.</p>
+</li>
+<li>
+<p>예를 들어, 인터넷에서 날씨정보를 가져와 표시해주는 확장블럭을 추가해보자.</p>
+</li>
+</ol>
+<pre><code class="language-js">(function(ext) {
+    // Cleanup function when the extension is unloaded
+    ext._shutdown = function() {};
+
+    // Status reporting code
+    // Use this to report missing hardware, plugin or unsupported browser
+    ext._getStatus = function() {
+        return {status: 2, msg: 'Ready'};
+    };
+
+    ext.get_temp = function(location, callback) {
+        // Make an AJAX call to the Open Weather Maps API
+        $.ajax({
+              url: 'http://api.openweathermap.org/data/2.5/weather?q='+location+'&amp;units=imperial',
+              dataType: 'jsonp',
+              success: function( weather_data ) {
+                  // Got the data - parse it and return the temperature
+                  temperature = weather_data['main']['temp'];
+                  callback(temperature);
+              }
+        });
+    };
+
+    // Block and block menu descriptions
+    var descriptor = {
+        blocks: [
+            ['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'],
+        ]
+    };
+
+    // Register the extension
+    ScratchExtensions.register('Weather extension', descriptor, ext);
+})({});
+</code></pre>
+<ul>
+<li>['R', 'current temperature in city %s', 'get_temp', 'Boston, MA'] 로 정의된 블럭정의를 추가한다.</li>
+<li>이 때, 'R'은 별도 쓰레드로 동작해 결과값을 리턴하는 블록(타원형 블록)이라는 뜻.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Op Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>' ' (space)</td>
+<td>Synchronous command</td>
+</tr>
+<tr>
+<td>'w'</td>
+<td>Asynchronous command (메인쓰레드와 별도로 명령 수행)</td>
+</tr>
+<tr>
+<td>'r'</td>
+<td>Synchronous reporter (이 명령이 실행되는 동안 스크래치 블럭진행이 중지됨)</td>
+</tr>
+<tr>
+<td>'R'</td>
+<td>Asynchronous reporter (메인 쓰레드와 별도로 명령 수행. Rest로 데이터 가져온다던지 하는 경우)</td>
+</tr>
+<tr>
+<td>'h'</td>
+<td>Hat block (synchronous, returns Boolean, true = run stack) ('녹색깃발이 클릭되었을 때'와 같이 쓰레드를 새로 출발시킨다)</td>
+</tr>
+<tr>
+<td>'b'</td>
+<td>Boolean reporter (like 'r' but returns only true or false)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>값을 리턴할 때는 <code>callback();</code>을 사용해도 되지만 <code>return();</code>을 사용할 수도 있다.</li>
+<li>
+<p>'%s'는 문자열, '%n'는 숫자가 옴을 뜻함. '%m'은 드롭다운메뉴에서 선택 (아래 4번항목 예시 참고).</p>
+</li>
+<li>
+<p>descriptor에는 선택가능한 드롭다운메뉴 extension에 대한 도움말 URL, DisplayName등을 지정할 수 있다.
+예를 보면...</p>
+</li>
+</ul>
+<pre><code class="language-js">var descriptor = {
+    blocks: [
+        ['w', 'turn motor on for %n secs',             'motorOnFor', 1],
+        [' ', 'turn motor on',                         'allMotorsOn'],
+        [' ', 'turn motor off',                        'allMotorsOff'],
+        [' ', 'set motor power %n',                    'startMotorPower', 100],
+        [' ', 'set motor direction %m.motorDirection', 'setMotorDirection', 'this way'],
+        ['h', 'when distance %m.lessMore %n',          'whenDistance', '&lt;', 20],
+        ['h', 'when tilt %m.eNe %n',                   'whenTilt', '=', 1],
+        ['r', 'distance',                              'getDistance'],
+        ['r', 'tilt',                                  'getTilt']
+    ],
+    menus: {
+        motorDirection: ['this way', 'that way', 'reverse'],
+        lessMore: ['&lt;', '&gt;'],
+        eNe: ['=','not =']
+    },
+    url: 'http://info.scratch.mit.edu/WeDo',
+    displayName: 'LEGO WeDo 1.0'
+};
+</code></pre>
+<p>** scratchx에 대해 더 알고싶다면 (raspberry pi나 python 사용하지 않고 하드웨어 연결한다던지...) scratchx 개발자 문서를 참고: https://github.com/LLK/scratchx/wiki#contents</p>
+<h1 id="s2_pi-python-scratchx">s2_pi 사용해 python 서버와 scratchx 연결하기</h1>
+<p>java script보다는 python이 조금 더 편하고 익숙하기도 하고, 무엇보다 GPIO를 직접제어하려면 현재로써는 java script 만으로는 방법이 마땅치 않기 때문에, scratch2.0의 자바스크립트 확장기능과 함께 python으로 만든 별도의 코드(웹소켓 서버)를 사용해서 스크래치에서 GPIO 제어가 가능하다.</p>
+<p>Scratch 팀에서 공식적으로 문서화하지는 않았지만 내부에 websocket 클라이언트가 기본 탑재되어있으며, 우리는 이를 사용해 다른 어플리케이션(내가 파이썬으로만든...)과 통신토록 한다. 즉, 우리가 만들 것은 python에서 제공하는 <code>SimpleWebSocketServer</code>를 상속하고 <code>pigpio</code> 라이브러리를 사용해 gpio를 컨트롤 하거나 기타 카메라를 사용한다거나 영상처리 등등...하는 python 코드이다. <code>s2pi</code> 프로젝트에서 대부분의 것들이 다 구현 해 놓았기 때문에 's2pi'를 살펴보고 필요한 것을 더 추가하는 것으로 진행한다.</p>
+<p>s2pi project 개발문서 참고: https://mryslab.github.io/s2-pi/
+pigpio 라이브러리 개발문서 참고: http://abyz.me.uk/rpi/pigpio/python.html  <br />
+Websocket wikipedia 참고: https://en.wikipedia.org/wiki/WebSocket</p>
+<h2 id="s2pi">s2pi 테스트해보기</h2>
+<h3 id="s2pi_1">s2pi 설치</h3>
+<ol>
+<li>s2pi 코드는 이곳:https://github.com/MrYsLab/s2-pi 에서 받을 수 있다. 라즈베리파이의 기본 디렉토리 '/home/pi'에다가 압축풀어놓는다.</li>
+<li>'/home/pi/s2-pi-master'로 이동해 <code>setup.py install</code>을 실행한다.</li>
+</ol>
+<pre><code class="language-bash">pi@raspberrypi:~ $ cd s2-pi-master
+pi@raspberrypi:~/s2-pi-master $ sudo python3 setup.py install
+</code></pre>
+<h3 id="s2pi-extension">s2pi 실행&amp; extension로딩</h3>
+<ol>
+<li>
+<p>터미널에서 <code>s2pi</code>를 입력한다.
+서버프로그램의 콘솔화면과 함께 scratch2.0이 자동으로 시작된다.
+<img alt="||600" src="https://mryslab.github.io/s2-pi/images/start.png" /></p>
+</li>
+<li>
+<p>[file] 메뉴를 <shift> + click한다. 숨겨져있던 'experimental extension'을 선택한다.
+<img alt="||600" src="https://cl.ly/9281eae26164/Image%202018-09-18%20at%204.24.01%20PM.png" /></p>
+</li>
+<li>
+<p>extension 파일의 위치 (/home/pi/s2_pi.js)를 정확하게 써준다. (잘못써도 경고메시지가 나오지 않는다. 그냥 조용히 안될 뿐...)
+<img alt="||600" src="https://cl.ly/987e09df4f56/Image%202018-09-18%20at%204.26.37%20PM.png" /></p>
+</li>
+<li>
+<p>'추가블럭' 그룹아래에 확장 블록들이 생겨나있다.
+<img alt="||600" src="https://cl.ly/7e2512393a78/Image%202018-09-18%20at%204.28.50%20PM.png" /></p>
+</li>
+</ol>
+<h3 id="s2pi_2">s2pi 사용</h3>
+<p>scratch2.0에서 raspberry pi의 GPIO를 컨트롤 하거나 입력값을 읽어올 수 있다.</p>
+<h2 id="s2pi_3">s2pi 코드 분석</h2>
+<ul>
+<li>스크래치에는  websocket이 기본 내장되어있으며, js extension에서 <code>window.socket</code>을 통해 접근할 수 있다. websocket이라는 프로토콜이 event driven의 비동기적 통신으므로, 아래 3개 콜백함수를 써주어야 한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수명</th>
+<th>이벤트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>window.socket.onopen</td>
+<td>웹소켓이 맨 처음 연결될 때</td>
+</tr>
+<tr>
+<td>window.socket.onmessage</td>
+<td>(서버로부터) 메시지를 받았을 때</td>
+</tr>
+<tr>
+<td>window.socket.onclose</td>
+<td>웹소켓을 닫을 때</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>python에서 웹소켓을 사용하기 위해서는 <code>WebSocket</code> class를 상속해 구현하며, 아래 3개 콜백함수가 정의되어야 한다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>함수명</th>
+<th>이벤트</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>handleConnected</td>
+<td>맨 처음 연결될 때</td>
+</tr>
+<tr>
+<td>handleMessage</td>
+<td>(클라이언트로부터) 받은 메시지가 있을 때</td>
+</tr>
+<tr>
+<td>handleClose</td>
+<td>웹 소켓을 닫을 때</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>js extension에서 메시지를 보낼 때에는 window.socket.send(msg) 함수를, python 서버에서 보낼 때에는 WebSocket.sendMessage(msg) 를 사용한다.</li>
+</ul>
+<h3 id="s2_pipy-s2_pijs">s2_pi.py &amp; s2_pi.js 소 스</h3>
+<pre><code class="language-python">#!/usr/bin/env python3
+
+&quot;&quot;&quot;
+s2_pi.py
+ Copyright (c) 2016, 2017 Alan Yorinks All right reserved.
+ Python Banyan is free software; you can redistribute it and/or
+ modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
+ Version 3 as published by the Free Software Foundation; either
+ or (at your option) any later version.
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ You should have received a copy of the GNU AFFERO GENERAL PUBLIC LICENSE
+ along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+&quot;&quot;&quot;
+import json
+import sys
+import time
+import os
+import pigpio
+import psutil
+from subprocess import call
+from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
+
+
+# This class inherits from WebSocket.
+# It receives messages from the Scratch and reports back for any digital input
+# changes.
+class S2Pi(WebSocket):
+
+    def handleMessage(self):
+        # get command from Scratch2
+        payload = json.loads(self.data)
+        print(payload)
+        client_cmd = payload['command']
+        # When the user wishes to set a pin as a digital Input
+        if client_cmd == 'input':
+            pin = int(payload['pin'])
+            self.pi.set_glitch_filter(pin, 20000)
+            self.pi.set_mode(pin, pigpio.INPUT)
+            self.pi.callback(pin, pigpio.EITHER_EDGE, self.input_callback)
+        # when a user wishes to set the state of a digital output pin
+        elif client_cmd == 'digital_write':
+            pin = int(payload['pin'])
+            self.pi.set_mode(pin, pigpio.OUTPUT)
+            state = payload['state']
+            if state == '0':
+                self.pi.write(pin, 0)
+            else:
+                self.pi.write(pin, 1)
+        # when a user wishes to set a pwm level for a digital input pin
+        elif client_cmd == 'analog_write':
+            pin = int(payload['pin'])
+            self.pi.set_mode(pin, pigpio.OUTPUT)
+            value = int(payload['value'])
+            self.pi.set_PWM_dutycycle(pin, value)
+        # when a user wishes to output a tone
+        elif client_cmd == 'tone':
+            pin = int(payload['pin'])
+            self.pi.set_mode(pin, pigpio.OUTPUT)
+
+            frequency = int(payload['frequency'])
+            frequency = int((1000 / frequency) * 1000)
+            tone = [pigpio.pulse(1 &lt;&lt; pin, 0, frequency),
+                    pigpio.pulse(0, 1 &lt;&lt; pin, frequency)]
+
+            self.pi.wave_add_generic(tone)
+            wid = self.pi.wave_create()
+
+            if wid &gt;= 0:
+                self.pi.wave_send_repeat(wid)
+                time.sleep(1)
+                self.pi.wave_tx_stop()
+                self.pi.wave_delete(wid)
+        elif client_cmd == 'ready':
+            pass
+        else:
+            print(&quot;Unknown command received&quot;, client_cmd)
+
+    # call back from pigpio when a digital input value changed
+    # send info back up to scratch
+    def input_callback(self, pin, level, tick):
+        payload = {'report': 'digital_input_change', 'pin': str(pin), 'level': str(level)}
+        print('callback', payload)
+        msg = json.dumps(payload)
+        self.sendMessage(msg)
+
+    def handleConnected(self):
+        self.pi = pigpio.pi()
+        print(self.address, 'connected')
+
+    def handleClose(self):
+        print(self.address, 'closed')
+
+
+def run_server():
+    # checking running processes.
+    # if the backplane is already running, just note that and move on.
+    found_pigpio = False
+
+    for pid in psutil.pids():
+        p = psutil.Process(pid)
+        if p.name() == &quot;pigpiod&quot;:
+            found_pigpio = True
+            print(&quot;pigpiod is running&quot;)
+        else:
+            continue
+
+    if not found_pigpio:
+        call(['sudo', 'pigpiod'])
+        print('pigpiod has been started')
+
+    os.system('scratch2&amp;')
+    server = SimpleWebSocketServer('', 9000, S2Pi)
+    server.serveforever()
+
+
+if __name__ == &quot;__main__&quot;:
+    try:
+        run_server()
+    except KeyboardInterrupt:  # ctrl + C 를 눌러 프로그램 종료.
+        sys.exit(0)
+</code></pre>
+<pre><code class="language-js">/**
+s2_pi.js
+
+ Copyright (c) 2016, 2017 Alan Yorinks All right reserved.
+ Python Banyan is free software; you can redistribute it and/or
+ modify it under the terms of the GNU AFFERO GENERAL PUBLIC LICENSE
+ Version 3 as published by the Free Software Foundation; either
+ or (at your option) any later version.
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ General Public License for more details.
+ You should have received a copy of the GNU AFFERO GENERAL PUBLIC LICENSE
+ along with this library; if not, write to the Free Software
+ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+(function (ext) {
+    var socket = null;
+
+    var connected = false;
+
+    // an array to hold possible digital input values for the reporter block
+    var digital_inputs = new Array(32);
+    var myStatus = 1; // initially yellow
+    var myMsg = 'not_ready';
+
+    ext.cnct = function (callback) {
+        window.socket = new WebSocket(&quot;ws://127.0.0.1:9000&quot;);
+        window.socket.onopen = function () {
+            var msg = JSON.stringify({
+                &quot;command&quot;: &quot;ready&quot;
+            });
+            window.socket.send(msg);
+            myStatus = 2;
+
+            // change status light from yellow to green
+            myMsg = 'ready';
+            connected = true;
+
+            // initialize the reporter buffer
+            digital_inputs.fill('0');
+
+            // give the connection time establish
+            window.setTimeout(function() {
+            callback();
+        }, 1000);
+
+        };
+
+        window.socket.onmessage = function (message) {
+            var msg = JSON.parse(message.data);
+
+            // handle the only reporter message from the server
+            // for changes in digital input state
+            var reporter = msg['report'];
+            if(reporter === 'digital_input_change') {
+                var pin = msg['pin'];
+                digital_inputs[parseInt(pin)] = msg['level']
+            }
+            console.log(message.data)
+        };
+        window.socket.onclose = function (e) {
+            console.log(&quot;Connection closed.&quot;);
+            socket = null;
+            connected = false;
+            myStatus = 1;
+            myMsg = 'not_ready'
+        };
+    };
+
+    // Cleanup function when the extension is unloaded
+    ext._shutdown = function () {
+        var msg = JSON.stringify({
+            &quot;command&quot;: &quot;shutdown&quot;
+        });
+        window.socket.send(msg);
+    };
+
+    // Status reporting code
+    // Use this to report missing hardware, plugin or unsupported browser
+    ext._getStatus = function (status, msg) {
+        return {status: myStatus, msg: myMsg};
+    };
+
+    // when the connect to server block is executed
+    ext.input = function (pin) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        // validate the pin number for the mode
+        if (validatePin(pin)) {
+            var msg = JSON.stringify({
+                &quot;command&quot;: 'input', 'pin': pin
+            });
+            window.socket.send(msg);
+        }
+    };
+
+    // when the digital write block is executed
+    ext.digital_write = function (pin, state) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        console.log(&quot;digital write&quot;);
+        // validate the pin number for the mode
+        if (validatePin(pin)) {
+            var msg = JSON.stringify({
+                &quot;command&quot;: 'digital_write', 'pin': pin, 'state': state
+            });
+            console.log(msg);
+            window.socket.send(msg);
+        }
+    };
+
+    // when the PWM block is executed
+    ext.analog_write = function (pin, value) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        console.log(&quot;analog write&quot;);
+        // validate the pin number for the mode
+        if (validatePin(pin)) {
+            // validate value to be between 0 and 255
+            if (value === 'VAL') {
+                alert(&quot;PWM Value must be in the range of 0 - 255&quot;);
+            }
+            else {
+                value = parseInt(value);
+                if (value &lt; 0 || value &gt; 255) {
+                    alert(&quot;PWM Value must be in the range of 0 - 255&quot;);
+                }
+                else {
+                    var msg = JSON.stringify({
+                        &quot;command&quot;: 'analog_write', 'pin': pin, 'value': value
+                    });
+                    console.log(msg);
+                    window.socket.send(msg);
+                }
+            }
+        }
+    };
+
+    // when the play tone block is executed
+    ext.play_tone = function (pin, frequency) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        // validate the pin number for the mode
+        if (validatePin(pin)) {
+            var msg = JSON.stringify({
+                &quot;command&quot;: 'tone', 'pin': pin, 'frequency': frequency
+            });
+            console.log(msg);
+            window.socket.send(msg);
+        }
+    };
+
+    // when the digital read reporter block is executed
+    ext.digital_read = function (pin) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        else {
+                return digital_inputs[parseInt(pin)]
+
+        }
+    };
+
+    // general function to validate the pin value
+    function validatePin(pin) {
+        var rValue = true;
+        if (pin === 'PIN') {
+            alert(&quot;Insert a valid BCM pin number.&quot;);
+            rValue = false;
+        }
+        else {
+            var pinInt = parseInt(pin);
+            if (pinInt &lt; 0 || pinInt &gt; 31) {
+                alert(&quot;BCM pin number must be in the range of 0-31.&quot;);
+                rValue = false;
+            }
+        }
+        return rValue;
+    }
+
+    // Block and block menu descriptions
+    var descriptor = {
+        blocks: [
+            // Block type, block name, function name
+            [&quot;w&quot;, 'Connect to s2_pi server.', 'cnct'],
+            [&quot; &quot;, 'Set BCM %n as an Input', 'input','PIN'],
+            [&quot; &quot;, &quot;Set BCM %n Output to %m.high_low&quot;, &quot;digital_write&quot;, &quot;PIN&quot;, &quot;0&quot;],
+            [&quot; &quot;, &quot;Set BCM PWM Out %n to %n&quot;, &quot;analog_write&quot;, &quot;PIN&quot;, &quot;VAL&quot;],
+            [&quot; &quot;, &quot;Tone: BCM %n HZ: %n&quot;, &quot;play_tone&quot;, &quot;PIN&quot;, 1000],
+            [&quot;r&quot;, &quot;Read Digital Pin %n&quot;, &quot;digital_read&quot;, &quot;PIN&quot;]
+
+        ],
+        &quot;menus&quot;: {
+            &quot;high_low&quot;: [&quot;0&quot;, &quot;1&quot;]
+
+        },
+        url: 'http://MrYsLab.github.io/s2-pi'
+    };
+
+    // Register the extension
+    ScratchExtensions.register('s2_pi', descriptor, ext);
+})({});
+
+</code></pre>
+<ol>
+<li>s2_pi.py 코드를 실행하면 가장먼저 run_server()가 실행된다.
+앞부분은 pigpio 데몬을 실행시키는 부분 (s2pi는 pigpio라이브러리를 사용한다. 참고: http://abyz.me.uk/rpi/pigpio/python.html),</li>
+</ol>
+<pre><code class="language-python">os.system('scratch2&amp;')
+server = SimpleWebSocketServer('', 9000, S2PI) # (IP 주소, Port번호, 웹소켓이 구현된 class 이름)
+server.serveforever()
+</code></pre>
+<p>이 부분에서 스크래치를 백그라운드로 실행시키고, 웹소켓서버객체를 만듬. 웹소켓서버 만들 때 ip주소가 ''이면 기본으로 127,0,0,1 즉 localhost인 자기자신을 가리키는 것으로 이해함.</p>
+<ol>
+<li>js 클라이언트에서도 동일한 ip와 포트번호로 소켓을 오픈해 서버에 연결을 요청해야함.
+'Connect to s2_pi server' block이 바로 이 일을 하는 블록. 이 블록이 실행되면 'ext.cnct()' 함수가 불려지고, 웹소켓연결을 요청한다.</li>
+</ol>
+<pre><code class="language-js">ext.cnct = function () {
+        window.socket = new WebSocket(&quot;ws://127.0.0.1:9000&quot;);
+        ...
+      }
+</code></pre>
+<ol>
+<li>
+<p>웹소켓 연결이 무사히 이루어지면 (handshake) 파이썬 서버에서는 <code>handleConnected</code>가, js client에서는 <code>window.socket.onopen</code>가 실행된다. '연결되었습니다' 메시지를 표시해주는 따위...</p>
+</li>
+<li>
+<p>js extension에서 메시지를 보낼 때에는 <code>window.socket.send(msg)</code> 함수를,
+python 서버에서 보낼 때에는 <code>WebSocket.sendMessage(msg)</code> 를 사용함.</p>
+</li>
+<li>
+<p>상대로부터 메시지를 받으면 자동으로 <code>handleMessage(self)</code>(파이썬 서버 측) 혹은 <code>window.socket.onmessage()</code>(js 측)이 실행되어 적당한 동작을 취하도록 한다.</p>
+</li>
+<li>
+<p>이 때 주고받는 메시지는 쓰기편하게 JSON 을 사용하다. js의 해시와 python의 딕셔너리 데이터형은 json과 형태가 같으므로 쉽게 바꿀 수 있어 매우 편하다.</p>
+</li>
+<li>js에서 hash형 데이터를 json 문자열로 바꿀 때에는   </li>
+</ol>
+<pre><code class="language-js">var msg = JSON.stringify({
+                &quot;command&quot;: &quot;ready&quot;
+            });
+            window.socket.send(msg);
+</code></pre>
+<ul>
+<li>js에서 json 문자열을 hash로 빠꿀 때에는</li>
+</ul>
+<pre><code class="language-js">var msg = JSON.parse(message.data);
+       var reporter = msg['report'];
+</code></pre>
+<ul>
+<li>python에서 dictionary형 데이터를 json문자열로 바꿀 때에는</li>
+</ul>
+<pre><code class="language-python">msg = json.dumps(payload)
+self.sendMessage(msg)
+</code></pre>
+<ul>
+<li>python에서 json 문자열을 다시 dictionary로 바꿀 때에는
+ <code>python
+ payload = json.loads(self.data)</code></li>
+</ul>
+<h1 id="s2_pi-20-servo">s2_pi 사용해 스크래치2.0으로 servo 제어</h1>
+<ol>
+<li>js 파일에 맨 아래쪽 descriptor에다가 새로운 블럭을 정의해준다.</li>
+</ol>
+<pre><code class="language-js">blocks:[...
+        [&quot; &quot;, &quot;Move Servo at BCM %n to %n degree&quot;, &quot;moveServo&quot;, &quot;PIN&quot;, 0],  // 실행명령, n번핀에 서보 n도로 움직이기. 기본표시값'PIN',0도
+      ]
+</code></pre>
+<ol>
+<li>블럭이 눌렸을 때 실행될 함수 'moveServo()'작성.</li>
+</ol>
+<pre><code class="language-js">ext.moveServo = function (pin, degree) {
+        if (connected == false) {
+            alert(&quot;Server Not Connected&quot;);
+        }
+        // validate the pin number for the mode
+        if (validatePin(pin)) {
+            var msg = JSON.stringify({
+                &quot;command&quot;: 'servo', 'pin': pin, 'degree': degree
+            });
+            console.log(msg);
+            window.socket.send(msg);
+        }
+    };
+</code></pre>
+<ol>
+<li>python 서버측에 메시지 받았을 때 동작 정의</li>
+</ol>
+<pre><code class="language-python">elif client_cmd == 'servo':
+            pin = int(payload['pin'])
+            self.pi.set_mode(pin, pigpio.OUTPUT)
+            degree = int(payload['degree'])
+            pulseWidth = 500 + 2000 / 180 * degree # (0도~180도 =&gt; 500~2500)
+
+            self.pi.set_servo_pulsewidth(pin, pulseWidth)
+</code></pre>
+<p>pigpio 라이브러리 서버 움직이는 법 참고: http://abyz.me.uk/rpi/pigpio/python.html#set_servo_pulsewidth</p>
+<ol>
+<li>raspberry pi 에 수정한 코드 덮어씌우기 (복사)</li>
+<li>s2_pi.js 파일은 '/home/pi' 디렉토리로,</li>
+<li>s2_pi.py 파일은 setup.py를 통해 설치된 게 아니므로 직접 실행시켜준다.
+ <code>bash
+ $ python3 s2_pi.py</code></li>
+</ol>
+<h1 id="adafruit-motor-hat-20">Adafruit motor HAT - 스크래치2.0</h1>
+<p>s2_pi  프로젝트를 확장해 motor hat을 제어한다. <br>
+<img alt="||600" src="https://cdn-shop.adafruit.com/970x728/2348-01.jpg" />
+Adafruit motor HAT 제품소개페이지 참고: https://www.adafruit.com/product/2348</p>
+<h2 id="adafruit-motor-hat-dc-motor">Adafruit motor HAT 과 연동해 DC motor 제어</h2>
+<p><img alt="||600" src="https://cl.ly/ad3455f54682/Image%202018-10-02%20at%2011.51.55%20AM.png" /></p>
+<h3 id="i2c">i2c 활성화하기</h3>
+<p>무엇보다 먼저, 라즈베리가 i2c 통신을 사용하도록 설정해 주어야 한다.
+ 1. [시작] &gt; [기본설정] &gt;  [Raspberry Pi Configuration]
+ <img alt="||600" src="https://cl.ly/4bc079d68421/Image%202018-09-30%20at%2010.04.00%20AM.png" /></p>
+<ol>
+<li>
+<p>[interfaces] &gt; I2C 항목에 Enable  체크
+ <img alt="||600" src="https://cl.ly/ee158a73f70a/Image%202018-09-30%20at%2010.05.03%20AM.png" /></p>
+</li>
+<li>
+<p>I2C 유틸리티를 설치한다. (사실 대부분 기본 설치되어있다.)
+ <code>bash
+ $ sudo apt-get install python-smbus i2c-tools</code></p>
+</li>
+</ol>
+<h3 id="s2_pijs">s2_pi.js 수정</h3>
+<p><code>`js
+ // 블럭 정</code>
+ var descriptor = {
+     blocks: [
+         // Block type, block name, function name
+         // 생략...
+         [" ", "Run DCmotor %m.DC at speed %n","run_DC",1,"-255~255"]
+     ],
+     "menus": {
+         // 생략...
+         "DC": [1,2,3,4]</p>
+<pre><code> },
+</code></pre>
+<p>};</p>
+<p>// DC 모터 구동 블럭
+ ext.run_DC = function (motorNum, speed){
+   if (connected == false){
+     alert("Server Not Connected");
+   }
+   var msg = JSON.stringify({
+     "command":'run_DC', 'motorNum' : motorNum, 'speed' : speed
+   });
+   console.log(msg);
+   window.socket.send(msg);
+ };</p>
+<p>```</p>
+<h3 id="s2_pipy">s2_pi.py 수정</h3>
+<p>```Python
+ Class S2Pi(WebSocket):
+   # 연결버튼을 눌러 웹서버가 연결될 때 motorhat 오브젝트 생성
+   def handleConnected(self):
+       self.pi = pigpio.pi()
+       print(self.address, 'connected')
+       # motor hat
+       self.mh = Adafruit_MotorHAT(addr=0x60)
+       print("motorHAT connected")</p>
+<p># 클라이언트로부터 메시지 받아을 때
+   def handleMessage(self):
+       # get command from Scratch2
+       payload = json.loads(self.data)
+       print(payload)
+       client_cmd = payload['command']
+       # if....생략</p>
+<pre><code>   # 받은 명령이 DC 모터 제어 명령
+   elif client_cmd == 'run_DC':
+       motorNum = int(payload['motorNum'])
+       speed = payload['speed']
+
+       dc = self.mh.getMotor(motorNum)
+
+       # 스피드 &gt;0이면 정방향, &lt; 0 이면 역방향 회전. 0은 정지.
+       if (speed &gt; 0):
+           dc.setSpeed(speed)
+           dc.run(Adafruit_MotorHAT.FORWARD)
+       elif (speed &lt; 0):
+           dc.setSpeed(abs(speed))
+           dc.run(Adafruit_MotorHAT.BACKWARD)
+       else:
+           dc.run(Adafruit_MotorHAT.RELEASE)
+</code></pre>
+<p>```</p>
+<h2 id="scratch20-stepper-motor">Scratch2.0으로 Stepper motor 제어</h2>
+<p><img alt="||600" src="https://cl.ly/39023bf0cb85/Image%202018-10-03%20at%2012.15.26%20PM.png" /></p>
+<h3 id="s2_pijs_1">s2_pi.js</h3>
+<p>```js
+ // Block and block menu descriptions
+     var descriptor = {
+         blocks: [
+             // Block type, block name, function name
+             ["w", 'Connect to s2_pi server.', 'cnct'],
+             ...
+             [" ", "Set Stepper port: %m.step_motor_port steps/turn: %n step style: %m.stepstyle speed: %n", "set_stepper", 1, 200, "INTERLEAVE", "RPM"], // 먼저 스텝모터 특성 설정 후
+             [" ", "Run Stepper port: %m.step_motor_port direction: %m.direction steps: %n", "run_stepper", 1, "FORWARD", 0],                            // 스텝모터 작동</p>
+<pre><code>     ],
+     "menus": {
+         ...
+         "step_motor_port": [1,2],
+         "stepstyle": ["SINGLE","DOUBLE","INTERLEAVE","MICROSTEP"],
+         "direction" : ["FORWARD", "BACKWARD"]
+
+     },
+     url: 'http://doguin.com'
+ };
+</code></pre>
+<p>// step 모터 세팅 블록
+     ext.set_stepper = function (portNum, steps_per_turn, stepstyle, rpm){
+        if (connected == false){
+            alert("Server Not Connected");
+        }
+        var msg = JSON.stringify({
+            "command":'set_stepper', 'portNum' : portNum, 'steps_per_turn': steps_per_turn, 'stepstyle': stepstyle, 'rpm' : rpm
+        });
+        console.log(msg);
+        window.socket.send(msg);
+     };</p>
+<p>// step 모터 작동 블록
+     ext.run_stepper = function (portNum, direction, steps){
+        if (connected == false){
+            alert("Server Not Connected");
+        }
+        var msg = JSON.stringify({
+            "command":'run_stepper', 'portNum' : portNum, 'direction': direction, 'steps': steps,
+        });
+        console.log(msg);
+        window.socket.send(msg);
+     };  <br />
+ ```</p>
+<h3 id="s2_pipy_1">s2_pi.py</h3>
+<p>```python
+ # adafruit motor hat
+ from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor</p>
+<p>class S2Pi(Websocket):
+ def handleConnected(self):
+       self.pi = pigpio.pi()
+       print(self.address, 'connected')
+       # motor hat
+       self.mh = Adafruit_MotorHAT(addr=0x60)
+       print("motorHAT connected")
+       # 2개의 stepper 모터의 설정정보를 멤버변수로 기억해둠
+       self.steps_per_turn = [None, None]
+       self.stepper =[ None, None]
+       self.stepstyle = [None, None]
+       self.rpm = [None, None]</p>
+<p>def handleMessage(self):
+       ...
+       # Stepper 제어명령
+       elif client_cmd == 'set_stepper':
+           portNum = int(payload['portNum'])
+           steps_per_turn = int(payload['steps_per_turn'])
+           styleList =  ['SINGLE', 'DOUBLE', 'INTERLEAVE', 'MICROSTEP']
+           stepStyleList = [Adafruit_MotorHAT.SINGLE, Adafruit_MotorHAT.DOUBLE, Adafruit_MotorHAT.INTERLEAVE, Adafruit_MotorHAT.MICROSTEP]
+           stepstyle = stepStyleList[styleList.index(payload['stepstyle'])]
+           rpm = int(payload['rpm'])</p>
+<pre><code>       self.steps_per_turn[portNum-1] = steps_per_turn
+       # self.stepper[portNum-1] = self.mh.getStepper(steps_per_turn, portNum)
+       self.stepstyle[portNum-1] = stepstyle
+       self.rpm[portNum-1] = rpm
+
+   elif client_cmd == 'run_stepper':
+       portNum = int(payload['portNum'])
+       direction = Adafruit_MotorHAT.BACKWARD if (payload['direction'] == 'BACKWARD' ) else Adafruit_MotorHAT.FORWARD
+       print("direction: %s" %direction)
+       steps = int(payload['steps'])
+
+       stepper = self.mh.getStepper(self.steps_per_turn[portNum -1],portNum)
+       stepper.setSpeed(self.rpm[portNum -1])
+       stepper.step(steps, direction, self.stepstyle[portNum - 1])
+</code></pre>
+<p>```</p>
+<h1 id="mcp3008-adconverter-scratch20">MCP3008 ADconverter - Scratch2.0 사용해 아날로그 입력받기</h1>
+<p>'Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)' 문서 참고</p>
+<h2 id="spi-spi">spi 배선 연결하기. (하드웨어 SPI 사용.)</h2>
+<ol>
+<li>하드웨어 SPI를 사용하기 위해서는 무엇보다 먼저 <code>raspi-config</code>에서 SPI 를 <code>enabled</code> 해주어야 한다.</li>
+</ol>
+<pre><code class="language-bash">$ sudo raspi-config
+</code></pre>
+<p><code>Interfacing Option</code> &gt; <code>SPI</code> &gt; <code>Yes</code>.<br></p>
+<p>물론 GUI로 옵션 설정해도 된다.</p>
+<ol>
+<li>
+<p>하드웨어 spi 핀 연결</p>
+</li>
+<li>
+<p>MCP3008 VDD to Raspberry Pi 3.3V <br></p>
+</li>
+<li>MCP3008 VREF to Raspberry Pi 3.3V <br></li>
+<li>MCP3008 AGND to Raspberry Pi GND <br></li>
+<li>MCP3008 DGND to Raspberry Pi GND <br></li>
+<li>MCP3008 CLK to Raspberry Pi SCLK <br></li>
+<li>MCP3008 DOUT to Raspberry Pi MISO <br></li>
+<li>MCP3008 DIN to Raspberry Pi MOSI <br></li>
+<li>MCP3008 CS/SHDN to Raspberry Pi CE0 <br></li>
+</ol>
+<p><img alt="||600" src="https://projects-static.raspberrypi.org/projects/physical-computing/0cb2cbd34292a05a668aeea3f291ceb3c7d9cd83/en/images/mcp3008-pot.png" /></p>
+<h2 id="analog_input">analog_input 코드</h2>
+<p>오리지날 s2_pi 코드 중 digital_input을 다루는 부분을 잘 뜯어보면, js측에서 디지털 인풋 값을 요청하면 그 때마다 python 서버측에서 핀 값을 읽어 보내는 것이 아니라, 어떤 핀이 입력핀으로 설정 되면, 그 때부터 그 핀에 입력값에 변화가 감지될 때마다 pthon에서 메시지를 보내 js측에서 버퍼에 저장해 두었다가 digital_read 블럭이 클릭되면 버퍼에서 바로 꺼내 보여주는 방식이다.
+analog_input도 이같은 방식으로 구현해보자.</p>
+<h3 id="s2_pijs_2">s2_pi.js 수정.</h3>
+<ol>
+<li>블록 수정</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+var descriptor = {
+  blocks:[
+    ...
+    [&quot;r&quot;, &quot;Read Analog at MCP3008 CH:%m.mcp3008_channel&quot;, 'analog_read','channel'],
+    ...
+  ],
+  &quot;menus&quot;: {
+    ...
+    &quot;mcp3008_channel&quot;: [0,1,2,3,4,5,6,7],
+    ...
+  }
+}
+</code></pre>
+<ol>
+<li>아날로그 값 저장버퍼 선언</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+// 아날로그 인풋값 저장하기 위한 버퍼
+    var analog_inputs = new Array(8);
+</code></pre>
+<ol>
+<li>python 서버에서 아날로그값 변경 메세지 오면 버퍼에 기록</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+...
+window.socket.onmessage = function (message) {
+  ...
+  // 아날로그값 변경에 대응
+  else if(reporter === 'analog_input_change') {
+      var channel = msg['channel'];
+      analog_inputs[parseInt(channel)] = msg['level']
+      ...
+}
+</code></pre>
+<ol>
+<li>아날로그 리드 블록 눌렸을 때 콜백함수 analog_read()</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+...
+// 아날로그 read 블록 reporter block is executed
+  ext.analog_read = function (channel) {
+      if (connected == false) {
+          alert(&quot;Server Not Connected&quot;);
+      }
+      else {
+              return analog_inputs[parseInt(channel)]
+
+      }
+  };
+  ...
+</code></pre>
+<h3 id="s2_pipy_2">s2_pi.py 서버측 수정</h3>
+<ol>
+<li>라이브러리 임포트</li>
+</ol>
+<pre><code class="language-python"># s2_pi.py
+...
+import Adafruit_GPIO.SPI as SPI
+import Adafruit_MCP3008
+import threading
+...
+</code></pre>
+<ol>
+<li>웹소켓 시작할 때 MCP3008 오브젝트 만들고 (하드웨어SPI로 연결) updateAnalogInput 실행하기</li>
+</ol>
+<pre><code class="language-python"># s2_pi.py
+...
+def handleConnected(self):
+      ...
+      # MCP3008 ADconverter
+      SPI_PORT   = 0
+      SPI_DEVICE = 0
+      self.mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
+      self.updateAnalogValue()
+      ...
+</code></pre>
+<ol>
+<li>주기적으로 (0.3) 아날로그 값 읽어 업데이트해주는 updateAnalogValue() 정의. 파이썬의 threading모듈 사용</li>
+</ol>
+<pre><code class="language-python">#s2_pi.py
+...
+def updateAnalogValue(self):
+      for ch in range(8):
+          payload = {'report' : 'analog_input_change', 'channel': str(ch), 'level': str(self.mcp.read_adc(ch))}
+          msg = json.dumps(payload)
+          self.sendMessage(msg)
+      threading.Timer(0.3, self.updateAnalogValue).start()
+...
+</code></pre>
+<h1 id="hc-sr04">HC-SR04 초음파 센서</h1>
+<p>참고 https://www.modmypi.com/blog/hc-sr04-ultrasonic-range-sensor-on-the-raspberry-pi</p>
+<h2 id="_2">회로구성</h2>
+<p>초음파 센서의 vcc -&gt; 5V, GND -&gt; GND 연결하고, Triger와 Echo 핀은 아무 GPIO에 연결해도 좋다.
+단 주의할 점은 HC-SR04는 5V 용으로 만들어져있으므로 Echo 에서 출력되는 신호도 5V이다. 라즈베리 파이에 ㅇㅕ!결할 때엔 두개의 저항으로 전압을 내려주거나  레벨 시프터를 사용토록 한다.
+<img alt="||600" src="https://tutorials-raspberrypi.com/wp-content/uploads/2014/05/ultraschall_Steckplatine-768x952.png" /></p>
+<h2 id="_3">코드 수정</h2>
+<h3 id="s2_pijs_3">s2_pi.js 코드수정</h3>
+<ol>
+<li>블럭 두개 추가- 하나는 센서 연결 선언 블럭. 또 다른 하나는 센서값 읽어오기. analog_input 값읽어오는 것도 유사하게 작동한다. 차이점은 서버가 연결되면서 바로 값을 업데이트 하는 것이 아니라 set_sr04 블럭이 눌리면 그 때부터 값을 업데이트하기 시작하고, read_sr04블록이 눌리면 즉시 버퍼에서 값을 꺼내온다.</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+...
+// 초음파센서 연결 설정
+ext.set_sr04 = function (trig, echo) {
+    if (connected == false) {
+        alert(&quot;Server Not Connected&quot;);
+    }
+    // validate the pin number for the mode
+    if (validatePin(trig) &amp;&amp; validatePin(echo)) {
+        var msg = JSON.stringify({
+            &quot;command&quot;: 'set_sr04', 'trig': trig, 'echo': echo
+        });
+        window.socket.send(msg);
+    }
+};
+// 사운드트리거 블록 reporter block is executed
+ext.read_sr04 = function () {
+    if (connected == false) {
+        alert(&quot;Server Not Connected&quot;);
+    }
+    else {
+            return sr04_buffer;
+    }
+};
+...
+
+var descriptor = {
+    blocks: [
+      ...
+      [&quot; &quot;, 'Set UltraSonic Sensor SR04 trig:%n, echo:%n',&quot;set_sr04&quot;, &quot;trig&quot;,&quot;echo&quot;],
+      [&quot;r&quot;, &quot;Read distance form UltraSonic Sensor&quot;,&quot;read_sr04&quot;],
+      ...    
+    ]
+}
+</code></pre>
+<ol>
+<li>초음파센서값 저장하는 버퍼 전역 변수로 만들고, python 서버에서 메시지 올때마다 업데이트 해주기</li>
+</ol>
+<pre><code class="language-js">//s2_pi.js
+...
+// 초음파센서 값 저장버퍼
+var sr04_buffer = 0;
+...
+ext.cnct = function (callback) {
+  ...
+  window.socket.onmessage = function (message) {
+    ...
+    else if (reporter == 'sr04_change') {
+      sr04_buffer = msg['distance'];
+    ...
+    }
+  ...  
+  }
+}
+</code></pre>
+<h3 id="s2_pipy_3">s2_pi.py 코드 수정</h3>
+<ol>
+<li>js측에서 set_sr04 버튼 눌리면  사운드 트리거 작동 시작</li>
+</ol>
+<pre><code class="language-python"># s2_pi.py
+...
+    # 초음파센서 셋업   
+    elif client_cmd == 'set_sr04':
+        trig = payload['trig']
+        echo = payload['echo']
+        self.pi.set_mode(trig, pigpio.OUTPUT)
+        self.pi.set_mode(echo, pigpio.INPUT)
+        self.calcDistance(trig, echo)
+...
+</code></pre>
+<ol>
+<li>calcDistance 함수는 쓰레드 사용해 0.5초마다 주기적으로 실행.</li>
+</ol>
+<pre><code class="language-python">...
+# 초음파 센서 작동 - 주기적으로 실행
+  def calcDistance(self, triggerPin, echoPin):
+      # 0.01ms간 음파 발사
+      self.pi.write(triggerPin, 1)
+      time.sleep(0.00001)
+      self.pi.write(triggerPin, 0)
+
+      # 음파가 발사된 시간 기록
+      startTime = time.time()
+      stopTime = time.time()
+
+      while self.pi.read(echoPin) == 0:
+          startTime = time.time()
+
+      while self.pi.read(echoPin) == 1:
+          stopTime = time.time()
+
+      timeElapsed = stopTime - startTime
+      distance = (timeElapsed * 34300) / 2
+
+      payload = {'report': 'sr04_change', 'distance': distance}
+      msg = json.dumps(payload)
+      self.sendMessage(msg)
+
+      threading.Timer(0.5, self.calcDistance).start()
+...
+</code></pre>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>

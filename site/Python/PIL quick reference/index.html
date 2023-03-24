@@ -1,0 +1,1597 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../ProtoPie/Protopie%20%2B%20IFTTT/">
+      
+      
+        <link rel="next" href="../http%20request/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>PIL (python Imaging library) Quick reference - wiki2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pil-python-imaging-library-quick-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="wiki2" class="md-header__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wiki2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PIL (python Imaging library) Quick reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="wiki2" class="md-nav__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    wiki2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          ProtoPie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ProtoPie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ProtoPie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PIL (python Imaging library) Quick reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PIL (python Imaging library) Quick reference
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pil" class="md-nav__link">
+    PIL 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-class" class="md-nav__link">
+    Image class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagedraw-class" class="md-nav__link">
+    ImageDraw class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagetext-class-text" class="md-nav__link">
+    ImageText class -  text 표시하기
+  </a>
+  
+    <nav class="md-nav" aria-label="ImageText class -  text 표시하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    한글표시
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-sequences-gif-animation" class="md-nav__link">
+    Image sequences (GIF animation)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    두개의 image 합치기
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matplotlib/" class="md-nav__link">
+        matplotlib 사용해 jupyter notebook에서 이미지 표시하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python%20virtual%20environment/" class="md-nav__link">
+        파이썬 가상환경 (virtual environment)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/%23%20coding%20Raspberry%20pi%20with%20remote%20VS%20code/" class="md-nav__link">
+        원격으로 VS code 에서 raspberry pi 코딩하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/raspberry%20pi%20zero%20headress%20setup/" class="md-nav__link">
+        Raspberry pi zero w 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_14">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Raspberry%20pi/raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%E1%84%8B%E1%85%AD%E1%86%BC%20scratch2.0%E1%84%8B%E1%85%A6%20python%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20custom%20block%20%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B5/" class="md-nav__link">
+        Raspberry pi 용 scratch2.0에 python으로 custom block 만들기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pil" class="md-nav__link">
+    PIL 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-class" class="md-nav__link">
+    Image class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagedraw-class" class="md-nav__link">
+    ImageDraw class
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#imagetext-class-text" class="md-nav__link">
+    ImageText class -  text 표시하기
+  </a>
+  
+    <nav class="md-nav" aria-label="ImageText class -  text 표시하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    한글표시
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image-sequences-gif-animation" class="md-nav__link">
+    Image sequences (GIF animation)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    두개의 image 합치기
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pil-python-imaging-library-quick-reference">PIL (python Imaging library) Quick reference</h1>
+<p>python 에서 비트맵 이미지를 그리고 편집하고 등등 여러가지 할 수 있는 오픈소스 이미지 프로세싱 라이브러리. 간편해서 매우널리 쓰인다.</p>
+<h2 id="pil">PIL 설치</h2>
+<ul>
+<li>오리지날 PIL 은 개발중단 되었고,  pillow  프로젝트가 뒤를 잇고 있다. 대부분의 사용방법이 동일하다.</li>
+<li>더 다양한 기능을 활용하기 위해 아래 외부 라이브러리를 먼저 설치해도 좋다.
+(아래는 라즈베리파이에서  apt-get을 사용해 설치했으나 macos 에서는 homebrew사용해 설치 할 수 잇다.)
+참고: https://pillow.readthedocs.io/en/stable/installation.html#external-libraries</li>
+</ul>
+<pre><code class="language-bash">$ sudo apt-get install libjpeg-dev -y
+$ sudo apt-get install zlib1g-dev -y
+$ sudo apt-get install libfreetype6-dev -y
+$ sudo apt-get install liblcms1-dev -y
+$ sudo apt-get install libopenjp2-7 -y
+$ sudo apt-get install libtiff5 -y
+
+$ sudo pip3 install pillow
+</code></pre>
+<h2 id="image-class">Image class</h2>
+<p>PIL 의 가장 기본이 되는 클래스. 비트맵 이미지 데이터를 갖는다.
+* Image.open() 을 사용해 비트맵 이미지를 불러들여 Image 오브젝트 만들 수 있다.</p>
+<pre><code class="language-python">form PIL import Image
+im = Image.open(&quot;hopper.ppm&quot;)
+</code></pre>
+<ul>
+<li>혹은 Image.new(mode, size, color=0) 를 통해 수동으로 이미지 오브젝트를 만들 수도 있다.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mode</td>
+<td>1 (1-bit pixels, black and white, stored with one pixel per byte),</td>
+</tr>
+<tr>
+<td></td>
+<td>L (8-bit pixels, black and white),</td>
+</tr>
+<tr>
+<td></td>
+<td>P (8-bit pixels, mapped to any other mode using a color palette)</td>
+</tr>
+<tr>
+<td></td>
+<td>RGB (3x8-bit pixels, true color)</td>
+</tr>
+<tr>
+<td></td>
+<td>RGBA (4x8-bit pixels, true color with transparency mask)</td>
+</tr>
+<tr>
+<td></td>
+<td>CMYK (4x8-bit pixels, color separation)</td>
+</tr>
+<tr>
+<td></td>
+<td>YCbCr (3x8-bit pixels, color video format)</td>
+</tr>
+<tr>
+<td></td>
+<td>Note that this refers to the JPEG, and not the ITU-R BT.2020, standard</td>
+</tr>
+<tr>
+<td></td>
+<td>HSV (3x8-bit pixels, Hue, Saturation, Value color space)</td>
+</tr>
+<tr>
+<td></td>
+<td>I (32-bit signed integer pixels)</td>
+</tr>
+<tr>
+<td></td>
+<td>F (32-bit floating point pixels)</td>
+</tr>
+<tr>
+<td>size</td>
+<td>2-tuple (width, height)</td>
+</tr>
+<tr>
+<td>color</td>
+<td>배경색. RGB 모드인 경우 3-tuple</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>array 로부터 이미지를 만들 수도 있는데, Numpy 사용하는 경우 유용하다.</li>
+</ul>
+<pre><code class="language-python">from PIL import Image
+import numpy as np
+
+im = Image.open('hopper.jpg')
+a = np.asarray(im)
+
+im = Image.fromarray(a)
+</code></pre>
+<ul>
+<li>image.show()를 사용해 이미지를 미리보기 할 수 있다.
+os의 미리보기 유틸리티를 활용한다. macos에서 는 quicklook으로 이미지를 보여준다.</li>
+</ul>
+<pre><code class="language-python">im.show()
+</code></pre>
+<ul>
+<li>image.save(filename) 으로 파일로 저장할 수 있다.
+파일명에 따라 파일포맷을 자동으로 결정한다.</li>
+</ul>
+<pre><code class="language-python">import os, sys
+from PIL import Image
+
+ f,e = os,path.splitext(filename) # 파일명과 확장자로 나눔
+outfile = f + &quot;.jpg&quot;
+if filename != outfile:
+  try:
+    Image.open(filename).save(outfile) # .jpg로 save하면 자동으로 jpg 포맷으로 변환
+  except:
+    print(&quot;cannot convert&quot;, filename)
+</code></pre>
+<ul>
+<li>crop(), transpose(), paste() 할 수 있다.</li>
+</ul>
+<pre><code class="language-python">box = (100,100,400,400)
+region = im.crop(box)
+
+region = region.transpose(Image.ROTATE_180)
+im.paste(region, box)
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PIL.Image.FLIP_LEFT_RIGHT</td>
+<td>좌우반전</td>
+</tr>
+<tr>
+<td>PIL.Image.FLIP_TOP_BOTTOM</td>
+<td>상하반전</td>
+</tr>
+<tr>
+<td>PIL.Image.ROTATE_90</td>
+<td>90도 회전</td>
+</tr>
+<tr>
+<td>PIL.Image.ROTATE_180</td>
+<td>180도 회전</td>
+</tr>
+<tr>
+<td>PIL.Image.ROTATE_270</td>
+<td>-90도 회전</td>
+</tr>
+<tr>
+<td>PIL.Image.TRANSPOSE</td>
+<td></td>
+</tr>
+<tr>
+<td>PIL.Image.TRANSVERSE</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2 id="imagedraw-class">ImageDraw class</h2>
+<ul>
+<li>Image  object 위에 간단한  2d drawing .</li>
+<li>빈 image를 만든다.</li>
+<li>ImageDraw.Draw(image)로 drawing context를 득한다.</li>
+<li>여러가지 그림도 그리고 글씨도(!) 쓴다.</li>
+<li>image.show()로 디스플레이한다.</li>
+</ul>
+<pre><code class="language-python">from PIL import Image, ImageDraw, ImageFont
+# get an image
+base = Image.open('Pillow/Tests/images/hopper.png').convert('RGBA')
+
+# make a blank image for the text, initialized to transparent text color
+txt = Image.new('RGBA', base.size, (255,255,255,0))
+
+# get a font
+fnt = ImageFont.truetype('Pillow/Tests/fonts/FreeMono.ttf', 40)
+# get a drawing context
+d = ImageDraw.Draw(txt)
+
+# draw text, half opacity
+d.text((10,10), &quot;Hello&quot;, font=fnt, fill=(255,255,255,128))
+# draw text, full opacity
+d.text((10,60), &quot;World&quot;, font=fnt, fill=(255,255,255,255))
+
+out = Image.alpha_composite(base, txt)
+
+out.show()
+</code></pre>
+<ul>
+<li>
+<p>ImageDraw.Draw(im, mode=None)
+  im - 그림그릴 이미지 오브젝트
+  mode - 흑백모드 '1',  grayscale모드 'L' , RGB, RGBA ...</p>
+</li>
+<li>
+<p>ImageDraw.ImageDraw.point(xy, fill=None)
+  xy - 점들의 좌표. 2-tuples like [(x, y), (x, y), ...] or numeric values like [x, y, x, y, ...]
+  fill - 점 색</p>
+</li>
+<li>
+<p>ImageDraw.ImageDraw.rectangle(xy, fill=None, outline=None, width=0)
+  xy - 두 대각 꼭지점. [(x0, y0), (x1, y1)] or [x0, y0, x1, y1]
+  outline - 선 색
+  fill - 채움 색
+  width - 라인 두께</p>
+</li>
+<li>
+<p>ImageDraw.ImageDraw.line(xy, fill=None, width=0, joint=None)
+  xy - 선분을 이루는 점의 연속. [(x, y), (x, y), ...] or [x, y, x, y, ...]
+  fill - 채움 색
+  width - 라인 두께 (pixel)
+  joint - None or "curve" 모서리 둥글리기</p>
+</li>
+</ul>
+<pre><code class="language-python">from PIL import Image, ImageDraw
+
+im = Image.open(&quot;hopper.jpg&quot;)
+
+draw = ImageDraw.Draw(im)
+draw.line((0, 0) + im.size, fill=128)
+draw.line((0, im.size[1], im.size[0], 0), fill=128)
+
+# write to stdout
+im.save(sys.stdout, &quot;PNG&quot;)
+</code></pre>
+<ul>
+<li>
+<p>ImageDraw.ImageDraw.arc(xy, start, end, fill=None, width=0)
+  xy - 아크 외접 사각형. [(x0, y0), (x1, y1)] or [x0, y0, x1, y1]
+  start - 출발각(degree), 3시방향이 0˚부터 시작해서 시계방향으로 증가.
+  end - 도착각
+  fill - 도형의 색
+  width - 라인 두께 (pixel)</p>
+</li>
+<li>
+<p>ImageDraw.ImageDraw.ellipse(xy, fill=None, outline=None, width=0)
+  xy - 타원 외접 사각형. [(x0, y0), (x1, y1)] or [x0, y0, x1, y1]
+  outline - 선 색
+  fill - 채움 색
+  width - 라인 두께(pixel)</p>
+</li>
+</ul>
+<h2 id="imagetext-class-text">ImageText class -  text 표시하기</h2>
+<p>폰트를 로딩한 후, ImageDraw.text() 를 사용해 텍스트를 표시할 수 있다.</p>
+<ul>
+<li>ImageFont.truetype(font=None, size=10, index=0, encoding='', layout_engine=None)
+font - truetype font  파일.
+size - 폰트 크기. piont 단위
+index - light, bold  등 fontface  선택. 디폴트는 index=0
+encoding - 'unic'(unicode. default), 'symb'(Microsoft Symbol), 'ADOB'(Adobe Standard), 'ADBE'(Adobe Export), 'armn'(Apple Roman)</li>
+</ul>
+<p>```python
+  from PIL import Image, ImageDraw, ImageFont</p>
+<p>im = Image.new('RGB', (128,64),0)
+  draw = ImageDraw.Draw(im)</p>
+<p>font = ImageFont.truetype("Arial.ttf",15)</p>
+<p>draw.text((10,10), "hello world\n I'm a boy \n You are a girl", font=font)
+  im.show()</p>
+<p>```</p>
+<ul>
+<li>
+<p>ImageDraw.ImageDraw.text(xy, text, fill=None, font=None, anchor=None, spacing=0, align="left", direction=None, features=None, language=None)
+텍스트를 표시한다.
+xy - 텍스트 위치. 텍스트 상자의 좌상단위치임.
+text - 표시할 텍스트.
+fill - 텍스트 컬러
+font - ImageFont instance
+spacing - 줄 간격,(pixel)
+align - "left", "center" or "right"
+direction - 'rtl'(right to left) or 'ltr' or 'ttb'(top to bottom). libraqm 라이브러리 필요함.
+features - opentype의 다양한 기능
+language - https://www.w3.org/International/articles/language-tags/</p>
+</li>
+<li>
+<p>ImageDraw.ImageDraw.textsize(text, font=None, spacing=4, direction=None, features=None, language=None)
+ 표시될 text의 크기를 (가로, 세로)(pixel) 로 리턴한다.
+text - 표시할 텍스트
+font - ImageFont instance
+spacing - 행 간격</p>
+</li>
+</ul>
+<h3 id="_1">한글표시</h3>
+<ul>
+<li>한글폰트가 잘 표시되지 않는다는 리포트가 많이 있었으나 테스트 결과 별다른 조작 없이 잘 된다.
+python2에서 유니코드 지원이 원활치 않아 있었던 문제로 생각된다. python3에서는 잘 된다.</li>
+<li>폰트파일의 위치는 중요하다. 기본적으로 cwd(currunt working directory - 디폴트는 실행중인 스크립트와 같은 위치) 에서 폰트를 찾고, 못찾으면 os에 설치된 폰트 파일을 찾아서 사용한다.(똑똑한데?) 그럼에도 내가 한참 헤맨 이유는 atom editor의 script  package가 편집중인 스크립트의 위치가 아닌 프로젝트의 위치를  cwd 로 하도록 설정되어있었기 때문... script package 설정변경으로 간단히 해결됨.</li>
+</ul>
+<pre><code class="language-python">from PIL import Image, ImageDraw, ImageFont
+
+im = Image.new('RGB', (128,64),0)
+draw = ImageDraw.Draw(im)
+
+font = ImageFont.truetype(&quot;malgun.ttf&quot;,15,0)
+
+draw.text(
+(10,10),
+'''세종대왕
+만만세''',
+font=font)
+
+im.show()
+</code></pre>
+<p><img alt="" src="https://cl.ly/5d93f4/Image%202019-07-30%20at%2010.13.53%20PM.png" /></p>
+<h2 id="image-sequences-gif-animation">Image sequences (GIF animation)</h2>
+<ul>
+<li>Image.open("....gif") 로 여러 프레임이 있는 이미지를 열었다면, image.seek() 과 image.tell()로 특정 프레임을 로드하고 볼 수 있다.  파일 끝에서는  EOFError 발생한다.</li>
+</ul>
+<pre><code class="language-python">from PIL import Image
+im = Image.open(&quot;source.gif&quot;)
+im.seek(1)
+
+try:
+    while 1:
+        im.seek(im.tell()+1)
+        im.show()
+except EOFError:
+    pass
+</code></pre>
+<ul>
+<li>ImageSequence.Iterator 를 사용하면 좀 더 편하게 프레임을 조작 할 수 있다.</li>
+</ul>
+<pre><code class="language-python">from PIL import Image
+from PIL import ImageSequence
+
+im = Image.open(&quot;source.gif&quot;)
+for frame in ImageSequence.Iterator(im):
+    frame.show()
+</code></pre>
+<h2 id="image">두개의 image 합치기</h2>
+<ul>
+<li>Image.paste(im, box= None, mask= None)<br />
+함수를 사용해서 원래의 이미지 위해 다른 이미지를 덧씌울 수 있다.</li>
+<li>im : 덧씌울 Image  object</li>
+<li>box: 2-tuple or 4-tuple 로, 덧씌울 이미지의 위치</li>
+<li>mask: 원한다면  mask적용할 수도 있다('1'mode 이미지, 혹은  RGBA 모드 이미지가 사용되면  A channel). 255 값을 갖는 점은 이미지가 덧씌워지고, 0값을 갖는 점은 원래의 이미지가 그대로 사용된다.</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>
