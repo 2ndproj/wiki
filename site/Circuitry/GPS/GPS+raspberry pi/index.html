@@ -1,0 +1,3393 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Data%20Storage/SD%20card/">
+      
+      
+        <link rel="next" href="../../LCD%2CLED%20Display/i2c%2016X2%20LCD%20with%20pcf8574%20chip/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>GPS - wiki2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gps" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="wiki2" class="md-header__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wiki2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              GPS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="wiki2" class="md-nav__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    wiki2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Android
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Android
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          App Inventor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          App Inventor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20arduino%20Bluetooth/" class="md-nav__link">
+        MIT App inventor + Arduino Bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20google%20maps/" class="md-nav__link">
+        App inventor + Google Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit App Inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/Llama%20Automate/llama%20Automate/" class="md-nav__link">
+        llama Automate로 구현한 초간단 비컨 시스템
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+          ProtoPie   Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie   Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/Llama%20Automate/ProtoPie%20-%20Llama%20Automate/ProtoPie%20-%20Llama%20Automate/" class="md-nav__link">
+        ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Circuitry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Circuitry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/debouncing/" class="md-nav__link">
+        debounce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+          Attiny85
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Attiny85
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Attiny85/Digispark%20Attiny85/" class="md-nav__link">
+        Digispark Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Attiny85/arduino%20bootloader%20on%20ATTINY85/" class="md-nav__link">
+        ATTINY85 칩에 arduino 프로그래밍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+          Error messages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Error messages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Error%20messages/Arduino%3A%20fatal%20error%3A%20WProgram.h%3A%20No%20such%20file%20or%20directory/" class="md-nav__link">
+        Arduino Error: WProgram.h/ No such file or directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+          Timer & Interrupt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Timer & Interrupt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/ServoTimer2/" class="md-nav__link">
+        ServoTimer2 언제필요한가?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/Software%20Interrupt/" class="md-nav__link">
+        Arduino Software Interrupt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/softPWM/" class="md-nav__link">
+        Software PWM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          Data Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Storage/SD%20card/" class="md-nav__link">
+        SD library (sd카드 사용)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          GPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          GPS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          GPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        GPS
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gps-module" class="md-nav__link">
+    gps module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpsrpi" class="md-nav__link">
+    GPS+RPi 회로 구성
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    라즈베리파이 시리얼 포트 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="라즈베리파이 시리얼 포트 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    시리얼 포트 확인
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uart-getty-service" class="md-nav__link">
+    UART 활성화 &amp; 시리얼 콘솔 연결 (getty service) 비활성화
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    시리얼 연결
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gps-fix" class="md-nav__link">
+    GPS FIX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmea" class="md-nav__link">
+    NMEA 프로토콜
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpsd" class="md-nav__link">
+    GPSD
+  </a>
+  
+    <nav class="md-nav" aria-label="GPSD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_1" class="md-nav__link">
+    gpsd 와 파이썬 라이브러리 설치
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    라즈비안의 디폴트 서비스 제거
+  </a>
+  
+    <nav class="md-nav" aria-label="라즈비안의 디폴트 서비스 제거">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_2" class="md-nav__link">
+    부팅시 gpsd 자동으로 시작하기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_3" class="md-nav__link">
+    gpsd 실행
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cgps" class="md-nav__link">
+    test: cgps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_4" class="md-nav__link">
+    gpsd 가 제공하는 데이터 구조
+  </a>
+  
+    <nav class="md-nav" aria-label="gpsd 가 제공하는 데이터 구조">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd-python" class="md-nav__link">
+    gpsd + python 예제
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kakao-api" class="md-nav__link">
+    kakao api로 좌표변환
+  </a>
+  
+    <nav class="md-nav" aria-label="kakao api로 좌표변환">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kakao" class="md-nav__link">
+    kakao 개발자 계정 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    카카오 api로 좌표변환
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    위경도 표시방법
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datagokr" class="md-nav__link">
+    특정지역의 미세먼지값 알기 (data.go.kr)
+  </a>
+  
+    <nav class="md-nav" aria-label="특정지역의 미세먼지값 알기 (data.go.kr)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datagokr_1" class="md-nav__link">
+    공공데이터 포탈 data.go.kr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    서비스키 발급
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    가까운 측정소 알아보기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          LCD,LED Display
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          LCD,LED Display
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/i2c%2016X2%20LCD%20with%20pcf8574%20chip/" class="md-nav__link">
+        i2c lcd (PCF8574 chip)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/oled%20display-adafruit/" class="md-nav__link">
+        0.96" OLED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+          NeoPixel
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          NeoPixel
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/NeoPixel/" class="md-nav__link">
+        네오픽셀 NeoPixel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/dotstar/" class="md-nav__link">
+        dotstar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/pixel%20data%20for%20POV%20system/" class="md-nav__link">
+        POV (잔상효과)용 pixel data (픽셀 데이타) 만들기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          LittleBits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          LittleBits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit app inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/Hacking%20LittleBits%20cloudBit/" class="md-nav__link">
+        cloudbit 해킹
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/littleBits%20multi-role%20bits%20from%20%20Attiny85%20digispark/" class="md-nav__link">
+        littleBits 만능모듈 with Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          Motors&Acruators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Motors&Acruators
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motors%26Acruators/Stepper%20motor/" class="md-nav__link">
+        Stepper motor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          PCB design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          PCB design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCB%20design/Eagle%20PCB%20design/" class="md-nav__link">
+        Autodesk Eagle 로 PCB 제작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCB%20design/PCB%20panelization/" class="md-nav__link">
+        PCB panelization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCB%20design/seeedfusion%20pcba/" class="md-nav__link">
+        seeed fusion pcb(a) 서비스로 pcb 제작주문하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PCB%20design/vector%20image%20into%20ealge%20pcb/" class="md-nav__link">
+        Eagle pcb에 logo image 넣기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+          Sensors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Sensors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sensors/Load%20cell%20HX711/" class="md-nav__link">
+        loadcell HX711
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sensors/ds18s20/" class="md-nav__link">
+        온도센서 DS18S20 (DS18B20)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+          Sound&Music
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          Sound&Music
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sound%26Music/VS1053%20mp3%20decoder/" class="md-nav__link">
+        VS1053 mp3 decoder chip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sound%26Music/sound%20chip%20PX088A/" class="md-nav__link">
+        aliexpress sound chip PX088A
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+          Transistor & MOSFET
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Transistor & MOSFET
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transistor%20%26%20MOSFET/MOSFET%20switch%20circuit/" class="md-nav__link">
+        MOSFET 를 사용한 switch 회로
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transistor%20%26%20MOSFET/NPN%20transisor%20switch/" class="md-nav__link">
+        NPN transisor switch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+          Wireless communication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Wireless communication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/integer%20to%20byte/" class="md-nav__link">
+        Int형 데이터를 byte로 바꾸기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2" id="__nav_4_11_2_label" tabindex="0">
+          Bluetooth
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/Bluetooth/snap4arduino%20%2B%20arduino%20bluetooth/" class="md-nav__link">
+        snap4arduino + arduino bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2_2" id="__nav_4_11_2_2_label" tabindex="0">
+          Bluetooth 4.0 BLE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth 4.0 BLE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/Bluetooth/Bluetooth%204.0%20BLE/Sort%20of%20BLE%20modules%20in%20market/" class="md-nav__link">
+        BLE 모듈 제품명 알아보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_3" id="__nav_4_11_3_label" tabindex="0">
+          RFID & NFC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RFID & NFC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/RFID%20%26%20NFC/PN532%20NFC%20shield/" class="md-nav__link">
+        PN532 NFC shield
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4" id="__nav_4_11_4_label" tabindex="0">
+          WIFI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          WIFI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4_1" id="__nav_4_11_4_1_label" tabindex="0">
+          ESP8266 Wifi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          ESP8266 Wifi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/WIFI/ESP8266-Wifi/ESP8266-Wifi/" class="md-nav__link">
+        ESP8266 wifi사용하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+          Power
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Power
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../power/LM7805%20-%205V%20regulator/" class="md-nav__link">
+        5V 레귤레이터 LM7805
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          GoogleCloudPlatform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          GoogleCloudPlatform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GoogleCloudPlatform/GoogleVisionApi%20setup/" class="md-nav__link">
+        Google vision api 설치
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GoogleCloudPlatform/python%20Google%20API/" class="md-nav__link">
+        Gmail / Google calendar API for python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Protopie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Protopie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Protopie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Protopie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/PIL%20quick%20reference/" class="md-nav__link">
+        PIL (python Imaging library) Quick reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/raspberry%20pi%20zero%20headress%20setup/" class="md-nav__link">
+        Raspberry pi zero w 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_13" id="__nav_9_13_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9_13">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gps-module" class="md-nav__link">
+    gps module
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpsrpi" class="md-nav__link">
+    GPS+RPi 회로 구성
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    라즈베리파이 시리얼 포트 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="라즈베리파이 시리얼 포트 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    시리얼 포트 확인
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uart-getty-service" class="md-nav__link">
+    UART 활성화 &amp; 시리얼 콘솔 연결 (getty service) 비활성화
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    시리얼 연결
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gps-fix" class="md-nav__link">
+    GPS FIX
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmea" class="md-nav__link">
+    NMEA 프로토콜
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpsd" class="md-nav__link">
+    GPSD
+  </a>
+  
+    <nav class="md-nav" aria-label="GPSD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_1" class="md-nav__link">
+    gpsd 와 파이썬 라이브러리 설치
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    라즈비안의 디폴트 서비스 제거
+  </a>
+  
+    <nav class="md-nav" aria-label="라즈비안의 디폴트 서비스 제거">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_2" class="md-nav__link">
+    부팅시 gpsd 자동으로 시작하기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_3" class="md-nav__link">
+    gpsd 실행
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cgps" class="md-nav__link">
+    test: cgps
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpsd_4" class="md-nav__link">
+    gpsd 가 제공하는 데이터 구조
+  </a>
+  
+    <nav class="md-nav" aria-label="gpsd 가 제공하는 데이터 구조">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpsd-python" class="md-nav__link">
+    gpsd + python 예제
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kakao-api" class="md-nav__link">
+    kakao api로 좌표변환
+  </a>
+  
+    <nav class="md-nav" aria-label="kakao api로 좌표변환">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kakao" class="md-nav__link">
+    kakao 개발자 계정 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    카카오 api로 좌표변환
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    위경도 표시방법
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#datagokr" class="md-nav__link">
+    특정지역의 미세먼지값 알기 (data.go.kr)
+  </a>
+  
+    <nav class="md-nav" aria-label="특정지역의 미세먼지값 알기 (data.go.kr)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datagokr_1" class="md-nav__link">
+    공공데이터 포탈 data.go.kr
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    서비스키 발급
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    가까운 측정소 알아보기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="gps">GPS</h1>
+<h2 id="gps-module">gps module</h2>
+<p>Neo-6m gps 모듈을 사용한다.
+대부분의 gps 모듈이 serial UART 통신을 사용한다. 참고자료가 많은 쪽이 좋으므로  시리얼 통신방식 부품을 고른다.
+구매링크: https://www.devicemart.co.kr/goods/view?no=1321968
+<img alt="" src="https://www.makerlab-electronics.com/my_uploads/2017/06/GPS-Module-01.jpg" />
+* 동작전원 3.3v
+* serial UART (9600 baud)
+* 타 제품에 비해 저렴</p>
+<h2 id="gpsrpi">GPS+RPi 회로 구성</h2>
+<p>라즈베리의 8번째, 10번째 핀이  시리얼 통신용이다.
+<img alt="" src="https://cdn.instructables.com/FP7/CQBO/ICJLZ1TL/FP7CQBOICJLZ1TL.LARGE.jpg?auto=webp&amp;frame=1&amp;width=664&amp;fit=bounds" />  </p>
+<p><img alt="" src="https://cl.ly/49839d/Image%202019-08-30%20at%204.54.46%20PM.png" /></p>
+<h2 id="_1">라즈베리파이 시리얼 포트 설정</h2>
+<p>참고: https://spellfoundry.com/2016/05/29/configuring-gpio-serial-port-raspbian-jessie-including-pi-3/  </p>
+<h3 id="_2">시리얼 포트 확인</h3>
+<ul>
+<li>
+<p>가장 먼저, 라스베리파이에서 시리얼 포트가 어디에 있는지 알아야한다. GPIO상 BCM 14,15번 핀이 시리얼통신용 (각각 TX, RX)인데, 라스비안에서 /dev/serial0으로 불린다. (ls 명령어로 찾아보자)</p>
+</li>
+<li>
+<p>원래 시리얼통신 포트 이름은 /dev/ttyAMA0이다. 그런데 파이3에서는, 이전까지 /dev/ttyAMA0에 할당되어있던 시리얼포트가 블루투스에 할당되었다. 시리얼포트는 /dev/ttyS0로 옮겨졌다.</p>
+</li>
+<li>
+<p>위와같은 이유로 rpi3와 그 이전 기계에서 함께쓰는 코드를 쓰려면 /dev/ttyAMA0라는 이름을 쓰면 안된다. 대신 /dev/serial0라는 이름-일종의 바로가기(aliase)-를 사용하면 된다. 즉 rpi1,2에서는 시리얼 == /dev/ttyAMA0 == /dev/serial0 그리고 rpi3에서는 시리얼 == /dev/ttyS0 == /dev/serial0 터미널에서 확인해보자.</p>
+</li>
+</ul>
+<pre><code>$ ls -l /dev
+</code></pre>
+<p><img alt="" src="https://cl.ly/3U0d47274025/Image%202017-10-27%20at%2011.01.08%20%EC%98%A4%EC%A0%84.png" /></p>
+<p><strong>결론적으로 이것저것 골치아프게 생각하지 말로 시리얼포트는  '/dev/serial0'을 사용하면 된다.</strong></p>
+<ul>
+<li>rpi3에서 /dev/ttyS0포트는 UART(병렬&lt;&gt;직렬 컨버터 하드웨어)가 아닌, UART를 모사한 소프트웨어시리얼이다. 때문에 CPU상태에 따라 시리얼통신이 안정적이지 않은 경우가 있을 수 있다. 만약 블루투스를 소프트시리얼로 돌리고(혹은 사용하지 않고) 시리얼통신을 하드웨어 UART를 사용해 안정적으로 하고자한다면 GPIO 시리얼을 /dev/ttyAMA0에 할당할 수도 있다. 구체적인 방법은 위 자료 참고.</li>
+</ul>
+<h3 id="uart-getty-service">UART 활성화 &amp; 시리얼 콘솔 연결 (getty service) 비활성화</h3>
+<ul>
+<li>예전 컴퓨터라는게 막 생겨난 시기, 다른 컴퓨터에 접속해 콘솔창을 띄우는 용도로 시리얼 포트를 사용하곤 했었는데, rpi에서 시리얼 포트를 그런 용도로 사용하는 것을 기본으로 설정해 두었다. (getty 서비스라고 함).</li>
+<li>시리얼 포트를 다른 하드웨어와 연결해 우리 마음대로 다루고 싶다면 콘솔 연결을 비활성화 시켜야 한다.</li>
+<li>
+<p>콘솔연결은 비활성화하더라도 시리얼포트는 사용가능하게 두어야 한다.</p>
+</li>
+<li>
+<p>raspi-config  프로그램으로 간단히 할 수 있다.<br />
+터미널에서</p>
+</li>
+</ul>
+<pre><code class="language-bash">$ sudo raspi-config
+</code></pre>
+<p><img alt="" src="https://cl.ly/2e1b57/Image%202019-08-31%20at%201.33.08%20PM.png" />
+<img alt="" src="https://cl.ly/167455/Image%202019-08-31%20at%201.33.39%20PM.png" />
+<img alt="" src="https://cl.ly/d81b49/Image%202019-08-31%20at%201.34.02%20PM.png" />
+<img alt="" src="https://cl.ly/59471d/Image%202019-08-31%20at%201.34.27%20PM.png" /></p>
+<ul>
+<li>
+<p>재부팅한다.</p>
+</li>
+<li>
+<p>혹은 GUI에서는  Raspberry Pi Configuration 창을 열어서
+<img alt="" src="https://cl.ly/272s331I3o1c/download/[f885f30a8379f4df9a197b839fb7a5c8]_Image%202017-10-27%20at%2011.57.24%20%EC%98%A4%EC%A0%84.png" /></p>
+</li>
+</ul>
+<h3 id="_3">시리얼 연결</h3>
+<p>시리얼로 들어오는 rawdata 확인해보자
+* 먼저 시리얼 포트 설정</p>
+<pre><code class="language-bash">$ stty -F /dev/serial0 raw 9600 cs8 clocal -cstopb
+</code></pre>
+<ul>
+<li>시리얼포트로 들어오는 값을 살펴보자</li>
+</ul>
+<pre><code class="language-bash">$ cat /dev/serial0
+</code></pre>
+<p><img alt="" src="https://cl.ly/563e3c/Image%202019-09-04%20at%2011.47.27%20AM.png" /></p>
+<h2 id="gps-fix">GPS FIX</h2>
+<ul>
+<li>
+<p>gps에서 사용되는 중요한 개념중에  FIX라는 것이 있다.
+디바이스를 부팅하고나서도 위성으로부터 전파를 받아 디바이스의 위치를 계산할 수 았으려면 조금 시간이 걸리는데, 이렇게 충분한 데이터를 모아 자신의 위치를 계산할 수 있게되면 fix되었다라고 이야기한다. 더 구체적인 내용은 공부를 더 해보자.</p>
+</li>
+<li>
+<p>neo-6m gps는 유난히  fix 하는데 시간이 오래 걸리는 듯 하다. 위성 신호가 잘 잡혀도 길게는 10분정도 걸리는 경우가 있다.  </p>
+</li>
+<li>fix 되면 회로 위의 led가 깜빡거려서  fix되었음을 알려준다.</li>
+</ul>
+<h2 id="nmea">NMEA 프로토콜</h2>
+<p>gps 통신 표준을 관리하는 곳은 재미있게도 NMEA, 'National Marine Electronics Association' 해양전자협회? 이다. 그래서 gps표준 프로토콜 이름도 'NMEA-0183' 이다.<br />
+잘 정리된 한글자료: https://techlog.gurucat.net/239 [하얀쿠아의 이것저것 만들기 Blog]
+nmea 표준 레퍼런스: https://www.sparkfun.com/datasheets/GPS/NMEA%20Reference%20Manual-Rev2.1-Dec07.pdf  </p>
+<p>NMEA 데이터 형태
+ ``` $GPGGA,141113.999,3730.0308,N,12655.2369,E,1,06,1.7,98.9,M,,,,0000*3E</p>
+<p>$GPGSA,A,3,02,07,01,20,04,13,,,,,,,3.7,1.7,3.2*31</p>
+<p>$GPRMC,141113.999,A,3730.0308,N,12655.2369,E,19.77,195.23,101200,,*3C</p>
+<p>$GPGGA,141114.999,3730.0264,N,12655.2351,E,1,07,1.2,98.8,M,,,,0000*3C</p>
+<p>$GPGSA,A,3,02,07,01,20,24,04,13,,,,,,2.3,1.2,1.9*3E</p>
+<p>$GPRMC,141114.999,A,3730.0264,N,12655.2351,E,15.51,202.12,101200,,*3C</p>
+<p>$GPGGA,141115.999,3730.0231,N,12655.2345,E,1,07,1.2,98.7,M,,,,0000*37</p>
+<p>$GPGSA,A,3,02,07,01,20,24,04,13,,,,,,2.3,1.2,1.9*3E</p>
+<p>$GPGSV,2,1,07,07,84,025,47,04,51,289,48,20,40,048,47,02,32,203,46*74</p>
+<p>$GPGSV,2,2,07,01,23,101,47,13,20,131,32,24,19,268,40*49</p>
+<p>$GPRMC,141115.999,A,3730.0231,N,12655.2345,E,12.14,194.75,101200,,*33</p>
+<p>$GPGGA,141116.999,3730.0210,N,12655.2330,E,1,07,1.2,98.5,M,,,,0000*37</p>
+<p>$GPGSA,A,3,02,07,01,20,24,04,13,,,,,,2.3,1.2,1.9*3E</p>
+<p>$GPRMC,141116.999,A,3730.0210,N,12655.2330,E,8.01,194.65,101200,,*0F</p>
+<p>$GPGGA,141117.998,3730.0199,N,12655.2320,E,1,06,1.3,98.2,M,,,,0000*33</p>
+<p>$GPGSA,A,3,02,07,01,20,24,04,,,,,,,2.4,1.3,2.0*30</p>
+<pre><code>* $ : 각 문장의 시작
+* \n (CR/LF) : 각 문장의 끝
+* sentence id : $다음에 오는 다섯 글자로,디바이스 종류를 밝히는두자(예를들어 GP) 와 이어지는 데이터 종류를 밝히는 3글자(예를들어 GGA)로 구성됨.
+* 데이터: 콤마로 구분된 데이터들은  앞의 sentence id에 따라 해석하게 된다.
+가장 기본적인 몇가지만 읽는 방법을 알아보자
+### GPGGA
+GPGGA는 'Global Positioning System Fix Data'를 의미한다.  아래의 GPGGA 예제 sentence를 살펴보자.
+
+ GPGGA는 총 17개의 field를 가진다.
+![](https://cl.ly/de0df9/Image%202019-09-04%20at%203.10.19%20PM.png)
+![](https://cl.ly/69bb04/Image%202019-09-04%20at%203.10.36%20PM.png)
+
+### GPRMC
+GPRMC는 'Recommended Minimum Specific GNSS Data'로 정의되어있다.
+NMEA에는 GPS에서 필수적인 PVT(Position, Velocity, Time) 데이터의 고유한 버전이 있다.
+그것을 RMC라고 부른다. 'RMC'에서 RM이 Recommended Minimum의 약자이고, C는 GNSS를 의미한다. RMA, RMB도 있으며 각각 LORAN-C와 Navigation을 의미한다. 상식으로 알아두자.
+![](https://cl.ly/fc6b5f/Image%202019-09-04%20at%203.11.51%20PM.png)
+![](https://cl.ly/f09f14/Image%202019-09-04%20at%203.12.04%20PM.png)
+
+### GPGSV
+GSV는 'GNSS Satellite in View' 를 의미한다. 각각 위성의 상태에 대해 나와있는 문장이다.
+![](https://cl.ly/50a166/Image%202019-09-04%20at%203.13.52%20PM.png)
+
+### checksum
+NMEA checksum 계산방법 및 예제코드
+지금까지 예제로 보여준 NMEA sentence들을 살펴보면 알겠지만, checksum은 * 뒤에 16진수 두자리로 표시한다.
+
+checksum의 계산은 $, * 의 사이에 있는 각 문자를 exclusive-or (XOR) 연산한 값을 표시한다.
+
+어떤 NMEA sentence가 주어지면, * 뒤에 있는 16진수 두자리의 checksum과 직접 XOR연산한 값이 일치하는지를 검사해야 한다. 일치하지 않는다면, 그 sentence는 통신상의 문제 등의 이유로, 결함이 있는 것으로 간주해야 하며, 사용하면 안된다.
+예를 들어보자.
+
+&gt;$GPRMC,155123.000,A,4043.8432,N,07359.7653,W,0.15,83.25,200407,,\*28
+
+이와 같은 NMEA sentence가 주어졌을때, checksum계산을 위한 XOR연산은 아래 각 문자들에 대해서 수행하면 된다.
+
+&gt;GPRMC,155123.000,A,4043.8432,N,07359.7653,W,0.15,83.25,200407,,
+
+
+## python 에서  NMEA 데이터 사용 예제
+### manually
+참고: http://ozzmaker.com/using-python-with-a-gps-receiver-on-a-raspberry-pi/
+
+```python
+import serial
+
+port = &quot;/dev/serial0&quot;
+
+def parseGPS(data):
+#    print &quot;raw:&quot;, data #prints raw data
+    if data[0:6] == &quot;$GPRMC&quot;:
+        sdata = data.split(&quot;,&quot;)
+        if sdata[2] == 'V':
+            print &quot;no satellite data available&quot;
+            return
+        print &quot;---Parsing GPRMC---&quot;,
+        time = sdata[1][0:2] + &quot;:&quot; + sdata[1][2:4] + &quot;:&quot; + sdata[1][4:6]
+        lat = decode(sdata[3]) #latitude
+        dirLat = sdata[4]      #latitude direction N/S
+        lon = decode(sdata[5]) #longitute
+        dirLon = sdata[6]      #longitude direction E/W
+        speed = sdata[7]       #Speed in knots
+        trCourse = sdata[8]    #True course
+        date = sdata[9][0:2] + &quot;/&quot; + sdata[9][2:4] + &quot;/&quot; + sdata[9][4:6]#date
+
+        print &quot;time : %s, latitude : %s(%s), longitude : %s(%s), speed : %s, True Course : %s, Date : %s&quot; %  (time,lat,dirLat,lon,dirLon,speed,trCourse,date)
+
+def decode(coord):
+    #Converts DDDMM.MMMMM &gt; DD deg MM.MMMMM min
+    x = coord.split(&quot;.&quot;)
+    head = x[0]
+    tail = x[1]
+    deg = head[0:-2]
+    min = head[-2:]
+    return deg + &quot; deg &quot; + min + &quot;.&quot; + tail + &quot; min&quot;
+
+
+print &quot;Receiving GPS data&quot;
+ser = serial.Serial(port, baudrate = 9600, timeout = 0.5)
+while True:
+   data = ser.readline()
+   parseGPS(data)
+ ```
+
+### pynmea2 library 사용
+NMEA 데이터 파싱을 도와주는 pynmea2 라이브러리를 사용할 수 있다.
+* 라이브러리 설치
+```bash
+$ pip install pynmea2
+</code></pre>
+<ul>
+<li>예제</li>
+</ul>
+<pre><code class="language-python">import serial
+import pynmea2
+
+port = &quot;/dev/serial0&quot;
+
+def parseGPS(str):
+    if str.find('GGA') &gt; 0:
+        msg = pynmea2.parse(str)
+        print &quot;Timestamp: %s -- Lat: %s %s -- Lon: %s %s -- Altitude: %s %s -- Satellites: %s&quot; % (msg.timestamp,msg.lat,msg.lat_dir,msg.lon,msg.lon_dir,msg.altitude,msg.altitude_units,msg.num_sats)
+
+serialPort = serial.Serial(port, baudrate = 9600, timeout = 0.5)
+while True:
+    str = serialPort.readline()
+    parseGPS(str)
+</code></pre>
+<h2 id="gpsd">GPSD</h2>
+<p>gpsd 는 GPS daemon의 약자로, 백그라운드에서 동작하면서  gps 사용을 도와주는 프로그램이다. 시리얼포트에서 들어오는 로데이터를 바로 사용할 수도 있지만, gpsd과, 이와 연계된 라이브러리를 사용하면 더 쉽게  gps가 제공하는 정보를 활용할 수 있다.
+Adafruit 참고자료: https://learn.adafruit.com/adafruit-ultimate-gps-hat-for-raspberry-pi/use-gpsd
+gpsd 공식문서:https://gpsd.gitlab.io/gpsd/index.html</p>
+<h3 id="gpsd_1">gpsd 와 파이썬 라이브러리 설치</h3>
+<pre><code class="language-bash">$ sudo apt-get update
+$ sudo apt-get install gpsd gpsd-clients python-gps
+</code></pre>
+<h3 id="_4">라즈비안의 디폴트 서비스 제거</h3>
+<p>라즈비안에서는 라즈베리파이에 USB를 통해 외부 gps장치를 연결이 감지되면 gpsd가 실행되도록하는 systemd 서비스가 기본 켜져있다. 이 부분이 간섭일으키므로  disable 시킨다.</p>
+<pre><code class="language-bash">$ sudo systemctl stop gpsd.socket
+$ sudo systemctl disable gpsd.socket
+</code></pre>
+<h4 id="gpsd_2">부팅시 gpsd 자동으로 시작하기</h4>
+<ul>
+<li>[ ] systemd를 죽이는 대신에 usb가 아닌 serial0에 연결된 gps 가 부팅과 동시에 실행되도록 하려면, /etc/default/gpsd 를 수정토록 한다.</li>
+</ul>
+<pre><code class="language-bash">$ sudo nano /etc/default/gpsd
+</code></pre>
+<p>from:</p>
+<blockquote>
+<p>DEVICES=""  </p>
+</blockquote>
+<p>to:</p>
+<blockquote>
+<p>DEVICES="/dev/serial0"</p>
+</blockquote>
+<p>그리고  systemd  서비스는 다시 켜준다.
+ <code>bash
+ $ sudo systemctl enable gpsd.socket
+ $ sudo systemctl start gpsdsocket</code></p>
+<h3 id="gpsd_3">gpsd 실행</h3>
+<pre><code class="language-bash">$ sudo gpsd /dev/serial0 -F /var/run/gpsd.sock
+</code></pre>
+<p>끌 때는</p>
+<pre><code class="language-bash">$ sudo killall gpsd
+</code></pre>
+<h3 id="test-cgps">test: cgps</h3>
+<p>gpsd가 제공하는 데이터를 실시간으로 확인할 수 있다.</p>
+<pre><code class="language-bash">$ cgps
+</code></pre>
+<p><img alt="" src="https://cl.ly/dc6e40/Image%202019-09-04%20at%2012.36.37%20PM.png" /></p>
+<h3 id="gpsd_4">gpsd 가 제공하는 데이터 구조</h3>
+<p>gpsd의 데이터는 json 형식으로,  'class' attribute 에 따라 해석한다.
+gpsd 프로토콜 공식문서: https://gpsd.gitlab.io/gpsd/gpsd_json.html</p>
+<h4 id="gpsd-python">gpsd + python 예제</h4>
+<ul>
+<li>gpsd로부터  TPV (time, position, velocity) 기본정보 가져오기</li>
+</ul>
+<pre><code class="language-python">#! /usr/bin/python
+
+from gps import *
+import time
+
+gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
+print 'latitude\tlongitude\ttime utc\t\t\taltitude\tepv\tept\tspeed\tclimb' # '\t' = TAB to try and output the data in columns.
+
+try:
+
+
+    while True:
+        report = gpsd.next() #
+        if report['class'] == 'TPV':
+
+            print  getattr(report,'lat',0.0),&quot;\t&quot;,
+            print  getattr(report,'lon',0.0),&quot;\t&quot;,
+            print getattr(report,'time',''),&quot;\t&quot;,
+            print  getattr(report,'alt','nan'),&quot;\t\t&quot;,
+            print  getattr(report,'epv','nan'),&quot;\t&quot;,
+            print  getattr(report,'ept','nan'),&quot;\t&quot;,
+            print  getattr(report,'speed','nan'),&quot;\t&quot;,
+            print getattr(report,'climb','nan'),&quot;\t&quot;
+
+        time.sleep(1)
+
+except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
+    print &quot;Done.\nExiting.&quot;
+</code></pre>
+<ul>
+<li>인공위성 정보 가져오기</li>
+</ul>
+<pre><code class="language-python">#! /usr/bin/python
+
+from gps import *
+import time
+import os
+
+gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
+
+try:
+    while True:
+
+        report = gpsd.next() #
+        if report['class'] == 'SKY':
+            os.system('clear')
+            print ' Satellites (total of', len(gpsd.satellites) , ' in view)'
+            for i in gpsd.satellites:
+                print 't', i
+
+
+            print '\n\n'
+            print 'PRN = PRN ID of the satellite. 1-63 are GNSS satellites, 64-96 are GLONASS satellites, 100-164 are SBAS satellites'
+            print 'E = Elevation in degrees'
+            print 'As = Azimuth, degrees from true north'
+            print 'ss = Signal stength in dB'
+            print 'used = Used in current solution?'
+
+        time.sleep(1)
+
+
+except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
+    print &quot;Done.\nExiting.&quot;
+</code></pre>
+<h2 id="kakao-api">kakao api로 좌표변환</h2>
+<p>gps는 위경도를 값으로 사용하는데반해, airkorea api 는 x,y  좌표계인 tm좌표를 사용한다. 이들 사이에 좌표변환이 필요한데, 공식을 찾아 프로그래밍 하는 것도 가능하겠지만, <br />
+참고: http://cfile227.uf.daum.net/attach/115A0B4E4E730D4F33E863<br />
+간단한 방법으로
+카카오에서 제공하는  api를 사용할 수 있다.<br />
+참고: https://developers.kakao.com/docs/restapi/local#%EC%A2%8C%ED%91%9C%EA%B3%84-%EB%B3%80%ED%99%98</p>
+<h3 id="kakao">kakao 개발자 계정 만들기</h3>
+<p>developers.kakao.com 에서 개발자 계정을 등록한다. 바로 승인된다.</p>
+<h3 id="api">카카오 api로 좌표변환</h3>
+<pre><code class="language-python"># 카카오 api에서 제공하는 좌표변환기능 사용해  위경도&gt; tm좌표로 바꾸어준다.
+    if self.longitude is not None and self.latitude is not None: # 위경도 값이 있을 때만..
+        url = 'https://dapi.kakao.com/v2/local/geo/transcoord.json' #좌표계-변환
+        params = {'x':self.longitude, 'y':self.latitude, 'input_coord':'WGS84', 'output_coord':'TM'}
+        headers = {'Authorization': 'KakaoAK '+ KakaoAK}
+        resp = requests.get(url, params = params, headers = headers)
+        if resp.status_code == 200: # OK
+            #test
+            print(resp.json())
+
+            self.tmX = resp.json()['documents'][0]['x']
+            self.tmY = resp.json()['documents'][0]['y']
+
+            #test
+            print('tmX: %s, tmY: %s' %(self.tmX, self.tmY))
+
+        else:
+            print('kakao Error: %s' %resp.status_code)
+</code></pre>
+<h3 id="_5">위경도 표시방법</h3>
+<p>그런데 이 때에 주의할점!<br />
+gps의 경위도 데이터는 dddmm.mmm (degree.minute)형식으로, 도(정수)+분(실수)로 구성된다.
+그런데 kakao api나 구글맵 등에서 요청하는 경위도 데이터는 ddd.ddddd 형식으로 도(실수) 로 변환되어야 한다.
+참고: https://m.blog.naver.com/PostView.nhn?blogId=caolympiad&amp;logNo=220855909060&amp;proxyReferer=https%3A%2F%2Fwww.google.com%2F</p>
+<pre><code class="language-python">gpslat = sdata[3] # 시리얼 데이터중 4번째항목이 위도
+            degree = gpslat[0:2]
+            minute = gpslat[2:]
+            self.latitude = float(degree)+float(minute)/60
+
+            gpslon = sdata[5] #데이터중 6번째 항목이 경도
+            degree = gpslon[0:3]
+            minute = gpslon[3:]
+            self.longitude = float(degree)+float(minute)/60
+</code></pre>
+<h2 id="datagokr">특정지역의 미세먼지값 알기 (data.go.kr)</h2>
+<h3 id="datagokr_1">공공데이터 포탈 data.go.kr</h3>
+<p>정부에서 제공하는 갖가지 데이터 api로 혹은 차트로 제공.
+특정 좌표를 사용해 지역의 미세먼지값을 알기 위해서는 두개의 서비스를 사용해야한다.
+1. 측정소정보 조회 서비스
+2. 대기오염정보 조회 서비스<br />
+대기오염정보조회 서비스에 좌표를 바로 사용하도록 되어있지 않아, 먼저 측정서정보 조회 서비스로 근처의 가까운 측정소 이름을 알아낸 후, 그 이름으로 대기오염정보조회 서비스에 리퀘스트를 보내야한다.</p>
+<h3 id="_6">서비스키 발급</h3>
+<p>data.go.kr  에 계정만든 후에 사용하고자 하는 서비스를 선택해 (여기서는 측정소 조회서비스 &amp; 대기오염정보 조회 서비스) 활용신청
+<img alt="" src="https://cl.ly/bf32bb/Image%202019-09-07%20at%2010.09.15%20AM.png" />
+활용신청하면 서비스키를 발급 받는다.
+<img alt="" src="https://cl.ly/9a6576/Image%202019-09-07%20at%2010.17.09%20AM.png" /></p>
+<h3 id="_7">가까운 측정소 알아보기</h3>
+<pre><code class="language-python"># 가까운 측정소 알아보기 (에어코리아 측정소정보 조회 서비스)
+if self.tmX is not None and self.tmY is not None:
+    url = 'http://openapi.airkorea.or.kr/openapi/services/rest/MsrstnInfoInqireSvc/getNearbyMsrstnList?serviceKey=' + DataGoKrKey
+    # serviceKey 파라메터를 url에 직접넣은이유? -&gt; requests 의 버그로여겨짐. %2F -&gt; %252F로 비뀌는 현상... 참고: http://tkurek.blogspot.com/2013/06/252f-instead-of-2f-in-url-apache.html
+    params = {'_returnType':'json',
+            'tmX': self.tmX,
+            'tmY': self.tmY,
+            }
+    resp = requests.get(url, params=params)
+
+    if resp.status_code == 200:
+
+        #test
+        print('근처 측정소 response: %s /n url: %s' %(resp.text,resp.url))
+
+    else:
+        print('data.go.kr Error: %s' %resp.status_code)
+</code></pre>
+<ul>
+<li>[ ] serviceKey 파라메터를 url에 직접넣은이유? -&gt; requests 의 버그로여겨짐. %2F -&gt; %252F로 비뀌는 현상... 참고: http://tkurek.blogspot.com/2013/06/252f-instead-of-2f-in-url-apache.html</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>

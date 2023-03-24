@@ -1,0 +1,3404 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Motors%26Acruators/Stepper%20motor/">
+      
+      
+        <link rel="next" href="../PCB%20panelization/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>Autodesk Eagle 로 PCB 제작하기 - wiki2</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#autodesk-eagle-pcb" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="wiki2" class="md-header__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            wiki2
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Autodesk Eagle 로 PCB 제작하기
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="wiki2" class="md-nav__button md-logo" aria-label="wiki2" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    wiki2
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Android
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Android
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          App Inventor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          App Inventor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20arduino%20Bluetooth/" class="md-nav__link">
+        MIT App inventor + Arduino Bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20google%20maps/" class="md-nav__link">
+        App inventor + Google Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/App%20Inventor/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit App Inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/Llama%20Automate/llama%20Automate/" class="md-nav__link">
+        llama Automate로 구현한 초간단 비컨 시스템
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+          ProtoPie   Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie   Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Android/Llama%20Automate/ProtoPie%20-%20Llama%20Automate/ProtoPie%20-%20Llama%20Automate/" class="md-nav__link">
+        ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Circuitry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Circuitry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/debouncing/" class="md-nav__link">
+        debounce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+          Attiny85
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Attiny85
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Attiny85/Digispark%20Attiny85/" class="md-nav__link">
+        Digispark Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Attiny85/arduino%20bootloader%20on%20ATTINY85/" class="md-nav__link">
+        ATTINY85 칩에 arduino 프로그래밍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+          Error messages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Error messages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Error%20messages/Arduino%3A%20fatal%20error%3A%20WProgram.h%3A%20No%20such%20file%20or%20directory/" class="md-nav__link">
+        Arduino Error: WProgram.h/ No such file or directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+          Timer & Interrupt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Timer & Interrupt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/ServoTimer2/" class="md-nav__link">
+        ServoTimer2 언제필요한가?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/Software%20Interrupt/" class="md-nav__link">
+        Arduino Software Interrupt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Arduino/Timer%20%26%20Interrupt/softPWM/" class="md-nav__link">
+        Software PWM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          Data Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Data%20Storage/SD%20card/" class="md-nav__link">
+        SD library (sd카드 사용)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          GPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          GPS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../GPS/GPS%2Braspberry%20pi/" class="md-nav__link">
+        GPS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          LCD,LED Display
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          LCD,LED Display
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/i2c%2016X2%20LCD%20with%20pcf8574%20chip/" class="md-nav__link">
+        i2c lcd (PCF8574 chip)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/oled%20display-adafruit/" class="md-nav__link">
+        0.96" OLED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+          NeoPixel
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          NeoPixel
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/NeoPixel/" class="md-nav__link">
+        네오픽셀 NeoPixel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/dotstar/" class="md-nav__link">
+        dotstar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LCD%2CLED%20Display/NeoPixel/pixel%20data%20for%20POV%20system/" class="md-nav__link">
+        POV (잔상효과)용 pixel data (픽셀 데이타) 만들기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          LittleBits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          LittleBits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit app inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/Hacking%20LittleBits%20cloudBit/" class="md-nav__link">
+        cloudbit 해킹
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../LittleBits/littleBits%20multi-role%20bits%20from%20%20Attiny85%20digispark/" class="md-nav__link">
+        littleBits 만능모듈 with Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          Motors&Acruators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Motors&Acruators
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Motors%26Acruators/Stepper%20motor/" class="md-nav__link">
+        Stepper motor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          PCB design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          PCB design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Autodesk Eagle 로 PCB 제작하기
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Autodesk Eagle 로 PCB 제작하기
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pcb-layer" class="md-nav__link">
+    PCB를 구성하는 층(layer)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    기본 용어
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autodesk-eagle" class="md-nav__link">
+    Autodesk Eagle 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    새 project 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    회로도 (schematic) 그리기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board" class="md-nav__link">
+    board 파일 만들기
+  </a>
+  
+    <nav class="md-nav" aria-label="board 파일 만들기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    격자 크기 설정
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    보드 크기 수정
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    부품 배치와 연결
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copper-pour-ground-plane" class="md-nav__link">
+    copper pour (ground plane) 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drc-erc" class="md-nav__link">
+    DRC, ERC 에러 체크
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerber" class="md-nav__link">
+    gerber 파일로 내보내기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pcb-breakout-sch-brd-footprint" class="md-nav__link">
+    다른 사람이 만든 pcb를 breakout 보드 형태로 가져다 쓰기 (기존 sch, brd 파일에서 footprint 가져오기)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fritzing-eagle-pcb-footprint" class="md-nav__link">
+    Fritzing 부품으로부터 Eagle에서 pcb footprint 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    직접 부품 만들어 library로 사용하기
+  </a>
+  
+    <nav class="md-nav" aria-label="직접 부품 만들어 library로 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbol" class="md-nav__link">
+    symbol 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footprint" class="md-nav__link">
+    footprint 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-footprint-device" class="md-nav__link">
+    symbol과 footprint 연결해 device 만들기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fusion360-eagle" class="md-nav__link">
+    fusion360 - eagle 연동
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-footprint-3d-model-" class="md-nav__link">
+    부품 data- footprint, 3D model - 얻는 법
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    참고
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PCB%20panelization/" class="md-nav__link">
+        PCB panelization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../seeedfusion%20pcba/" class="md-nav__link">
+        seeed fusion pcb(a) 서비스로 pcb 제작주문하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vector%20image%20into%20ealge%20pcb/" class="md-nav__link">
+        Eagle pcb에 logo image 넣기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+          Sensors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Sensors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sensors/Load%20cell%20HX711/" class="md-nav__link">
+        loadcell HX711
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sensors/ds18s20/" class="md-nav__link">
+        온도센서 DS18S20 (DS18B20)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+          Sound&Music
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          Sound&Music
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sound%26Music/VS1053%20mp3%20decoder/" class="md-nav__link">
+        VS1053 mp3 decoder chip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Sound%26Music/sound%20chip%20PX088A/" class="md-nav__link">
+        aliexpress sound chip PX088A
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+          Transistor & MOSFET
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Transistor & MOSFET
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transistor%20%26%20MOSFET/MOSFET%20switch%20circuit/" class="md-nav__link">
+        MOSFET 를 사용한 switch 회로
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Transistor%20%26%20MOSFET/NPN%20transisor%20switch/" class="md-nav__link">
+        NPN transisor switch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+          Wireless communication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Wireless communication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/integer%20to%20byte/" class="md-nav__link">
+        Int형 데이터를 byte로 바꾸기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2" id="__nav_4_11_2_label" tabindex="0">
+          Bluetooth
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/Bluetooth/snap4arduino%20%2B%20arduino%20bluetooth/" class="md-nav__link">
+        snap4arduino + arduino bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2_2" id="__nav_4_11_2_2_label" tabindex="0">
+          Bluetooth 4.0 BLE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth 4.0 BLE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/Bluetooth/Bluetooth%204.0%20BLE/Sort%20of%20BLE%20modules%20in%20market/" class="md-nav__link">
+        BLE 모듈 제품명 알아보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_3" id="__nav_4_11_3_label" tabindex="0">
+          RFID & NFC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RFID & NFC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/RFID%20%26%20NFC/PN532%20NFC%20shield/" class="md-nav__link">
+        PN532 NFC shield
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4" id="__nav_4_11_4_label" tabindex="0">
+          WIFI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          WIFI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4_1" id="__nav_4_11_4_1_label" tabindex="0">
+          ESP8266 Wifi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          ESP8266 Wifi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Wireless%20communication/WIFI/ESP8266-Wifi/ESP8266-Wifi/" class="md-nav__link">
+        ESP8266 wifi사용하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+          Power
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Power
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../power/LM7805%20-%205V%20regulator/" class="md-nav__link">
+        5V 레귤레이터 LM7805
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          GoogleCloudPlatform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          GoogleCloudPlatform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GoogleCloudPlatform/GoogleVisionApi%20setup/" class="md-nav__link">
+        Google vision api 설치
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GoogleCloudPlatform/python%20Google%20API/" class="md-nav__link">
+        Gmail / Google calendar API for python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Protopie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Protopie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Protopie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Protopie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/PIL%20quick%20reference/" class="md-nav__link">
+        PIL (python Imaging library) Quick reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Python/xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/raspberry%20pi%20zero%20headress%20setup/" class="md-nav__link">
+        Raspberry pi zero w 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_13" id="__nav_9_13_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9_13">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Raspberry%20pi/raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pcb-layer" class="md-nav__link">
+    PCB를 구성하는 층(layer)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    기본 용어
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#autodesk-eagle" class="md-nav__link">
+    Autodesk Eagle 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project" class="md-nav__link">
+    새 project 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schematic" class="md-nav__link">
+    회로도 (schematic) 그리기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#board" class="md-nav__link">
+    board 파일 만들기
+  </a>
+  
+    <nav class="md-nav" aria-label="board 파일 만들기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    격자 크기 설정
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    보드 크기 수정
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    부품 배치와 연결
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copper-pour-ground-plane" class="md-nav__link">
+    copper pour (ground plane) 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drc-erc" class="md-nav__link">
+    DRC, ERC 에러 체크
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gerber" class="md-nav__link">
+    gerber 파일로 내보내기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pcb-breakout-sch-brd-footprint" class="md-nav__link">
+    다른 사람이 만든 pcb를 breakout 보드 형태로 가져다 쓰기 (기존 sch, brd 파일에서 footprint 가져오기)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fritzing-eagle-pcb-footprint" class="md-nav__link">
+    Fritzing 부품으로부터 Eagle에서 pcb footprint 만들기
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    직접 부품 만들어 library로 사용하기
+  </a>
+  
+    <nav class="md-nav" aria-label="직접 부품 만들어 library로 사용하기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#symbol" class="md-nav__link">
+    symbol 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footprint" class="md-nav__link">
+    footprint 만들기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#symbol-footprint-device" class="md-nav__link">
+    symbol과 footprint 연결해 device 만들기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fusion360-eagle" class="md-nav__link">
+    fusion360 - eagle 연동
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-footprint-3d-model-" class="md-nav__link">
+    부품 data- footprint, 3D model - 얻는 법
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    참고
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="autodesk-eagle-pcb">Autodesk Eagle 로 PCB 제작하기</h1>
+<h2 id="pcb-layer">PCB를 구성하는 층(layer)</h2>
+<p>일단 pcb를 구성하는 기본 4개 층을 알아둘 필요가 있다.
+1. base layer - 전기가 안통하는 FR4라고하는 유리섬유로 만들어져있다. 1.6mm두께가 일반적이다.
+<img alt="" src="https://www.instructables.com/files/deriv/FDB/IG0E/J16PISAD/FDBIG0EJ16PISAD.LARGE.jpg" />
+2. copper layer - 전기가 통하는 부분. 얇은 구리의 층이다.
+<img alt="" src="https://www.instructables.com/files/deriv/FWO/5WV7/J16PIS69/FWO5WV7J16PIS69.LARGE.jpg" />
+3. soldermask layer - 구리패턴 위를 덮는 초록색 레진 층. 물론 초록색이 아닌 다른 색도 있다. 이 솔더마스크가 칠해진 부분에는 땜납이 묻지 않는다. 즉, 납땜을 하게되는 pad 위치에는 이 초록색 레진을 칠하지 않는다. (도선 위에도 칠한다.)
+<img alt="" src="https://www.instructables.com/files/deriv/FNR/KBEH/J0MOQ4F5/FNRKBEHJ0MOQ4F5.LARGE.jpg" />
+4. silkscreen layer - 사람이 볼 수 있도록 (보통 흰색으로) 텍스트나 기호를 인쇄한 층. 기능과는 무관하지만 어느구멍에 어느 부품이 와야하는지 알려준다.
+<img alt="" src="https://www.instructables.com/files/deriv/FFR/SKBC/J0MOQ4FC/FFRSKBCJ0MOQ4FC.LARGE.jpg" /></p>
+<ul>
+<li>pcb의 한 면은 위와 같은 4개 층으로 이루어져 있으며, 앞, 뒤 양면을 사용한다면 각 면마다 각각4개 layer가 있는것이다.</li>
+<li>노트북이나 스마트폰같은 복잡한 장치는 앞뒤면 뿐 아니라 여러장의 copper layer 를 사용해 16층까지 샌드위치로 만들기도 한다.</li>
+<li>그러나 일반적인 회로는 앞뒤면으로 충분하고, eagle 무료버전은 앞뒤면2개 층만 사용할 수 있다.</li>
+<li><strong>eagle에도 위의 4개층+ 몇가지 더 세세하게 편집할 수 있도록 layer가 있다. 이들 레이어는 adobe 포토샵처럼 사용자가 마음대로 만들고 지우는 것이 아니라 미리 각 레이어의 역할이 정해져 있으므로 주요한 레이어의 역할은 꼭 알고있어야 한다.</strong><br />
+꼭 보자 참고: https://www.lucidar.me/en/eagle/understanding-layers/</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>layer no.</th>
+<th>name</th>
+<th>역할</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Top</td>
+<td>윗면 배선 및 윗면 copper pour</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Bottom</td>
+<td>아랫면 배선 및 copper pour</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Pads</td>
+<td>through hole pad</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Vias</td>
+<td>Vias</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Dimension</td>
+<td>외곽선과 hole</td>
+</tr>
+<tr>
+<td>21</td>
+<td>tPlace</td>
+<td>윗면 실크인쇄</td>
+</tr>
+<tr>
+<td>22</td>
+<td>bPlace</td>
+<td>아랫면 실크인쇄</td>
+</tr>
+<tr>
+<td>25</td>
+<td>tNames</td>
+<td>윗면 name 실크인쇄</td>
+</tr>
+<tr>
+<td>26</td>
+<td>bNames</td>
+<td>아랫면 name 실크인쇄</td>
+</tr>
+<tr>
+<td>27</td>
+<td>tValues</td>
+<td>윗면 Value 실크인쇄</td>
+</tr>
+<tr>
+<td>28</td>
+<td>bValues</td>
+<td>아랫면 value 실크인쇄</td>
+</tr>
+<tr>
+<td>29</td>
+<td>tStop</td>
+<td>윗면 soldermask</td>
+</tr>
+<tr>
+<td>30</td>
+<td>bStop</td>
+<td>아랫면 soldermask</td>
+</tr>
+<tr>
+<td>31</td>
+<td>tCream</td>
+<td>윗면 SMD FLUX</td>
+</tr>
+<tr>
+<td>32</td>
+<td>bCream</td>
+<td>아랫면 SMD Flux</td>
+</tr>
+<tr>
+<td>35</td>
+<td>tGlue</td>
+<td>윗면 SMD glue</td>
+</tr>
+<tr>
+<td>36</td>
+<td>bGlue</td>
+<td>아랫면 SMD glue</td>
+</tr>
+<tr>
+<td>44</td>
+<td>Drills</td>
+<td>드릴 가공 위치</td>
+</tr>
+<tr>
+<td>51</td>
+<td>tDocu</td>
+<td>부가정보-인쇄되지 않음</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_1">기본 용어</h2>
+<ul>
+<li>component: 회로 위에 설치되는 각종 부품들을 일컫는다.
+<img alt="" src="https://www.instructables.com/files/deriv/FKE/BL85/J1CELHRE/FKEBL85J1CELHRE.LARGE.jpg" /></li>
+<li>symbol : 회로도 (혹은 회로도에 사용되는 기호)를 말한다.
+<img alt="" src="https://www.instructables.com/files/deriv/FUL/0PXU/J1CEK97J/FUL0PXUJ1CEK97J.LARGE.jpg" /></li>
+<li>package : 부품의 물리적인 형상으로, 동일한 기능을하는 콤포넌트도 제조사가 2개 이상의 다른 package로 판매한다. 문맥에 따라 2가지 조금 다른 의미로 사용된다.</li>
+<li>3d package : fusion360등에서 읽어 사용할 수 있는 3d 형상
+  <img alt="" src="https://www.instructables.com/files/deriv/F7T/8Y6Z/J1CEK9FN/F7T8Y6ZJ1CEK9FN.LARGE.jpg" /></li>
+<li>THM (through hole mounting) 인지 SMD/SMT(surface mount technology)인지, pcb에 부착하는 방법</li>
+<li>footprint : 각 부품의 PCB상의 표현. 동일한 component도 다른 package로 제조되었다면 다른 footprint를 갖는다. pad와, 실크스크린 기호, 이름, 구멍 등을 포함한다.
+<img alt="" src="https://www.instructables.com/files/deriv/FAJ/5CX3/J1CEK92Z/FAJ5CX3J1CEK92Z.LARGE.jpg" /></li>
+</ul>
+<h2 id="autodesk-eagle">Autodesk Eagle 설치</h2>
+<ul>
+<li>무료버전은 2-sided, 최대 80cm2 면적까지 제작 가능하다. 일반적인 용도로는 충분하다.</li>
+<li><a href="https://www.autodesk.com/products/eagle/free-download?mktvar004=707235&amp;internalc=true">여기에서 다운로드 </a></li>
+</ul>
+<h2 id="project">새 project 만들기</h2>
+<ul>
+<li>File &gt; New &gt; Project 로 새 프로젝트 만든다.</li>
+</ul>
+<h2 id="schematic">회로도 (schematic) 그리기</h2>
+<ul>
+<li>회로도를 먼저그린다. 미리 종이위에 그려둔 게 있다면 더 좋다.</li>
+<li>File &gt; New &gt; Schematic 으로 새 회로도를 만든다.</li>
+<li>'ADD Part' 툴을 사용해 부품들을 라이브러리에서 찾아 넣어준다. 일단은 연결하기 전에 적당한 위치에 배치한다.<br />
+<img alt="" src="https://cl.ly/d9d9baeb475a/Image%202019-02-18%20at%206.45.50%20PM.png" /></li>
+</ul>
+<p><img alt="||600" src="https://www.instructables.com/files/deriv/FMC/LIX8/J08EGSGF/FMCLIX8J08EGSGF.LARGE.jpg" /></p>
+<p><img alt="|600" src="https://cdn.instructables.com/FRZ/6YVR/J08ELMFS/FRZ6YVRJ08ELMFS.LARGE.jpg?auto=webp" /></p>
+<ul>
+<li>search에서 원하는 부품이 찾아지지 않을 땐</li>
+<li>library manager에서 다른 라이브러리를 다운로드 받는다. (라이브러리 매니저의 'available' 항목에서 리스트 볼 수 있다.)</li>
+<li>인터넷에서 원하는 부품의 라이브러리를 찾아 다운로드 받는다.</li>
+<li>동일한 footprint를 가진 다른 부품으로 대체한다.</li>
+<li>직접 라이브러리를 만든다. (아래 별도 항목)</li>
+</ul>
+<p>hint: 부품을 이동하고 회전할 때 아무데나 누르면 잘 안된다. 각 부품의 기준점에 + 표시가 되어있는데, 이부분을 선택해야만 한다. 때로는 기준점이 터무니없이 멀리 있어 못찾는 경우도 있는데, 오토데스크에서 다음 버전엔 꼭 좀 고쳐주라</p>
+<ul>
+<li>
+<p>'Name' 툴과 'Value'툴로 부품 이름과 값 적어준다. 예를들어 저항이라면 'R2', '10Kohm' 하는 식으로...
+<img alt="||600" src="https://cdn.instructables.com/ORIG/FC5/WQLE/J08EM6JG/FC5WQLEJ08EM6JG.gif" /></p>
+</li>
+<li>
+<p>'NET' 툴을 사용해 부품을 연결해준다.
+<img alt="||600" src="https://www.instructables.com/files/orig/FDW/2X7T/J08EM934/FDW2X7TJ08EM934.gif" /></p>
+</li>
+</ul>
+<h2 id="board">board 파일 만들기</h2>
+<ul>
+<li>회로도가 완성되었으면 'Generate/Switch to Board'툴로 보드을 만든다.
+<img alt="" src="https://cdn.instructables.com/ORIG/FLJ/AB3P/J08EMDKH/FLJAB3PJ08EMDKH.gif" /></li>
+</ul>
+<h3 id="_2">격자 크기 설정</h3>
+<p>'GRID' 명령으로 그리드 를 사용하면 작업하기 수월하다. 1mil == 0.001" 로, 빵판의 한 칸 간격이 100mil 이다.</p>
+<h3 id="_3">보드 크기 수정</h3>
+<ul>
+<li>보드의 외곽선 dimension 을 수정하고 싶다면 'info' 툴을 사용한다. 외곽선의 한 변을 선택하고 info에서 'from'과 'to' 값을 수정해준다. 20-demension layer를 확인한다.
+<img alt="" src="https://cl.ly/0ad2c388f35c/Screen%20Recording%202019-02-18%20at%2007.12%20PM.gif" /></li>
+</ul>
+<h3 id="_4">부품 배치와 연결</h3>
+<ul>
+<li>부품을 이동/ 회전 시켜 배치하고 'NET' 툴로 연결해준다. 이때 앞면 배선은 1-top layer, 뒷변 배선은 16-bottom layer에 하는 것 잊지 않는다.</li>
+<li>
+<p>배선 폭은 6mil기 기본값은이 여유있게 12mil정도로 해주다. 정확한 계산을 위해서는 pcb trace width 계산기 <a href="https://www.4pcb.com/trace-width-calculator.html">이곳</a>를 활용하자.</p>
+</li>
+<li>
+<p>앞뒤를 연결하는 'VIA'가 필요한 순간이 있을 것이다.
+<img alt="" src="https://cl.ly/c33a74682161/Image%202019-02-18%20at%207.22.41%20PM.png" /></p>
+</li>
+<li>
+<p>net를 지울 때에는 'Ripup'툴을 사용한다.</p>
+</li>
+</ul>
+<h2 id="copper-pour-ground-plane">copper pour (ground plane) 만들기</h2>
+<ul>
+<li>부품이나 배선이 지나가지 않는 남는 pcb의 면 전체를 GND에 연결하면 배선도 쉽고, 무엇보다 노이즈가 줄어드는 효과가 있다.</li>
+<li>gnd에 연결되는 배선은 아직 연결되어있지 않도록 한다. (그림에서 노란색 unrouted 배선.)</li>
+<li>layer 는 1-top 혹은 16-bottom인 상태에서,</li>
+<li>
+<p>polygon으로 copper pour 를 채울 사각형 영역을 그려준다.  이 때 isolate옵션으로 부품, 배선으로부터의 이격거리를 설정한다. 예제에서는 12로 했다.
+<img alt="||800" src="https://cl.ly/43cb2de8024a/download/Screen%252520Recording%2525202019-02-18%252520at%25252011.17%252520AM.gif" /></p>
+</li>
+<li>
+<p>signal name을 'GROUND'(혹은 GND)로 정해준다.</p>
+</li>
+<li>
+<p>renest 툴을 사용해 면을 생성한다.
+<img alt="||800" src="https://cl.ly/47b8c8395b68/download/Screen%252520Recording%2525202019-02-18%252520at%25252011.19%252520AM.gif" /></p>
+</li>
+<li>
+<p>이 상태로는 copper pour는 형성 되었지만 gnd에 연결되어있지는 않다. gnd핀에 연결하자.  </p>
+</li>
+<li>unrouted  상태의 gnd 배선 한 가닥을 info 툴로 열고, '$N6'과 같은 형식으로 되어있는 Signal name을 위에서와 같이 'GROUND'로 바꿔준다.
+<img alt="||800" src="https://cl.ly/31de87fc98bf/download/Screen%252520Recording%2525202019-02-18%252520at%25252011.20%252520AM.gif" /></li>
+<li>완성! 그라운드 핀을 확대해보면 + 모양으로 주변의 copper pour에 연결된 걸 확인할 수 있다.</li>
+</ul>
+<h2 id="drc-erc">DRC, ERC 에러 체크</h2>
+<p>아래 버튼 눌러서 에러 없는지 체크하고 메시지에 따라 처리한다.</p>
+<h2 id="gerber">gerber 파일로 내보내기</h2>
+<ul>
+<li>우측의 'manufacturing' 버튼을 누르고 미리보기를 확인한 후 'CAM...'을 누른다.</li>
+<li>거버파일을 레이어별로 확인한 후 'Process Job' 으로 export 한다.
+<img alt="||600" src="https://cl.ly/2e48bf06ced6/Image%202019-02-18%20at%202.59.05%20PM.png" /></li>
+</ul>
+<h2 id="pcb-breakout-sch-brd-footprint">다른 사람이 만든 pcb를 breakout 보드 형태로 가져다 쓰기 (기존 sch, brd 파일에서 footprint 가져오기)</h2>
+<p>참고: https://forums.autodesk.com/t5/eagle-forum/converting-sch-amp-brd-into-a-single-library-component/td-p/7007483
+* 위 링크에서 제시하는 방법대로 design block사용해 보았으나, 디자인블록은 부품의 연결은 유지되지만 부품의 외관선과 배치는 유지되지 않는다.
+* 또한 위 링크에서 제시하는 다른 방법은 라이브러리를 직접 만드는 것으로, 번거롭기도 하고 정확하게 만들수 있을지 불안하다.
+* 그래서 아래에서와 같이 Fritzing 용으로 제작된 부품으로부터 eagle 에서 pcb만드는 방법을 사용한다.</p>
+<h2 id="fritzing-eagle-pcb-footprint">Fritzing 부품으로부터 Eagle에서 pcb footprint 만들기</h2>
+<ul>
+<li>ULP 중, import-gerber 프로그램을 사용한다.</li>
+<li>일단 Fritzing 부품을 구하고 fritzing에서 연다. 여기서는 Adafruit VS1053 mp3 breakout 보드를 예제로 사용한다.
+<img alt="||600" src="https://cl.ly/4455ef0350b0/Image%202019-02-15%20at%205.23.05%20PM.png" /></li>
+<li>
+<p>PCB보기에서 작업영역 안에 들어오도록 배치하도록 하자. 회전할 필요있다면 회전시킨다.
+<img alt="||600" src="https://cl.ly/6f43abc445a9/Image%202019-02-15%20at%205.26.18%20PM.png" /></p>
+</li>
+<li>
+<p>파일 &gt; 내보내기 &gt; 생산을위해 &gt; Extended Gerber  로 내보낸다.</p>
+</li>
+<li>9개 내외의 파일이 있는데, 각각의 역할을 알아야 한다.
+참고:http://fritzing.org/forum/thread/253/</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>파일확장자</th>
+<th>대응하는 eagle layer</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.gm1</td>
+<td>outline</td>
+<td></td>
+</tr>
+<tr>
+<td>.gtl</td>
+<td>Top Copper</td>
+<td></td>
+</tr>
+<tr>
+<td>.gbl</td>
+<td>Bottom Copper</td>
+<td></td>
+</tr>
+<tr>
+<td>.gto</td>
+<td>Top silkscreen</td>
+<td></td>
+</tr>
+<tr>
+<td>.gbo</td>
+<td>Bottom Silkscreen</td>
+<td></td>
+</tr>
+<tr>
+<td>.gts</td>
+<td>Top Soldermask</td>
+<td></td>
+</tr>
+<tr>
+<td>.gbs</td>
+<td>Bottom soldermask</td>
+<td></td>
+</tr>
+<tr>
+<td>.txt</td>
+<td>Drill, PNP</td>
+<td>pnp는 SMT공정에서 필요한듯?</td>
+</tr>
+<tr>
+<td>.dri</td>
+<td>Drill station info</td>
+<td>Fritzing에서 사용안함</td>
+</tr>
+<tr>
+<td>.gpi</td>
+<td>Photoplotter Info</td>
+<td>Fritzing에서 사용안함</td>
+</tr>
+<tr>
+<td>.gml</td>
+<td>Milling</td>
+<td>Fritzing에서 사용안함</td>
+</tr>
+<tr>
+<td>.gtp</td>
+<td>Top Paste</td>
+<td>Fritzing에서 사용안함</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>eagle 에서 작업중인 project를 열고, Board 편집 화면으로 간다.</li>
+<li>
+<p>ULP &gt; import-gerber 를 선택한다.
+<strong> import-gerber ULP 프로그램은 보드편집모드에서만 작동한다!</strong></p>
+</li>
+<li>
+<p>각각의 gerber 파일을 대응하는 layer에 import한다. 필요한만큼 반복한다.
+참고: https://www.lucidar.me/en/eagle/understanding-layers/</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>gerber파일</th>
+<th>목표 eagle layer</th>
+<th>목적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.gm1</td>
+<td>21-tPlace (or 22-bPlace)</td>
+<td>외곽선을 실크스크린인쇄해 위치를 표시한다.</td>
+</tr>
+<tr>
+<td>.gbl</td>
+<td>16-bottom</td>
+<td>bottom면 동박</td>
+</tr>
+<tr>
+<td>.gtl</td>
+<td>1-Top</td>
+<td>Top 면 동박</td>
+</tr>
+<tr>
+<td>~drill.txt</td>
+<td>44-drill</td>
+<td>drill</td>
+</tr>
+<tr>
+<td>.gbs</td>
+<td>30-bStop</td>
+<td>bottom면 solder마스크</td>
+</tr>
+<tr>
+<td>.gts</td>
+<td>29-tStop</td>
+<td>top면 soldermask</td>
+</tr>
+<tr>
+<td>.gbo</td>
+<td>22-bPlace</td>
+<td>bottom면 실크인쇄</td>
+</tr>
+<tr>
+<td>.gto</td>
+<td>21-tPlace</td>
+<td>top면 실크인쇄</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="||600" src="https://cl.ly/d3bce742a880/Image%202019-02-15%20at%206.22.07%20PM.png0" /></p>
+<ul>
+<li>이렇게 했더니 wiring이 안되고, pad에 구멍도 뚫리지 않는 문제저머 발견...
+  역시나 library로 만들어야 할듯...</li>
+</ul>
+<h2 id="library">직접 부품 만들어 library로 사용하기</h2>
+<p>참고:
+https://www.autodesk.com/products/eagle/blog/library-basics-part-1-creating-first-package-autodesk-eagle/
+https://www.autodesk.com/products/eagle/blog/library-basics-part-2-creating-first-symbol-autodesk-eagle/
+https://www.autodesk.com/products/eagle/blog/library-basics-part-3-creating-first-device-autodesk-eagle/</p>
+<ul>
+<li>file &gt; new &gt; library로 새 라이브러리 만든다</li>
+</ul>
+<h3 id="symbol">symbol 만들기</h3>
+<ul>
+<li>Add symbol 선택해 심볼먼저 만든다</li>
+<li>이름을 적당히 지어준다.
+<img alt="||600" src="https://cl.ly/0fe2d26ec559/Image%202019-02-15%20at%207.34.08%20PM.png" /></li>
+<li>pin 을 눌러 핀 먼저 만들어준다.
+<img alt="" src="https://cl.ly/5ded31e3a498/Image%202019-02-15%20at%207.36.17%20PM.png" /></li>
+<li>갯수만큼 추가한다. 우클릭하면 회전한다.
+<img alt="" src="https://cl.ly/0a9c3f18e18b/Image%202019-02-15%20at%207.38.38%20PM.png" /></li>
+<li>Info 버튼으로 각 핀의 이름과 direction을 변경해준다.</li>
+<li>위 그림은 핀 방향이 반대가 되었다. 동그라미 달린 부분이 바깥으로 향해야 한다.
+<img alt="||600" src="https://cl.ly/d6dad425c9b3/Image%202019-02-15%20at%207.47.58%20PM.png" /></li>
+<li>여러개의 GND 핀이 있는 경우 핀 이름 뒤에 '@숫자'를 붙여주면 모두 동일한 연결로 간주된다.</li>
+<li>
+<p>direction은 초급사용자에게는 크게 의미없는 듯한데... 일단 vcc, gnd, 3v3 등 파워 관련한 핀은 모두 'pwr'로 변경하였다.
+'pas'는 passive를 의미.</p>
+</li>
+<li>
+<p>line 버튼으로 부품 테두리를 쳐준다.
+<img alt="" src="https://cl.ly/6e25269bcf7a/Image%202019-02-15%20at%207.57.54%20PM.png" />
+<img alt="||600" src="https://cl.ly/62486c15034a/Image%202019-02-15%20at%207.58.57%20PM.png" />
+심볼 완성!</p>
+</li>
+<li>저장한다.</li>
+</ul>
+<h3 id="footprint">footprint 만들기</h3>
+<ul>
+<li>add footprint...  누르고 파일 이름지어준다.</li>
+<li>
+<p>먼저 'grid' 버튼 눌러서 격자 눈금 크기 정해준다. 단위는 'mm', 'inch', 'mil' 사용할 수 있다. 1 mil = 0.001 inch로, 빵판의 피치(한 칸 간격)이 100mil이다. eagle 격자의 기본값이 50 mil인데, 빵판 간격의 절반이라고 보면 된다.
+<img alt="" src="https://cl.ly/40dc5cd09e05/Image%202019-02-15%20at%208.11.23%20PM.png" /></p>
+</li>
+<li>
+<p>pad 먼저 그려준다. 'pad'버튼을 사용한다. smd용 pad는 그 옆에 있는 버튼이다.</p>
+</li>
+<li>
+<p>헤더핀 꽂기에 적당한 pad size는 pad:66, drill:39 (mil)정도면 좋다.<br />
+<img alt="" src="https://cl.ly/f9e7610b3457/Image%202019-02-15%20at%208.13.13%20PM.png" />
+<img alt="||600" src="https://cl.ly/6ddf7ef94b25/Image%202019-02-15%20at%208.46.45%20PM.png" />
+여기서는 pad array 버튼을 사용해 쉽게 등간격으로 32개 pad를 그렸다.</p>
+</li>
+<li>
+<p>51-tDocu layer에 외관선과 기타 정보를 그려넣는다. 이 레이어는 기능과는 전혀 무관한다. 낙서해도 된다.</p>
+</li>
+<li>21-tPlace layer에 윗면 silk 인쇄될 내용을 그려넣는다. 각 핀의 라벨 등 넣으면 되겠다. 난기존 부품에서 copy&amp;paste했다.  <br />
+<strong> 윤곽선을 20-dimension layer에 두지 말고 반드시 21-tPlace 에 만들자. 나중에 라이브러리에서 부품을 가져와 pcb에 올렸을 때 pcb모양을 잘라내라는 의미가 되버린다.</strong>  </li>
+<li>25-tName, 27-tValue layer에  text툴로 이름과 값 넣을 자리를 써넣는다. 일단 &gt;name, &gt;value로 써서 라이브러리에 저장해 놓고 나중에 사용할 때 이름과 값을 바꿔준다.
+<img alt="||600" src="https://cl.ly/c97562309bbd/Image%202019-02-15%20at%208.59.27%20PM.png" />
+footprint 완성! 저장한다.</li>
+</ul>
+<h3 id="symbol-footprint-device">symbol과 footprint 연결해 device 만들기</h3>
+<ul>
+<li>add divece... 눌러 디바이스 만들고 이름지어준다.</li>
+<li>add part 버튼으로 아까 만든 symbol을 추가해준다.</li>
+<li>오른쪽 아래 new 버튼으로 아까 만든 footprint를 추가해준다.
+<img alt="||600" src="https://cl.ly/18ac232379ef/Image%202019-02-15%20at%209.08.17%20PM.png" />
+<img alt="||600" src="https://cl.ly/687700cd6203/Image%202019-02-15%20at%209.10.17%20PM.png" /></li>
+<li>오른쪽 아래 'connect'버튼을 눌러 심볼의 핀과 footprint의 pad를 짝지워준다.
+<img alt="||600" src="https://cl.ly/8f803b9f0c2d/Image%202019-02-15%20at%209.12.54%20PM.png" /></li>
+<li>
+<p>모든게 성공적이라면 초록색 체크표시가 나타난다.
+<img alt="||600" src="https://cl.ly/caff5da58991/Image%202019-02-15%20at%209.17.49%20PM.png" />
+완성! 저장한다.</p>
+</li>
+<li>
+<p>원한다면 왼쪽아래 3/4분면에는 description 을 쓸 수도 있다. 여길 잘 써 주어야 library에서 검색할 때 잘 찾을 수 있다.</p>
+</li>
+</ul>
+<h2 id="fusion360-eagle">fusion360 - eagle 연동</h2>
+<p>참고: https://www.autodesk.com/products/eagle/blog/fusion-360-integration-eagle/
+영상 튜토리얼: https://www.youtube.com/playlist?list=PL1rOC5j_Fyi6B0wRJw2GAVEjE_dNR7rlK<br />
+* ~~일단 fusion360에서 pcb 기능을 활성화 해 주어야 한다.
+preferences &gt; pcb feature 를 체크한다.~~
+pcb기능은 preview 단계를 지나 기본 활성화 되어있다.</p>
+<ul>
+<li>보드편집화면에서 화면 오른쪽의 Fusion360연동 버튼을 누른다.
+<img alt="||600" src="https://cl.ly/18a06c7039ec/Image%202019-02-16%20at%207.08.37%20AM.png" /></li>
+<li>
+<p>fusion360에서 만들어진 pcb를 볼 수 있다!!
+<img alt="||600" src="https://cl.ly/003622d47751/Image%202019-02-16%20at%207.10.55%20AM.png" />
+하필이면 위에서 사용한 부품들은 모두 라이브러리에 3d data가 탑재되어있지 않아 납작한 빨간 덩어리로만 표현되었으나, 3d데이터가 있는 부품은 멋지게 그려진다.
+<img alt="" src="https://www.autodesk.com/products/eagle/blog/wp-content/uploads/2017/08/2017-08-15_11-06-19.png" /></p>
+</li>
+<li>
+<p>이제 fusion360에서도, eagle에서도 부품 위치나 pcb크기등 편집할 수 있다. 편입을 마치면 eagle에서 'pull,push'로 동기화 해주어야 한다.</p>
+</li>
+</ul>
+<h2 id="data-footprint-3d-model-">부품 data- footprint, 3D model - 얻는 법</h2>
+<ul>
+<li>
+<p>https://eagle.componentsearchengine.com/ga/
+에서 대부분의 부품을 다운받을 수 있다.</p>
+</li>
+<li>
+<p>찾아보니 eagle plugin으로 samacsys 라이브러리 로더가 제공된다.
+설치방법 참고:   https://www.autodesk.com/products/eagle/blog/now-available-new-free-eagle-library-plugin-samacsys/
+참고로 설치할 때 .png파일은 Applications/Eagle9.4/bin  아래로, 나머지 파일은 /Applications/EAGLE-9.4.0/examples/ulps 폴더로 복사하면 된다.(mac)
+eagle.scr파일은 /Documents/EAGLE/아래에 있다.</p>
+</li>
+<li>
+<p>최초에 samacsys 버튼을 눌러서 실행시키면 회원가입 먼저하고, library를 지정해 주어야 하는데, eagle에서 새라이브러리 만들기로 만든 후(file&gt; new&gt; library) 적당한 이름으로저장하고 browse로 지정하면 된다.</p>
+</li>
+<li>라이브러리는 managed library로 바꿔주어야 3d 패키지 적용할 수 있다.</li>
+</ul>
+<p><img alt="" src="https://cl.ly/3d0230a2f4c7/Image%202019-05-03%20at%204.40.43%20PM.png" /></p>
+<h2 id="_5">참고</h2>
+<p>참고: https://www.instructables.com/lesson/PCB-Concepts-and-Materials/</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>
