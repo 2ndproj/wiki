@@ -1,0 +1,1937 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../pi-camera/">
+      
+      
+        <link rel="next" href="../rpi.gpio/">
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>Raspberry pi zero w 셋업 - 2ndproj. wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#raspberry-pi-zero-w" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="2ndproj. wiki" class="md-header__button md-logo" aria-label="2ndproj. wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2ndproj. wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Raspberry pi zero w 셋업
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="2ndproj. wiki" class="md-nav__button md-logo" aria-label="2ndproj. wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    2ndproj. wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          ProtoPie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ProtoPie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ProtoPie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/PIL%20quick%20reference/" class="md-nav__link">
+        PIL (python Imaging library) Quick reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/matplotlib/" class="md-nav__link">
+        matplotlib 사용해 jupyter notebook에서 이미지 표시하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python%20virtual%20environment/" class="md-nav__link">
+        파이썬 가상환경 (virtual environment)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%23%20coding%20Raspberry%20pi%20with%20remote%20VS%20code/" class="md-nav__link">
+        원격으로 VS code 에서 raspberry pi 코딩하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Raspberry pi zero w 셋업
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Raspberry pi zero w 셋업
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    킷트 내용물 확인
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    방열판 부착
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio" class="md-nav__link">
+    GPIO 연결이 쉽도록 핀헤더 납땜한다.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raspbian" class="md-nav__link">
+    raspbian 다운로드
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sd-os" class="md-nav__link">
+    이미지 버닝 툴 사용해 sd카드에 os 담기
+  </a>
+  
+    <nav class="md-nav" aria-label="이미지 버닝 툴 사용해 sd카드에 os 담기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcher" class="md-nav__link">
+    etcher : 크로스 플랫폼 이미지 버닝 툴
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    네트워크 연결을 위한 사전작업
+  </a>
+  
+    <nav class="md-nav" aria-label="네트워크 연결을 위한 사전작업">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    SSH 켜기 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH 켜기 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    mac
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    wifi 켜기 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="wifi 켜기 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tip-wifi" class="md-nav__link">
+    tip. wifi 설정의 변경
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-otg" class="md-nav__link">
+    USB OTG 켜기 설정
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-rndis" class="md-nav__link">
+    USB를 통해 노트북-라즈베리파이 네트워크 구성(RNDIS)
+  </a>
+  
+    <nav class="md-nav" aria-label="USB를 통해 노트북-라즈베리파이 네트워크 구성(RNDIS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-rndis-usb" class="md-nav__link">
+    이 때! windows는 RNDIS 드라이버를 설치해야 usb를 네트워크 포트로 쓸 수 있다.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    인터넷 공유
+  </a>
+  
+    <nav class="md-nav" aria-label="인터넷 공유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    mac
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    ssh 접속
+  </a>
+  
+    <nav class="md-nav" aria-label="ssh 접속">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberrypilocal" class="md-nav__link">
+    위의 방법으로 안되는 경우...(raspberrypi.local이름이 충돌...)
+  </a>
+  
+    <nav class="md-nav" aria-label="위의 방법으로 안되는 경우...(raspberrypi.local이름이 충돌...)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-bonjour" class="md-nav__link">
+    windows는 먼저 Bonjour를 설치한다.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-windows" class="md-nav__link">
+    mac, windows 공통
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_2" class="md-nav__link">
+    윈도우에 SSH가 설치되어있지 않는 경우
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warning-possible-dns-spoofing-detected" class="md-nav__link">
+    warning: possible dns spoofing detected! 메시지 해결법
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    hostname  변경
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb" class="md-nav__link">
+    USB를 통한 넷트워크 연결이 불안정한 경우
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gui-vnc" class="md-nav__link">
+    GUI환경 사용(VNC로 화면 공유)
+  </a>
+  
+    <nav class="md-nav" aria-label="GUI환경 사용(VNC로 화면 공유)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    라이브러리 목록 업데이트 &amp; 업그레이드
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnc-server" class="md-nav__link">
+    VNC Server 설치
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnc-viewer" class="md-nav__link">
+    노트북에 vnc viewer 설치 및 화면 공유 실행
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    한글설치
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_14" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6_14" id="__nav_6_14_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_14_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6_14">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%E1%84%8B%E1%85%AD%E1%86%BC%20scratch2.0%E1%84%8B%E1%85%A6%20python%E1%84%8B%E1%85%B3%E1%84%85%E1%85%A9%20custom%20block%20%E1%84%86%E1%85%A1%E1%86%AB%E1%84%83%E1%85%B3%E1%86%AF%E1%84%80%E1%85%B5/" class="md-nav__link">
+        Raspberry pi 용 scratch2.0에 python으로 custom block 만들기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    킷트 내용물 확인
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    방열판 부착
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gpio" class="md-nav__link">
+    GPIO 연결이 쉽도록 핀헤더 납땜한다.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raspbian" class="md-nav__link">
+    raspbian 다운로드
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sd-os" class="md-nav__link">
+    이미지 버닝 툴 사용해 sd카드에 os 담기
+  </a>
+  
+    <nav class="md-nav" aria-label="이미지 버닝 툴 사용해 sd카드에 os 담기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#etcher" class="md-nav__link">
+    etcher : 크로스 플랫폼 이미지 버닝 툴
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    네트워크 연결을 위한 사전작업
+  </a>
+  
+    <nav class="md-nav" aria-label="네트워크 연결을 위한 사전작업">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    SSH 켜기 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="SSH 켜기 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac" class="md-nav__link">
+    mac
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows" class="md-nav__link">
+    windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wifi" class="md-nav__link">
+    wifi 켜기 설정
+  </a>
+  
+    <nav class="md-nav" aria-label="wifi 켜기 설정">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tip-wifi" class="md-nav__link">
+    tip. wifi 설정의 변경
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb-otg" class="md-nav__link">
+    USB OTG 켜기 설정
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usb-rndis" class="md-nav__link">
+    USB를 통해 노트북-라즈베리파이 네트워크 구성(RNDIS)
+  </a>
+  
+    <nav class="md-nav" aria-label="USB를 통해 노트북-라즈베리파이 네트워크 구성(RNDIS)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-rndis-usb" class="md-nav__link">
+    이 때! windows는 RNDIS 드라이버를 설치해야 usb를 네트워크 포트로 쓸 수 있다.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    인터넷 공유
+  </a>
+  
+    <nav class="md-nav" aria-label="인터넷 공유">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mac_1" class="md-nav__link">
+    mac
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#windows_1" class="md-nav__link">
+    windows
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh_1" class="md-nav__link">
+    ssh 접속
+  </a>
+  
+    <nav class="md-nav" aria-label="ssh 접속">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#raspberrypilocal" class="md-nav__link">
+    위의 방법으로 안되는 경우...(raspberrypi.local이름이 충돌...)
+  </a>
+  
+    <nav class="md-nav" aria-label="위의 방법으로 안되는 경우...(raspberrypi.local이름이 충돌...)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#windows-bonjour" class="md-nav__link">
+    windows는 먼저 Bonjour를 설치한다.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mac-windows" class="md-nav__link">
+    mac, windows 공통
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh_2" class="md-nav__link">
+    윈도우에 SSH가 설치되어있지 않는 경우
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#warning-possible-dns-spoofing-detected" class="md-nav__link">
+    warning: possible dns spoofing detected! 메시지 해결법
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hostname" class="md-nav__link">
+    hostname  변경
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usb" class="md-nav__link">
+    USB를 통한 넷트워크 연결이 불안정한 경우
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gui-vnc" class="md-nav__link">
+    GUI환경 사용(VNC로 화면 공유)
+  </a>
+  
+    <nav class="md-nav" aria-label="GUI환경 사용(VNC로 화면 공유)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    라이브러리 목록 업데이트 &amp; 업그레이드
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnc-server" class="md-nav__link">
+    VNC Server 설치
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vnc-viewer" class="md-nav__link">
+    노트북에 vnc viewer 설치 및 화면 공유 실행
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    한글설치
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="raspberry-pi-zero-w">Raspberry pi zero w 셋업</h1>
+<h2 id="_1">킷트 내용물 확인</h2>
+<p><img alt="" src="https://cl.ly/89bb93/Image%202019-06-07%20at%2011.03.03%20AM.png" /></p>
+<h2 id="_2">방열판 부착</h2>
+<p><img alt="" src="https://cl.ly/010ca3/Image%202019-06-07%20at%2011.13.35%20AM.png" /></p>
+<h2 id="gpio">GPIO 연결이 쉽도록 핀헤더 납땜한다.</h2>
+<p>더 슬림하게 만들려면 핀헤더를 통으로 붙이지 않고 선택적으로 직접 와이어를 납땜하여도 좋다.</p>
+<h2 id="raspbian">raspbian 다운로드</h2>
+<p>https://www.raspberrypi.org/downloads/raspbian/</p>
+<p><img alt="" src="https://cl.ly/140bab/Screen%20Recording%202019-06-07%20at%2011.16%20AM.gif" /></p>
+<h2 id="sd-os">이미지 버닝 툴 사용해 sd카드에 os 담기</h2>
+<h3 id="etcher">etcher : 크로스 플랫폼 이미지 버닝 툴</h3>
+<p>다운로드: https://www.balena.io/etcher/
+<img alt="" src="https://cl.ly/07dc25/Screen%20Recording%202019-06-07%20at%2011.36%20AM.gif" /></p>
+<h2 id="_3">네트워크 연결을 위한 사전작업</h2>
+<p>완성된 SD카드 뽑았다가 다시 꽂아보면, boot 라는 이름으로 라즈비안 이 설치되어있다. 여기에 몇개 파일을 수정해주어야 한다.
+<img alt="||600" src="https://cl.ly/smt5/Image%202018-07-07%20at%202.59.16%20PM.png" /></p>
+<p>참고: https://medium.com/@aallan/setting-up-a-headless-raspberry-pi-zero-3ded0b83f274
+참고: https://www.losant.com/blog/getting-started-with-the-raspberry-pi-zero-w-without-a-monitor</p>
+<p>wifi를 사용하거나, 혹은 wifi동글이 없거나 공유기가 없다면 USB케이블을 사용할해 노트북에 연결할 수 있다.</p>
+<h3 id="ssh">SSH 켜기 설정</h3>
+<p>SD카드의 루트 디렉토리 <code>/boot</code>에 <code>ssh</code>라는 이름의 빈 파일을 하나 새로 만든다.(확장자 없음) 그러면 부팅시 SSH가 켜진다.</p>
+<h4 id="mac">mac</h4>
+<p>터미널을 연다.</p>
+<pre><code class="language-bash">$ touch /Volumes/boot/ssh
+</code></pre>
+<p><img alt="" src="https://cl.ly/d1ca13/Image%202019-06-07%20at%2012.12.23%20PM.png" /></p>
+<h4 id="windows">windows</h4>
+<p>notepad(메모장)을 연다.
+아무런 내용 없이 Save as...한다.
+반드시 file type을 all로 선택하고 확장자 없이 저장한다.
+<img alt="" src="https://cl.ly/c40175/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA(1).png" /></p>
+<h3 id="wifi">wifi 켜기 설정</h3>
+<p>마찬가지로 <code>/boot</code>에 <code>wpa_supplicant.conf</code>파일을 아래 내용으로 만든다. 일반적인 텍스트 에디터 사용한다.</p>
+<pre><code class="language-bash">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+update_config=1
+
+network={
+    ssid=&quot;와이파이 이름(SSID)&quot;
+    psk=&quot;암호&quot;
+    key_mgmt=WPA-PSK
+}
+</code></pre>
+<p><img alt="" src="https://cl.ly/98fcb7/Image%202019-06-07%20at%2012.20.13%20PM.png" /></p>
+<h4 id="tip-wifi">tip. wifi 설정의 변경</h4>
+<blockquote>
+<p>/boot 에 만든 wap_supplicant.conf 파일은 부팅시 자동으로 <code>/etc/wpa_supplicant/wpa_supplicant.conf</code>위치로 옮겨진다.
+이후 wifi 설정을 수정해야 하는 경우가 생긴다면 (집에서 사용하던 라즈베리를 사무실로 옮긴다던지...) 이 위치에서 직접 수정하면 된다.
+<code>bash
+$ sudo nano /etc/wpa_supplicant/wap_supplicant.conf</code></p>
+</blockquote>
+<h3 id="usb-otg">USB OTG 켜기 설정</h3>
+<p>raspberry pi model A,B의 경우에는 ethernet 단자가 있으므로 wifi연결이 안되어있다고 해도 바로 연결해 사용할 수 있지만 이더넷 단자가 없는 zero 모델같으면 USB 포트에 IP address를 부여할 수 있도록 해 주어 usb를 통해 ssh나 VNC 연결을 할 수 있다.
+zero의 경우에도 wifi나 usb otg 둘 중 하나만 작동되면 되지만 일단 둘 다 켜두자. 특히 집에서 사용하다가 사무실로 옮겼다던지 하는 상황에서 wifi 연결을 재설정하려면 필요하다.
+<code>/boot</code> 디렉토리에 <code>config.txt</code>파일을 열어서 편집한다.</p>
+<pre><code>dtoverlay=dwc2
+</code></pre>
+<p>라는 항목이 있는지 살펴보고 (아마 아래쪽에 있을 것임) 만약 없다면 추가한다.
+<img alt="" src="https://cl.ly/345dea/Image%202019-06-07%20at%2012.27.45%20PM.png" />
+또한 <code>cmdline.txt</code>파일을 열어서 (정확하게) 아래와 같이 <code>rootwait</code> 뒤에 한 칸 띄고
+<code>modules-load=dwc2,g_ether</code>를 추가한다.</p>
+<p>원래 cmdline.txt 내용:</p>
+<pre><code>dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=020c3677–02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait quiet init=/usr/lib/raspi-config/init_resize.sh splash plymouth.ignore-serial-consoles
+</code></pre>
+<p>수정 후 cmdline.txt 내용:</p>
+<pre><code>dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=PARTUUID=020c3677–02 rootfstype=ext4 elevator=deadline fsck.repair=yes rootwait modules-load=dwc2,g_ether quiet init=/usr/lib/raspi-config/init_resize.sh splash plymouth.ignore-serial-consoles
+</code></pre>
+<h2 id="usb-rndis">USB를 통해 노트북-라즈베리파이 네트워크 구성(RNDIS)</h2>
+<p>sd 카드를 삽입하고, 노트북과 usb로 연결한다. 이때,  PWR가 아닌  USB에 연결한다.
+<img alt="" src="https://cl.ly/52ffbe/Image%202019-06-07%20at%2012.49.20%20PM.png" /></p>
+<h4 id="windows-rndis-usb">이 때! windows는 RNDIS 드라이버를 설치해야 usb를 네트워크 포트로 쓸 수 있다.</h4>
+<p>참고: https://www.factoryforward.com/pi-zero-w-headless-setup-windows10-rndis-driver-issue-resolved/</p>
+<ul>
+<li>윈도우10 용 RNDIS 드라이버를 다운로드후 압축을 푼다. <a href="http://web1.moddevices.com/shared/mod-duo-rndis.zip">여기에서</a></li>
+<li>라즈베리파이를 usb에 꽂는다.</li>
+<li>
+<p>장치관리자를 열어 com&amp;port 항목에 있는 라즈베리파이를 우클릭한다.
+<img alt="" src="https://cl.ly/b6080b/Image%2525202019-06-13%252520at%2525204.53.36%252520PM.png" /></p>
+</li>
+<li>
+<p>드라이버 업데이트 &gt; 컴퓨터에서 드라이버 소프트웨어 검색 &gt; 아까 압축 풀어둔 RNDIS 드라이버 폴더 선택
+<img alt="" src="https://cl.ly/da4a5e/Image%2525202019-06-13%252520at%2525204.58.27%252520PM.png" /></p>
+</li>
+<li>
+<p>이제 장치관리자에서 '네트워크 어댑터' 아래에 'USB Ethernet/ RNDIS Gadget'이 보인다.
+<img alt="" src="https://cl.ly/23c055/Image%202019-06-13%20at%204.59.38%20PM.png" /></p>
+</li>
+</ul>
+<h4 id="_4">인터넷 공유</h4>
+<h5 id="mac_1">mac</h5>
+<ul>
+<li>usb 네트워크로 인터넷을 사용할 수 있도록 맥북에서 인터넷 공유를 켜준다.</li>
+<li>system 설정 -&gt; 공유 -&gt; 인터넷 공유
+<img alt="" src="https://cl.ly/aec3ec/Image%202019-08-31%20at%2012.38.48%20PM.png" />  </li>
+</ul>
+<h4 id="windows_1">windows</h4>
+<ul>
+<li>시작메뉴 우클릭 &gt; 네트워크 연결 &gt; 어댑터 옵션 변경 &gt; 현재 인터넷 연결된 네트워크(이더넷 or wifi) 선택. 우클릭 &gt; 속성 &gt; 공유탭 &gt; '다른 네트워크 사용자가 이 컴퓨터의 인터넷 연결을 통해 연결할 수 있도록 허용' 선택 &gt; 확인
+<img alt="" src="https://cl.ly/474173/Image%202019-09-11%20at%203.40.39%20PM.png" /></li>
+</ul>
+<h2 id="ssh_1">ssh 접속</h2>
+<pre><code class="language-bash">$ssh pi@raspberrypi.local
+</code></pre>
+<p><img alt="" src="https://cl.ly/b12f8a/Image%2525202019-06-10%252520at%25252010.00.26%252520PM.png" />
+<img alt="" src="https://cl.ly/ebff11/Image%2525202019-06-10%252520at%25252010.11.31%252520PM.png" /></p>
+<h3 id="raspberrypilocal">위의 방법으로 안되는 경우...(raspberrypi.local이름이 충돌...)</h3>
+<p>도메인명이 아니라 ip주소를 직접 알아내 입력하자.</p>
+<h4 id="windows-bonjour">windows는 먼저 Bonjour를 설치한다.</h4>
+<p>https://support.apple.com/kb/DL999?locale=en_US&amp;viewlocale=ko_KR
+<img alt="" src="https://cl.ly/96c268/Image%2525202019-06-10%252520at%2525209.36.36%252520PM.png" />
+설치가 끝나면 이제 명령행에서 <code>dns-sd</code>명령어를 쓸 수 있다.</p>
+<h4 id="mac-windows">mac, windows 공통</h4>
+<ul>
+<li>윈도우는 <code>cmd</code>, 맥은 <code>terminal</code>을 실행시킨다.</li>
+<li><code>dns-sd</code> 명령어의  <code>-G v4 &lt;NAME&gt;</code>  옵션을 사용하면 맨 마지막에 오는 것이 그 컴퓨터(<NAME>의 컴퓨터)가 사용하는 ip 주소이다. (dns-sd 프로그램을 끝낼 때에는 <code>ctrl+C</code>)</li>
+</ul>
+<pre><code class="language-bash">$ dns-sd -G v4 raspberrypi.local
+</code></pre>
+<p><img alt="||600" src="https://cl.ly/skI6/Image%202018-07-06%20at%207.28.34%20PM.png" /></p>
+<p>이렇게 알아낸 주소로 ssh접속한다. ID: pi, PW: raspberry 가 디폴트이다.</p>
+<pre><code class="language-bash">$ ssh pi@위에서 알아낸 IP주소
+</code></pre>
+<p><img alt="||600" src="https://cl.ly/sjtn/Image%202018-07-06%20at%207.35.16%20PM.png" /></p>
+<h3 id="ssh_2">윈도우에 SSH가 설치되어있지 않는 경우</h3>
+<p>putty를 설치해 사용한다.</p>
+<h3 id="warning-possible-dns-spoofing-detected">warning: possible dns spoofing detected! 메시지 해결법</h3>
+<p><img alt="" src="https://cl.ly/a0c94b/Image%202019-06-10%20at%2010.13.28%20PM.png" />
+ㅊㅏㅁㄱㅗ:http://www.coolio.so/ssh-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EC%A0%91%EC%86%8D%EC%8B%9C-known_hosts-%EC%B6%A9%EB%8F%8C-%EC%97%90%EB%9F%AC-%EB%B0%9C%EC%83%9D%EC%8B%9C/</p>
+<p>가장 빠르고 쉬운 방법은 아래와 같이  ssh-keygen 명령으로 ip에 대해 유효한 연결을 업데이트 하는 것이다.</p>
+<pre><code class="language-bash">$ ssh-keygen -R 192.168.0.108 # 연결하려고하는  IP
+</code></pre>
+<h3 id="hostname">hostname  변경</h3>
+<p>여러대의 라즈베리가 동일한 네트워크에 있는 경우, 연결할 때 헷갈린다. 그러므로 네트워크에서 보이는 장치명을 변경해 구분할 수 있도록 해주자.
+기본값은   raspberrypi 로 되어있는데, 이를 각자 마음에 드는 이름으로 바꾸어주면 된다.
+* raspi-config  프로그램으로 간단히 할 수 있다.</p>
+<pre><code class="language-bash">$ raspi-config
+</code></pre>
+<p>raspi-config 프로그램실행 -&gt; 2.Network Options
+<img alt="" src="https://cl.ly/eb9ae8/Image%202019-09-04%20at%2011.15.48%20AM.png" />
+-&gt; N1 Hostname
+<img alt="" src="https://cl.ly/ac0143/Image%202019-09-04%20at%2011.17.04%20AM.png" />
+-&gt; 원하는 이름으로 바꾸어준다.(여기서는 raspberrypi -&gt; doguinpi 로 바꾸었다.)
+<img alt="" src="https://cl.ly/6abd47/Screen%20Recording%202019-09-04%20at%2011.19%20AM.gif" />
+그다음부턴 새로운 이름으로 접속할 수 있다.
+<img alt="" src="https://cl.ly/4ffc4a/Image%202019-09-04%20at%2011.20.54%20AM.png" /></p>
+<h3 id="usb">USB를 통한 넷트워크 연결이 불안정한 경우</h3>
+<p>raspberrypi의 RNDIS (==dwc2) 가 연결을 만들 때마다 랜덤한 mac address를 만들어 사용하는데, 이것이 부팅 때마다 다른 장치로 인식을 한다던가 여러가지 불안정성의 한 이유가 된다. 
+해결방법은 g_ether 모듈이 로딩될 때 미리 정해 둔 특정한 mac 주소를 사용하도록 설정하는 것.
+참고: https://raspberrypi.stackexchange.com/questions/103750/how-can-i-make-a-pi-zero-appear-as-the-same-rndis-ethernet-gadget-device-to-the</p>
+<ol>
+<li>
+<p>random MAC address generator (https://www.hellion.org.uk/cgi-bin/randmac.pl?scope=local&amp;type=unicast) 를 사용해 임의의 mac 주소를 만들어둔다.
+<img alt="" src="https://p195.p4.n0.cdn.getcloudapp.com/items/o0uvo4JA/Image%202020-06-02%20at%2010.32.03%20AM.png?v=04694f1d108a659acd7d913008f69b80" /></p>
+</li>
+<li>
+<p>/etc/modprobe.d/rndis.conf 파일을 만들고, 아래와 같이 작성한다.</p>
+</li>
+</ol>
+<pre><code class="language-bash">$ sudo nano /etc/modprobe.d/rndis.conf
+...
+options g_ether dev_addr=고정하고픈 mac주소
+</code></pre>
+<ul>
+<li>
+<p>dev_addr : raspberrypi의 mac주소 "12:34:56:78:90"과 같은 형태</p>
+</li>
+<li>
+<p>재부팅. </p>
+</li>
+</ul>
+<h2 id="gui-vnc">GUI환경 사용(VNC로 화면 공유)</h2>
+<h3 id="_5">라이브러리 목록 업데이트 &amp; 업그레이드</h3>
+<pre><code class="language-bash">$ sudo apt-get update
+</code></pre>
+<pre><code class="language-bash">$ sudo apt-get upgrade
+</code></pre>
+<p>업그레이드 완료되면 다운로드된 업데이트 파일을 지워 용량 확보</p>
+<pre><code class="language-bash">$ sudo apt-get clean
+</code></pre>
+<h3 id="vnc-server">VNC Server 설치</h3>
+<ul>
+<li>최근의 라즈비안에는 realVNC가 기본탑재되어있다. 새로인 install 할 필요는 없다. 구지 해야한다면</li>
+</ul>
+<pre><code class="language-bash">$ sudo apt-get update
+$ sudo apt-get install realvnc-vnc-server realvnc-vnc-viewer
+</code></pre>
+<ul>
+<li>설치가 끝나면 <code>raspi-config</code>를 실행해 vnc 옵션을 켜준다.</li>
+</ul>
+<pre><code class="language-bash">$ sudo raspi-config
+</code></pre>
+<p>Interfacing Option -&gt; P3 VNC -&gt; YES를 선택.
+<img alt="||600" src="https://cl.ly/sm1u/Image%202018-07-08%20at%207.56.01%20AM.png" /></p>
+<p>재부팅한다.</p>
+<pre><code class="language-bash">$ sudo reboot
+</code></pre>
+<h3 id="vnc-viewer">노트북에 vnc viewer 설치 및 화면 공유 실행</h3>
+<ul>
+<li>
+<p><code>dns-sd -G v4 raspberrypi.local</code> 명령어를 사용 RPI 의 IP address를 알 수 있다.</p>
+</li>
+<li>
+<p>노트북에 VNC viewer를 설치한다. 여기에서 받을 수 있다. https://www.realvnc.com/en/connect/download/viewer/
+주소창에 'raspberrypi.local' 혹은 위에서 얻은 라즈베리파이의 IP주소를 넣는다. 처음 연결할 때 뭐라고 경고가 뜬다. 연결해도 되겠냐고 확인하는 거다.</p>
+</li>
+</ul>
+<p><img alt="" src="https://cl.ly/f088c7/Image%202019-06-10%20at%2010.49.50%20PM.png" /></p>
+<ul>
+<li>기본 로그인 아이디는 ‘pi’, 패스워드는 ’raspberry’이다.</li>
+<li>최초 연결하면 언어와 타임존 등을 설정한다.</li>
+<li>키보드와 마우스, 모니터 없이 노트북에서 잘 컨트롤 됨을 확인한다.</li>
+</ul>
+<p><img src="https://cl.ly/pxbP/Image%202018-03-06%20at%205.04.06%20AM.png" width=600>
+</p></li>
+* 해상도를 적절히 (작게)하면 속도가 만족스럽다. 1024x768정도면 괜찮은듯. (위에서 한 번 나온 configuration메뉴에서 설정할 수 있다.)
+* 마지막으로, ip address는 보통 고정되어있지 않고 부팅할 때마다 바뀌기 때문에, 어느날 갑자기 VNC연결이 안 될 수도 있다.</p>
+<ul>
+<li>노트북과 라즈베리파이 사이에 파일교환이 필요한 경우 VNC viewer의 화살표 아이콘을 누르거나, 라즈베리파이의 작업표시줄상 VNC아이콘을 누르면 된다.</li>
+</ul>
+<p><img src="https://cl.ly/2h333e1Z3R3X/Image%202017-10-24%20at%208.11.24%20%EC%98%A4%ED%9B%84.png" width=600></p>
+<h2 id="_6">한글설치</h2>
+<p>참고: http://cccding.tistory.com/96
+1. 한글폰트 설치</p>
+<pre><code class="language-bash">sudo apt-get install fonts-unfonts-core
+</code></pre>
+<p><img src="https://cl.ly/pxzH/Image%202018-03-06%20at%204.57.23%20AM.png" width=600></p>
+<ol>
+<li>ibus한글 입력기 설치</li>
+</ol>
+<pre><code class="language-bash">$ sudo apt-get install ibus-hangul
+</code></pre>
+<ol>
+<li>Raspberry Pi configuration의 Localisation 설정.
+<img src="https://cl.ly/pxFi/Image%202018-03-06%20at%204.58.18%20AM.png" width=600></li>
+</ol>
+<p><img src="https://cl.ly/pycS/Image%202018-03-06%20at%204.58.29%20AM.png" width=600></p>
+<p><img src="https://cl.ly/pxkS/Image%202018-03-06%20at%204.58.40%20AM.png" width=600></p>
+<ul>
+<li>
+<p>Timezone은 Asia &gt; Seoul로 …
+OK를 누르면 재부팅~!</p>
+</li>
+<li>
+<p>재부팅 후 우상단에 EN아이콘을 눌러 한글 입력기를 선택.</p>
+</li>
+<li>다시 한번 눌러 한글상태에 체크</li>
+</ul>
+<p><img src="https://cl.ly/pyTR/Image%202018-03-06%20at%204.59.14%20AM.png" width=600></p>
+<p><img src="https://cl.ly/py45/Image%202018-03-06%20at%205.01.41%20AM.png" width=600></p>
+<ul>
+<li>메뉴도 한글로 되어있고 한글 입력도 잘 된다. 한&lt;-&gt;영 변환키는 [shift]+[space]</li>
+</ul>
+<p><img src="https://cl.ly/pxVm/Image%202018-03-06%20at%205.02.15%20AM.png" width=600></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>
