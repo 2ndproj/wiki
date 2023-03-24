@@ -15,6 +15,8 @@ $ brew install cask
 ```bash
 $ brew cask install qlmarkdown
 ```
+
+![||600](https://cl.ly/5ae186b952b2/download/Image%202019-02-22%20at%208.44.27%20%EC%98%A4%EC%A0%84.png)
 잘된다 ^^
 
 note: catalina에서 실행되지 않는 경우-> 참고: https://github.com/toland/qlmarkdown/pull/91

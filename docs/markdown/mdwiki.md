@@ -35,10 +35,9 @@ note:
 'Github pages' -> Custom domain 에 내 도메인(여기서는 2ndproj.com)을 입력하면 CNAME파일이 자동생성된다. 아래쪽의 HTTPS사용에도 체크한다.
 ![](https://p195.p4.n0.cdn.getcloudapp.com/items/Jruw859r/Image+2019-11-04+at+3.44.35+AM.png?v=63a509df7decf193bbacd02897857857)
 
-> Note: 
-> 서버측 변경사항이 바로바로 적용되지 않는 경우가 많은데, 네임서버에 전파되는데 시간이필요하기도 하고(24시간정도), 이도 아니라면 대부분 브라우저에 캐시가 업데이트 되지 않고 예전 페이지를 사용하기 때문이다. 캐시를 삭제한 후 페이지 리로드하면 잘 된다.
+Note: 서버측 변경사항이 바로바로 적용되지 않는 경우가 많은데, 네임서버에 전파되는데 시간이필요하기도 하고(24시간정도), 이도 아니라면 대부분 브라우저에 캐시가 업데이트 되지 않고 예전 페이지를 사용하기 때문이다. 캐시를 삭제한 후 페이지 리로드하면 잘 된다.
 (맥os&크롬의 경우 -> [shift]+[command]+[delete] -> 캐시된 이미지 또는 파일 ->인터넷 사용기록 삭제)
-> ![](https://p195.p4.n0.cdn.getcloudapp.com/items/2NuA7wbn/Image+2019-11-02+at+9.58.10+AM.png?v=bf0b6d536a49161f1fea547b4c18d8af)
+![](https://p195.p4.n0.cdn.getcloudapp.com/items/2NuA7wbn/Image+2019-11-02+at+9.58.10+AM.png?v=bf0b6d536a49161f1fea547b4c18d8af)
 
 4. github에서 새로운 파일이 생겼으므로 로컬 저장소에소  pull해서 동기화 해준다.
 

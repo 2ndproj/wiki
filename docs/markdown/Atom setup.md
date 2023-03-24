@@ -11,7 +11,7 @@ atom 메뉴 > preferences... > packages > core packages > auto complete plus >
  automatically confirm single suggestion 옵션을 끈다.
  짱 편해진다.
 
- ## 폭이 좁은 작업창에서 글줄 자동으로 바꾸기 (soft wrap)
+ ## 폭이 좁은 탭에서 글줄 자동으로 바꾸기 (soft wrap)
  ![](https://cl.ly/44dd89/Image%202019-08-01%20at%203.33.59%20PM.png)
 
 ## 마크다운 미리보기 설정
