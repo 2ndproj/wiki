@@ -1,0 +1,3020 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Bluetooth/Bluetooth%204.0%20BLE/Sort%20of%20BLE%20modules%20in%20market/">
+      
+      
+        <link rel="next" href="../../WIFI/ESP8266-Wifi/ESP8266-Wifi/">
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.3">
+    
+    
+      
+        <title>PN532 NFC shield - 2ndproject Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.c4a75a56.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pn532-nfc-shield" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="2ndproject Wiki" class="md-header__button md-logo" aria-label="2ndproject Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            2ndproject Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PN532 NFC shield
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="2ndproject Wiki" class="md-nav__button md-logo" aria-label="2ndproject Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    2ndproject Wiki
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          3D Modeling
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          3D Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          Fusion360
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          Fusion360
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../3D%20Modeling/fusion360/fusion360%20assembly/" class="md-nav__link">
+        fusion360에서 assembly 조립
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Android
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Android
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+          App Inventor
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_1">
+          <span class="md-nav__icon md-icon"></span>
+          App Inventor
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Android/App%20Inventor/App%20inventor%20%2B%20arduino%20Bluetooth/" class="md-nav__link">
+        MIT App inventor + Arduino Bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Android/App%20Inventor/App%20inventor%20%2B%20google%20maps/" class="md-nav__link">
+        App inventor + Google Maps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Android/App%20Inventor/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit App Inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Android/Llama%20Automate/llama%20Automate/" class="md-nav__link">
+        llama Automate로 구현한 초간단 비컨 시스템
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+          ProtoPie   Llama Automate
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          ProtoPie   Llama Automate
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Android/Llama%20Automate/ProtoPie%20-%20Llama%20Automate/ProtoPie%20-%20Llama%20Automate/" class="md-nav__link">
+        ProtoPie &lt;-&gt; Llama Automate (프로토파이 - 오토메이트 연동)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Circuitry
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Circuitry
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+          Arduino
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          Arduino
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/debouncing/" class="md-nav__link">
+        debounce
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+          Attiny85
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          Attiny85
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Attiny85/Digispark%20Attiny85/" class="md-nav__link">
+        Digispark Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Attiny85/arduino%20bootloader%20on%20ATTINY85/" class="md-nav__link">
+        ATTINY85 칩에 arduino 프로그래밍
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+          Error messages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          Error messages
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Error%20messages/Arduino%3A%20fatal%20error%3A%20WProgram.h%3A%20No%20such%20file%20or%20directory/" class="md-nav__link">
+        Arduino Error: WProgram.h/ No such file or directory
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+          Timer & Interrupt
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_1_4">
+          <span class="md-nav__icon md-icon"></span>
+          Timer & Interrupt
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Timer%20%26%20Interrupt/ServoTimer2/" class="md-nav__link">
+        ServoTimer2 언제필요한가?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Timer%20%26%20Interrupt/Software%20Interrupt/" class="md-nav__link">
+        Arduino Software Interrupt
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Arduino/Timer%20%26%20Interrupt/softPWM/" class="md-nav__link">
+        Software PWM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+          Data Storage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Data Storage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Data%20Storage/SD%20card/" class="md-nav__link">
+        SD library (sd카드 사용)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+          GPS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          GPS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GPS/GPS%2Braspberry%20pi/" class="md-nav__link">
+        GPS
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+          LCD,LED Display
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          LCD,LED Display
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LCD%2CLED%20Display/i2c%2016X2%20LCD%20with%20pcf8574%20chip/" class="md-nav__link">
+        i2c lcd (PCF8574 chip)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LCD%2CLED%20Display/oled%20display-adafruit/" class="md-nav__link">
+        0.96" OLED
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_4_3" id="__nav_4_4_3_label" tabindex="0">
+          NeoPixel
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          NeoPixel
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LCD%2CLED%20Display/NeoPixel/NeoPixel/" class="md-nav__link">
+        네오픽셀 NeoPixel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LCD%2CLED%20Display/NeoPixel/dotstar/" class="md-nav__link">
+        dotstar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LCD%2CLED%20Display/NeoPixel/pixel%20data%20for%20POV%20system/" class="md-nav__link">
+        POV (잔상효과)용 pixel data (픽셀 데이타) 만들기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+          LittleBits
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          LittleBits
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LittleBits/App%20inventor%20%2B%20littleBits%20BLE/" class="md-nav__link">
+        mit app inventor + littleBits BLE
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LittleBits/Hacking%20LittleBits%20cloudBit/" class="md-nav__link">
+        cloudbit 해킹
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../LittleBits/littleBits%20multi-role%20bits%20from%20%20Attiny85%20digispark/" class="md-nav__link">
+        littleBits 만능모듈 with Attiny85
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          Motors&Acruators
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Motors&Acruators
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Motors%26Acruators/Stepper%20motor/" class="md-nav__link">
+        Stepper motor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          PCB design
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          PCB design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PCB%20design/Eagle%20PCB%20design/" class="md-nav__link">
+        Autodesk Eagle 로 PCB 제작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PCB%20design/PCB%20panelization/" class="md-nav__link">
+        PCB panelization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PCB%20design/seeedfusion%20pcba/" class="md-nav__link">
+        seeed fusion pcb(a) 서비스로 pcb 제작주문하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PCB%20design/vector%20image%20into%20ealge%20pcb/" class="md-nav__link">
+        Eagle pcb에 logo image 넣기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+          Sensors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_8">
+          <span class="md-nav__icon md-icon"></span>
+          Sensors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sensors/Load%20cell%20HX711/" class="md-nav__link">
+        loadcell HX711
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sensors/ds18s20/" class="md-nav__link">
+        온도센서 DS18S20 (DS18B20)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_9" id="__nav_4_9_label" tabindex="0">
+          Sound&Music
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_9">
+          <span class="md-nav__icon md-icon"></span>
+          Sound&Music
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sound%26Music/VS1053%20mp3%20decoder/" class="md-nav__link">
+        VS1053 mp3 decoder chip
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Sound%26Music/sound%20chip%20PX088A/" class="md-nav__link">
+        aliexpress sound chip PX088A
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_10" id="__nav_4_10_label" tabindex="0">
+          Transistor & MOSFET
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_10">
+          <span class="md-nav__icon md-icon"></span>
+          Transistor & MOSFET
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Transistor%20%26%20MOSFET/MOSFET%20switch%20circuit/" class="md-nav__link">
+        MOSFET 를 사용한 switch 회로
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Transistor%20%26%20MOSFET/NPN%20transisor%20switch/" class="md-nav__link">
+        NPN transisor switch
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11" id="__nav_4_11_label" tabindex="0">
+          Wireless communication
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_11_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4_11">
+          <span class="md-nav__icon md-icon"></span>
+          Wireless communication
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integer%20to%20byte/" class="md-nav__link">
+        Int형 데이터를 byte로 바꾸기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2" id="__nav_4_11_2_label" tabindex="0">
+          Bluetooth
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bluetooth/snap4arduino%20%2B%20arduino%20bluetooth/" class="md-nav__link">
+        snap4arduino + arduino bluetooth
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_2_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_2_2" id="__nav_4_11_2_2_label" tabindex="0">
+          Bluetooth 4.0 BLE
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_2_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Bluetooth 4.0 BLE
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Bluetooth/Bluetooth%204.0%20BLE/Sort%20of%20BLE%20modules%20in%20market/" class="md-nav__link">
+        BLE 모듈 제품명 알아보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_3" id="__nav_4_11_3_label" tabindex="0">
+          RFID & NFC
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4_11_3">
+          <span class="md-nav__icon md-icon"></span>
+          RFID & NFC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PN532 NFC shield
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PN532 NFC shield
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rfid-nfc-mifare" class="md-nav__link">
+    RFID, NFC 그리고 MiFare
+  </a>
+  
+    <nav class="md-nav" aria-label="RFID, NFC 그리고 MiFare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic" class="md-nav__link">
+    Mifare Classic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight" class="md-nav__link">
+    MiFare Ultralight
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    라이브러리 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    태그서 DATA 읽기
+  </a>
+  
+    <nav class="md-nav" aria-label="태그서 DATA 읽기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic_1" class="md-nav__link">
+    MiFare Classic 읽기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight_1" class="md-nav__link">
+    MiFare Ultralight 읽기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    태그에 데이터 쓰기
+  </a>
+  
+    <nav class="md-nav" aria-label="태그에 데이터 쓰기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic_2" class="md-nav__link">
+    Mifare Classic 쓰기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight_2" class="md-nav__link">
+    Mifare Ultralight 쓰기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    주의점
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4" id="__nav_4_11_4_label" tabindex="0">
+          WIFI
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_11_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4">
+          <span class="md-nav__icon md-icon"></span>
+          WIFI
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_11_4_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_11_4_1" id="__nav_4_11_4_1_label" tabindex="0">
+          ESP8266 Wifi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_11_4_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_11_4_1">
+          <span class="md-nav__icon md-icon"></span>
+          ESP8266 Wifi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../WIFI/ESP8266-Wifi/ESP8266-Wifi/" class="md-nav__link">
+        ESP8266 wifi사용하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_12" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_12" id="__nav_4_12_label" tabindex="0">
+          Power
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_12_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_12">
+          <span class="md-nav__icon md-icon"></span>
+          Power
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../power/LM7805%20-%205V%20regulator/" class="md-nav__link">
+        5V 레귤레이터 LM7805
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          GoogleCloudPlatform
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          GoogleCloudPlatform
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GoogleCloudPlatform/GoogleVisionApi%20setup/" class="md-nav__link">
+        Google vision api 설치
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GoogleCloudPlatform/python%20Google%20API/" class="md-nav__link">
+        Gmail / Google calendar API for python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          MacOS
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          MacOS
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MacOS/deleting%20.Icon%20file/" class="md-nav__link">
+        Icon\r 파일 삭제하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MacOS/keyBinding%20change/" class="md-nav__link">
+        macOS ₩ 대신 ` 입력하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MacOS/markdown%20quicklook/" class="md-nav__link">
+        마크다운(markdown) 문서 미리보기(quicklook)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../MacOS/variables%20of%20Automator/" class="md-nav__link">
+        오토메이터에서 변수 사용
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          Protopie
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Protopie
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Protopie/ProtoPie%20deeplink/" class="md-nav__link">
+        ProtoPie prototype 실행 아이콘 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Protopie/Protopie%20%2B%20IFTTT/" class="md-nav__link">
+        Protopie + IFTTT
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+          Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/PIL%20quick%20reference/" class="md-nav__link">
+        PIL (python Imaging library) Quick reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/http%20request/" class="md-nav__link">
+        HTTP request in Python : 'requests' module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%20datetime%20quick%20reference/" class="md-nav__link">
+        datetime 모듈
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/python%20setup/" class="md-nav__link">
+        python 설치 및 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Python/xml%20parsing%20%28elementTree%29/" class="md-nav__link">
+        XML parsing (elementTree library)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+          Raspberry pi
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/Linux%20super%20basic/" class="md-nav__link">
+        Linux 완전 기본 명령어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/RPi%20Analog%20input%20%28A_D%20converter%20MCP3008%29/" class="md-nav__link">
+        Raspberry pi의 GPIO 에서 Analog input 받기 (A/D converter MCP3008)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/RPi%20adafruit%20motor%20hat%20%28python%2C%20scratch2.0%29/" class="md-nav__link">
+        raspberry pi용 adafruit motor hat 제어
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/RPi%20autostart/" class="md-nav__link">
+        Raspberry pi 프로그램 자동시작하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/Raspberry%20Raspbian%20setup/" class="md-nav__link">
+        Raspberry Pi setup (Raspbian version9, stretch기준)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/Raspberry%20pi%20ethernet%20cable%20connection/" class="md-nav__link">
+        Raspberry pi ethernet cable 통해 원격제어하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/USB%20network%20settup/" class="md-nav__link">
+        Raspberry pi USB를 통한 network 설정
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/pi-camera/" class="md-nav__link">
+        picamera (Raspberry pi 카메라)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/raspberry%20pi%20zero%20headress%20setup/" class="md-nav__link">
+        Raspberry pi zero w 셋업
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/rpi.gpio/" class="md-nav__link">
+        RPi.GPIO 라이브러리 사용법
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/setting%20up%20Raspberry%20pi%20serial%20connection/" class="md-nav__link">
+        라즈베리파이에서 시리얼 디바이스 사용
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/static%20ip%20address%20for%20RPi/" class="md-nav__link">
+        라즈베리파이에 고정 IP Address 부여하기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_13" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_13" id="__nav_9_13_label" tabindex="0">
+          Raspberry pi + scratch2.0
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_13_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_9_13">
+          <span class="md-nav__icon md-icon"></span>
+          Raspberry pi + scratch2.0
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Raspberry%20pi/raspberry%20pi%20%2B%20scratch2.0/raspberry%20pi%20%2B%20scratch2.0%20%20plugin%20s2pii/" class="md-nav__link">
+        raspberry pi - scratch2.0 GPIO 확장 플러그인 s2pii 설치 사용법
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          Video Editing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Video Editing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10_1" id="__nav_10_1_label" tabindex="0">
+          Motion
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_10_1">
+          <span class="md-nav__icon md-icon"></span>
+          Motion
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Video%20Editing/Motion/illustrator2motion/" class="md-nav__link">
+        illustrator 벡터 이미지를 Motion용 shape로 변환하기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          Markdown
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          Markdown
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../markdown/Atom%20setup/" class="md-nav__link">
+        Atom
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../markdown/Visual%20Studio%20Code/" class="md-nav__link">
+        Visual Studio Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../markdown/mdwiki/" class="md-nav__link">
+        github 와 mdwiki 사용해 wiki 서비스 만들기
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../markdown/qlmarkdown/" class="md-nav__link">
+        QLMarkdown - mac용 markdown 미리보기
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#rfid-nfc-mifare" class="md-nav__link">
+    RFID, NFC 그리고 MiFare
+  </a>
+  
+    <nav class="md-nav" aria-label="RFID, NFC 그리고 MiFare">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic" class="md-nav__link">
+    Mifare Classic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight" class="md-nav__link">
+    MiFare Ultralight
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    라이브러리 설치
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data" class="md-nav__link">
+    태그서 DATA 읽기
+  </a>
+  
+    <nav class="md-nav" aria-label="태그서 DATA 읽기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic_1" class="md-nav__link">
+    MiFare Classic 읽기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight_1" class="md-nav__link">
+    MiFare Ultralight 읽기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    태그에 데이터 쓰기
+  </a>
+  
+    <nav class="md-nav" aria-label="태그에 데이터 쓰기">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mifare-classic_2" class="md-nav__link">
+    Mifare Classic 쓰기
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mifare-ultralight_2" class="md-nav__link">
+    Mifare Ultralight 쓰기
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    주의점
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="pn532-nfc-shield">PN532 NFC shield</h1>
+<p><img alt="||600" src="https://cl.ly/s6tV/Image%202018-06-07%20at%203.09.44%20PM.png" /></p>
+<p>아두이노의 ICSP핀(SPI)을 사용해 다른핀을 충분히 활용할 수 있어 좋다나... Adafruit의 PN532 라이브러리를 활용한다.
+ <a href="http://www.devicemart.co.kr/1383144">구입한곳 디바이스마트</a>
+ <a href="https://www.elecrow.com/wiki/index.php?title=NFC_Shield">제조사 위키</a></p>
+<p>note: 카드 구입할 때 MIFARE ISO14443A cards/tags 호환을 확인한다!!</p>
+<h2 id="rfid-nfc-mifare">RFID, NFC 그리고 MiFare</h2>
+<p>참고: http://baator9.tistory.com/7
+간단히 말하자면 RFID는 NFC를 포함하고 NFC는 MiFare를 포함하는 표준이다. 버스카드, 출입카드 등 어플리케이션에서 mifare가 가장 널리 사용된다. mifare는 저장 용량과 보안유무에 따라 다시 MiFare classic과 Mifare Ultralight로 구분된다.</p>
+<p><a href="https://learn.adafruit.com/adafruit-pn532-rfid-nfc/mifare">MiFare 프로토콜에 대한 자세한 설명 </a></p>
+<h3 id="mifare-classic">Mifare Classic</h3>
+<p>Mifare Classic 카드(태그)는 저장용량에 따라 1K, 2K, 4K가 있고, 데이터는 아래 표와 같이 16바이트가 하나의 블록으로, 4블록이 하나의 섹터로 구분되어 저장되고 기록된다.
+<img alt="||600" src="https://upload.wikimedia.org/wikipedia/commons/3/39/MiFare_Byte_Layout.png" /></p>
+<p>기억할 점은 사용자가 기록할 수 있는 블록이 정해져있다는 것.</p>
+<table>
+<thead>
+<tr>
+<th>block</th>
+<th>용도</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>block#0</td>
+<td>제조자 블록으로 카드 아이디번호 등이 담기므로 사용금지.</td>
+</tr>
+<tr>
+<td>block#1,2</td>
+<td>Mifare application 용으로  단순 데이터 저장용으로 사용금지.</td>
+</tr>
+<tr>
+<td>block#3,7,11,15,19...</td>
+<td>sector trailer로 보안을 위한 key를 저장하는 곳. (특정한 기기만 특정한 태그를 인식 가능토록 함)</td>
+</tr>
+<tr>
+<td><strong>block#4,5,6, 8,9,10, 12,13,14,...</strong></td>
+<td><strong>여기에 데이터 저장하자.</strong></td>
+</tr>
+</tbody>
+</table>
+<p>기초적인 방식의 보안적용되어 블록에 데이터 쓰고 읽을 때 키을 확인해야 한다.</p>
+<h3 id="mifare-ultralight">MiFare Ultralight</h3>
+<p>더 싸고 가벼운 버전의 태그시스템이다. 보안따위는 전혀 없고, 한 블록은 4개 바이트로 이루어져있다. 맨 앞의 4개 블록은 사용자가 쓸 수 없고, 0x04블록부터 사용자 데이터 저장가능하다.
+<img alt="||600" src="https://www.researchgate.net/profile/Flavio_Garcia/publication/255593385/figure/fig6/AS:297841592422425@1448022377757/Memory-of-a-Mifare-Ultralight-tag11.png" /></p>
+<h2 id="_1">라이브러리 설치</h2>
+<p><a href="https://www.elecrow.com/wiki/index.php?title=File:PN532_SPI.zip">라이브러리 다운로드</a> 에서 다운로드 받은 후 아두이노 IDE 메뉴 &gt; 스케치 &gt; 라이브러리 포함하기 &gt; .zip 라이브러리 포함에서 다운받은 zip파일 선택하면 라이브러리 설치 됨.</p>
+<p>라이브러리 설치 후 메뉴&gt; 파일 &gt; 예제 &gt; PN532-SPI &gt; readMifareMemory 예제 불러들여 태그 잘 읽히는 지 테스트.
+<img alt="||600" src="https://cl.ly/s6vD/Image%202018-06-07%20at%203.29.43%20PM.png" /></p>
+<h2 id="data">태그서 DATA 읽기</h2>
+<h3 id="mifare-classic_1">MiFare Classic 읽기</h3>
+<pre><code class="language-C++">#include &lt;PN532.h&gt;
+#include &lt;SPI.h&gt;
+
+// SPI로 2개 이상의 장치가 동시에 연결될 때, SS(CS)핀을 D9,혹은 D10을 선택한다. 디폴트는 D10번핀.
+#define PN532_CS 10
+
+PN532 nfc(PN532_CS);
+
+void setup(void){
+    Serial.begin(9600); // 디버깅용
+    nfc.begin();
+    nfc.SAMConfig();    // PN532를 Normal Mode로 설정.
+}
+
+void loop(void){
+    uint32_t id;
+    id = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A);   // 카드 접근인식
+    if (id != 0){   // 인식 성공하면,
+
+        // 블록 0x08에 접근 승인받기 ...
+        uint8_t keys[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};  // 기본 키
+        if (nfc.authenticateBlock(1, id, 0x08, KEY_A, keys)) {  //승인 성공하면,
+
+            uint8_t readBuffer[16];
+            if (nfc.readMemoryBlock(1,0x08,readBuffer)){        // 읽기 성공하면...
+
+                // 데이터 보여주기
+                 for (int i = 0; i &lt; 16; i++){
+                    Serial.print(readBuffer[i],HEX);    Serial.print(&quot; &quot;);
+                 }
+            }
+        }
+        Serial.println();
+    }
+    delay(500);
+}
+</code></pre>
+<p><code>boolean SAMConfig(void)</code> 명령으로 장치를 normal mode 로 설정한다. 여기에서 SAM은 'Security Access Module'로, PN532장치를 의미함. 모드는 Normal mode, Virtual Card mode, Wired Card mode, Dual Card mode가 있다.</p>
+<p><code>uint32_t readPassiveTargetID(uint8_t cardbaudrate)</code> 명령은 카드를 읽어들인 후 카드의 고유ID를 리턴함. 카드가 없을 때는 0을 리턴.</p>
+<p><code>uint32_t authenticateBlock(uint8_t cardnumber, uint32_t cid, uint8_t blockaddress, uint8_t authtype, uint8_t* keys)</code> 명령은 카드의 특정 메모리 블럭에 접근권한 획득.</p>
+<ul>
+<li>cardnumber can be 1 or 2 ( 최대 2장 동시 감지)</li>
+<li>cid is 32-bit Card ID</li>
+<li>blockaddress is block number (any number between 0 - 63 for MIFARE card)</li>
+<li>authtype is which key is to be used for authentication (either KEY_A or KEY_B)</li>
+<li>keys points to the byte-array holding 6 keys.</li>
+</ul>
+<p><code>uint32_t readMemoryBlock(uint8_t cardnumber, uint8_t blockaddress, uint8_t* block)</code> 메소드로 실제 블록 데이터를 읽어들여 미리 만들어둔 버퍼(uint8_t 배열 )에 저장한다. 읽기 성공하면 true를 리턴한다.</p>
+<h3 id="mifare-ultralight_1">MiFare Ultralight 읽기</h3>
+<p>classic에서 보안관련 부분만 빼고 데이터 블록 크기는 16 -&gt; 4바이트로.</p>
+<pre><code class="language-C++">#include &lt;PN532.h&gt;
+#include &lt;SPI.h&gt;
+
+// SPI로 2개 이상의 장치가 동시에 연결될 때, SS(CS)핀을 D9,혹은 D10을 선택한다. 디폴트는 D10번핀.
+#define PN532_CS 10
+
+PN532 nfc(PN532_CS);
+
+void setup(void){
+    Serial.begin(9600); // 디버깅용
+    nfc.begin();
+    nfc.SAMConfig();    // PN532를 Normal Mode로 설정.
+}
+
+void loop(void){
+    uint32_t id;
+    id = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A);   // 카드 접근인식
+    if (id != 0){   // 인식 성공하면,
+
+            uint8_t readBuffer[4];
+            if (nfc.readMemoryBlock(1,0x08,readBuffer)){        // 1block 은 4Byte.
+
+                // 데이터 보여주기
+                 for (int i = 0; i &lt; 4; i++){
+                    Serial.print(readBuffer[i],HEX);    Serial.print(&quot; &quot;);
+                 }
+            }
+
+        Serial.println();
+    }
+    delay(500);
+}
+</code></pre>
+<h2 id="_2">태그에 데이터 쓰기</h2>
+<h3 id="mifare-classic_2">Mifare Classic 쓰기</h3>
+<pre><code class="language-C++">#include &lt;PN532.h&gt;
+#include &lt;SPI.h&gt;
+
+#define PN532_CS 10
+
+PN532 nfc(PN532_CS);
+
+void setup(){
+    Serial.begin(9600); //디버깅용
+    nfc.begin();
+    nfc.SAMConfig();    // normal모드 설정
+}
+
+void loop(){
+    uint32_t id;
+    id = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A);   // 카드 접근 인식
+    if (id != 0){   // 인식 성공하면,
+
+        // 블록 0x08에 접근 승인받기
+        uint8_t keys[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};  // 기본 키
+        if (nfc.authenticateBlock(1, id, 0x08, KEY_A, keys)) {  //승인 성공하면,
+
+            // 기록할 데이터
+            uint8_t writeBuffer[16];
+            for (int i = 0; i &lt; 16; i++){
+                writeBuffer[i] = i;
+            }
+
+            // 데이터 기록하기
+            bool written = nfc.writeMemoryBlock(1, 0x08, writeBuffer);
+            if (written){
+                Serial.println(&quot;write Successful&quot;);
+            }
+
+            // 기록한 데이터 확인
+            uint8_t readBuffer[16];
+            if (nfc.readMemoryBlock(1,0x08,readBuffer)){        // 읽기 성공하면...
+
+                // 데이터 보여주기
+                 for (int i = 0; i &lt; 16; i++){
+                    Serial.print(readBuffer[i],HEX); Serial.print(&quot; &quot;);
+                 }
+            }
+
+        }
+        Serial.println();
+    }
+    delay(500);
+}
+
+</code></pre>
+<p><code>uint32_t writeMemoryBlock(uint8_t cardnumber, uint8_t blockaddress, uint8_t* block)</code> 메소드 사용해 인식된 카드중 cardnumber 번째 카드의 blockaddress 블록에 block배열의 내용을 기록함 (16바이트)</p>
+<h3 id="mifare-ultralight_2">Mifare Ultralight 쓰기</h3>
+<pre><code class="language-Cpp">#include &lt;PN532.h&gt;
+#include &lt;SPI.h&gt;
+
+#define PN532_CS 10
+
+PN532 nfc(PN532_CS);
+
+void setup(){
+    Serial.begin(9600); //디버깅용
+    nfc.begin();
+    nfc.SAMConfig();    // normal모드 설정
+}
+
+void loop(){
+    uint32_t id;
+    id = nfc.readPassiveTargetID(PN532_MIFARE_ISO14443A);   // 카드 접근 인식
+    if (id != 0){   // 인식 성공하면,
+
+        /*  보안따위 없다.
+        // 블록 0x08에 접근 승인받기
+        uint8_t keys[] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};  // 기본 키
+        if (nfc.authenticateBlock(1, id, 0x08, KEY_A, keys)) {  //승인 성공하면*/
+
+            // 기록할 데이터
+            uint8_t writeBuffer[4];
+            for (int i = 0; i &lt; 4; i++){
+                writeBuffer[i] = i;
+            }
+
+            // 데이터 기록하기
+            bool written = nfc.writeMemoryBlock(1, 0x04, writeBuffer);
+            if (written){
+                Serial.println(&quot;write Successful&quot;);
+            }
+
+            // 기록한 데이터 확인
+            uint8_t readBuffer[4];
+            if (nfc.readMemoryBlock(1,0x04,readBuffer)){        // 읽기 성공하면...
+
+                // 데이터 보여주기
+                 for (int i = 0; i &lt; 4; i++){
+                    Serial.print(readBuffer[i],HEX); Serial.print(&quot; &quot;);
+                 }
+            }
+
+        Serial.println();
+    }
+    delay(500);
+}
+</code></pre>
+<h2 id="_3">주의점</h2>
+<ul>
+<li>하드웨어 인터럽트 사용시 충돌 일으키는 것으로 보임. 소프트웨어 인터럽트를 사용하는 것으로 해결
+<a href="Circuitry/Arduino/Timer &amp; Interrupt/Software Interrupt.md">Software_Interrupt_(소프트웨어_인터럽트) 참고자료</a></li>
+<li>아두이노 d12, d13번핀에 입력장치 연결되면 간섭일으키는 것으로 보임. 회로도상에는 12,13번 핀과 아무런 연결없는데 왜 이런 현상일어나는지 모르겠음....
+좀 더 테스트 필요</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.efa0ade1.min.js"></script>
+      
+    
+  </body>
+</html>
