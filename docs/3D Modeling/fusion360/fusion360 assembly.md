@@ -1,5 +1,6 @@
 # fusion360에서 assembly 조립
-참고: https://www.autodesk.co.kr/products/fusion-360/learn-training-tutorials
+[참고](https://www.autodesk.co.kr/products/fusion-360/learn-training-tutorials)
+
 * 부품파일 임포트하기
 * 일단 모든 조립될 부품은 component 상태이어야 한다.
 * 기준이 되는 component를 ground한다.
